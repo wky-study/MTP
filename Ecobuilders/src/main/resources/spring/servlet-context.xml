@@ -12,15 +12,19 @@
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 
-	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+		<!-- .jsp 파일 내 src 경로에 작성한 resources/ 부분에 실제 경로를 매핑시켜주는 설정 -->
 	<resources mapping="/resources/**" location="/resources/" />
+	<resources mapping="/assets/**" location="/resources/assets/" />
+	<resources mapping="/css/**" location="/resources/css/" />
+	<resources mapping="/js/**" location="/resources/js/" />
 
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<!-- Controller에서 String을 리턴하는 메소드에 대해 해당 View의 경로를 완성시켜주는 설정 -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- 해당 패키지(폴더) 내 존재하는 클래스 파일 중 Component에 해당하는 Annotation이 붙은 클래스들을 스캔하여 빈으로 등록하도록 설정 -->
 	<context:component-scan base-package="com.team.ecobuilders" />
 	
 	
