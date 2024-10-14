@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.ecobuilders.review.dao.IReviewDAO">
+
+
+	<!-- 리뷰 게시판 목록 불러오기 -->
+	<select id="getReviewList" resultType="com.team.ecobuilders.review.dto.ReviewDTO">
+		SELECT
+		      a.review_no
+		    , a.mem_id
+		    , a.review_title
+		    , a.review_content
+		    , b.atch_path
+		    , a.review_date
+		    , a.del_yn
+		FROM review a, attach b
+		WHERE 1=1
+		    AND a.del_yn = 'N'
+		    AND a.review_no = b.review_no
+		ORDER BY review_no DESC
+	</select>
+
+
+
+
+
+
+</mapper>
