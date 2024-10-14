@@ -6,9 +6,31 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>글 작성</title>
+
+	<style type="text/css">
+	
+		div{
+			border: 1px solid black;
+		}
+		
+		
+	
+	</style>
 </head>
 <body>
+
+	<div class="container">
+		<div class="content-box">
+			
+			
+			<input type="text">
+			
+			
+
+		</div>
+	</div>
+	
 	
 </body>
 </html>
