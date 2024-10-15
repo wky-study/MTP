@@ -13,10 +13,8 @@ public class ReviewDTO {
 	public ReviewDTO() {
 	}
 
-	
-	
 	public ReviewDTO(int reviewNo, String memId, String reviewTitle, String reviewContent, String reviewDate,
-			String atchPath, String delYn) {
+			String atchPath, String delYn, int reviewCount) {
 		this.reviewNo = reviewNo;
 		this.memId = memId;
 		this.reviewTitle = reviewTitle;
@@ -25,7 +23,6 @@ public class ReviewDTO {
 		this.atchPath = atchPath;
 		this.delYn = delYn;
 	}
-
 
 
 	@Override
@@ -35,90 +32,65 @@ public class ReviewDTO {
 				+ ", delYn=" + delYn + "]";
 	}
 
-
-
 	public int getReviewNo() {
 		return reviewNo;
 	}
-
-
 
 	public void setReviewNo(int reviewNo) {
 		this.reviewNo = reviewNo;
 	}
 
-
-
 	public String getMemId() {
 		return memId;
 	}
-
-
 
 	public void setMemId(String memId) {
 		this.memId = memId;
 	}
 
-
-
 	public String getReviewTitle() {
 		return reviewTitle;
 	}
-
-
 
 	public void setReviewTitle(String reviewTitle) {
 		this.reviewTitle = reviewTitle;
 	}
 
-
-
 	public String getReviewContent() {
 		return reviewContent;
 	}
-
-
 
 	public void setReviewContent(String reviewContent) {
 		this.reviewContent = reviewContent;
 	}
 
-
-
 	public String getReviewDate() {
 		return reviewDate;
 	}
-
-
 
 	public void setReviewDate(String reviewDate) {
 		this.reviewDate = reviewDate;
 	}
 
-
-
 	public String getAtchPath() {
 		return atchPath;
 	}
-
-
 
 	public void setAtchPath(String atchPath) {
 		this.atchPath = atchPath;
 	}
 
-
-
 	public String getDelYn() {
 		return delYn;
 	}
-
-
 
 	public void setDelYn(String delYn) {
 		this.delYn = delYn;
 	}
 
+
+	
+	
 
 	
 	
