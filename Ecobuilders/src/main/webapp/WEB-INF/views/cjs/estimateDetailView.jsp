@@ -104,12 +104,12 @@
         </thead>
         <tbody>
             <tr>
-                <td rowspan="2">예시) 전구</td>
-                <td>자재 종류</td>
+                <td rowspan="2">전구</td>
+                <td>자재종류들어오면 될거같음</td>
                 <td>1</td>
                 <td>12</td>
                 <td>10,000</td>
-                <td> <input type="number" placeholder="0"> (원)</td>
+                <td> <input type="number" placeholder="0"> </td>
                 <td></td>
             </tr>
             
@@ -120,10 +120,10 @@
             <tr>
                 <td rowspan="2">item_name</td>
                 <td>item_type</td>
-                <td></td>
-                <td>수량 나중에 불러오기</td>
+                <td>단위쪽 고민해봐야함</td>
+                <td>수량 나중에 불러온다했고</td>
                 <td>item_price</td>
-                <td> <input type="number" placeholder="0"> (원)</td>
+                <td> <input type="number" placeholder="0"> </td>
                 <td></td>
             </tr>
         </tbody>
@@ -134,7 +134,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
+                <td> <input type="number" placeholder="0"> </td>
                 <td></td>
             </tr>
         </tbody>
@@ -145,7 +145,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
+                <td> <input type="number" placeholder="0"> </td>
                 <td></td>
             </tr>
         </tbody>
@@ -156,7 +156,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
+                <td> <input type="number" placeholder="0"> </td>
                 <td></td>
             </tr>
         </tbody>
@@ -167,7 +167,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
+                <td> <input type="number" placeholder="0"> </td>
                 <td></td>
             </tr>
         </tbody>
@@ -178,7 +178,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
+                <td> <input type="number" placeholder="0"> </td>
                 <td></td>
             </tr>
         </tbody>
@@ -189,7 +189,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
+                <td> <input type="number" placeholder="0"> </td>
                 <td></td>
             </tr>
         </tbody>
@@ -200,7 +200,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
+                <td> <input type="number" placeholder="0"> </td>
                 <td></td>
             </tr>
         </tbody>
@@ -211,7 +211,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
+                <td> <input type="number" placeholder="0"> </td>
                 <td></td>
             </tr>
         </tbody>
@@ -222,7 +222,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
+                <td> <input type="number" placeholder="0"> </td>
                 <td></td>
             </tr>
         </tbody>
@@ -233,7 +233,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
+                <td> <input type="number" placeholder="0"> </td>
                 <td></td>
             </tr>
         </tbody>
@@ -244,7 +244,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
+                <td> <input type="number" placeholder="0"> </td>
                 <td></td>
             </tr>
         </tbody>
@@ -255,7 +255,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
+                <td> <input type="number" placeholder="0"> </td>
                 <td></td>
             </tr>
         </tbody>
@@ -266,7 +266,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
+                <td> <input type="number" placeholder="0"> </td>
                 <td></td>
             </tr>
         </tbody>
@@ -277,7 +277,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
+                <td> <input type="number" placeholder="0"> </td>
                 <td></td>
             </tr>
         </tbody>
@@ -288,7 +288,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
+                <td> <input type="number" placeholder="0"> </td>
                 <td></td>
             </tr>
         </tbody>
@@ -299,7 +299,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
+                <td> <input type="number" placeholder="0"> </td>
                 <td></td>
             </tr>
         </tbody>
@@ -310,7 +310,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
+                <td> <input type="number" placeholder="0"> </td>
                 <td></td>
             </tr>
         </tbody>
@@ -321,7 +321,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
+                <td> <input type="number" placeholder="0"> </td>
                 <td></td>
             </tr>
         </tbody>
