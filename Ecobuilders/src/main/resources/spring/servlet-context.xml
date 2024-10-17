@@ -20,7 +20,6 @@
 	<resources mapping="/images/**" location="/resources/images/" />
 	<resources mapping="/nse/**" location="/resources/nse/" />
 
-
 	<!-- Controller에서 String을 리턴하는 메소드에 대해 해당 View의 경로를 완성시켜주는 설정 -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />

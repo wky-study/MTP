@@ -95,8 +95,9 @@
                     <!-- 썸네일 이미지 (주석 처리됨) -->
                     
                 </div>
-                <div class="title">글 제목 1</div>
-                <div class="author">작성자: 닉네임</div>
+                <div class="title">${cjs.post_no }</div>
+                <div class="title">${cjs.post_title }</div>
+                <div class="author">${cjs.post_author }</div>
             </a>
         </section>
 
@@ -106,8 +107,9 @@
                 <div class="thumbnail">
                     <!-- 썸네일 이미지 (주석 처리됨) -->
                 </div>
-                <div class="title">글 제목 2</div>
-                <div class="author">작성자: 닉네임</div>
+                <div class="title">${cjs.post_no }</div>
+                <div class="title">${cjs.post_title }</div>
+                <div class="author">${cjs.post_author }</div>
             </a>
         </section>
 
