@@ -1,4 +1,3 @@
-/* 회원가입 화면을 요청하는 URL에 대해 응답하는 컨트롤러 생성 */
 package com.team.ecobuilders.KDH_member.web;
 
 import javax.servlet.http.Cookie;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
-/*import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;*/
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.team.ecobuilders.KDH_member.dto.KDH_MemberDTO;
@@ -20,18 +18,10 @@ import com.team.ecobuilders.KDH_member.service.KDH_MemberService;
 
 @Controller // 클래스 상단에 어노테이션추가
 public class KDH_MemberController {
-	
-	// KDH_MemberService 내 메소드를 사용하기 위해 KDH_MemberService를 불러옴 (DI)
+
 	@Autowired
 	KDH_MemberService memberService;
-	
-	/*
-	// 회원가입시 비밀번호 암호화를 위해 context-security.xml 에서 생성한 passwordEncoder 가져오기
-	@Autowired
-	BCryptPasswordEncoder passwordEncoder;
-	*/
-	
-	// 주소 뒤에 /registView 로 요청이 오면 실행될 메소드 생성
+
 	@RequestMapping("/registView")
 	public String registView() {
 		
@@ -39,43 +29,20 @@ public class KDH_MemberController {
 		
 		// 회원가입 화면을 응답시킴
 		return "KDH_member/KDH_registView";
+		
 	}
 	
-	
-	// 주소 뒤에 /registDo 로 요청이 오면 실행될 메소드 생성
-	// 요청시 전달되어 오는 Request 객체 내에 데이터가 들어있음
-	// 메소드 내에서 Request 객체를 사용할거면 파라미터에 넣어준다.
-	// 요청시 생성된 Request 객체가 메소드 실행될때 파라미터에 들어감
-	// 회원가입의 경우 POST 방식으로 요청을 보내고, 요청을 받아야 하므로
-	// RequestMapping 에 method를 넣어준다.
-//	@RequestMapping("/registDo")  // registDo 에 대한 GET, POST 둘 다 받음 
-//	@RequestMapping(value = "/registDo", method = RequestMethod.POST)  // POST 방식 요청만 받음
 	@PostMapping("/registDo")  // POST 방식 요청만 받음 (위와 같음)
 	public String registDo(HttpServletRequest request) {  
-		
-		// request로부터 getParameter로 값을 꺼내기 전에 인코딩 설정해야 한글 안깨짐
-		// web.xml에 인코딩 필터를 적용하면 생략 가능
-//		try {
-//			request.setCharacterEncoding("UTF-8");
-//		} catch (UnsupportedEncodingException e) {
-//			e.printStackTrace();
-//		}
-		
-		// 회원가입시 입력한 id, pw, name 값을 불러와야 함
-		// GET 방식이든, POST 방식이든 같은 방법으로 꺼냄
-		// GET 방식은 한글이 깨지지 않지만 POST 방식은 한글이 깨짐
-		System.out.println(request.getParameter("id"));
+
+		System.out.println(request.getParameter("email"));
 		System.out.println(request.getParameter("pw"));
 		System.out.println(request.getParameter("name"));
 		
 		// 사용자가 입력한 비밀번호
 		String pw = request.getParameter("pw");
 		
-/*		
-		// passwordEncoder 를 이용하여 비밀번호 암호화
-		String encodePw = passwordEncoder.encode(pw);
-*/		
-		// 각 파라미터로 꺼낸 값을 하나의 MemberDTO 객체에 담은 후 insertMember에 넣어준다.
+
 		KDH_MemberDTO member = new KDH_MemberDTO();
 		member.setMemId(request.getParameter("id"));
 		member.setMemPassword(request.getParameter("pw"));  // 암호화된 비밀번호 반영
@@ -89,13 +56,16 @@ public class KDH_MemberController {
 		// DB에 해당 회원정보를 저장 -> mybatis 사용
 		memberService.insertMember(member);
 		
-		
-		// 홈 화면으로 보내기
-		// 그냥 home.jsp에 대한 home을 리턴하면
-		// HomeController의 home 메소드가 실행되지 않음
-		// -> HomeController의 home 메소드가 실행되도록 함 
-		// -> ("/") 에 대해 redirect를 시킨다.
 		return "redirect:/loginView";  // redirect:/ 에서 redirect:/loginView 로 변경
+	}
+	
+	@RequestMapping("/ENT_registView")
+	public String ENT_registView() {
+		
+		System.out.println("ENT_registView 실행");
+			
+		// 기업회원가입 화면을 응답시킴
+		return "KDH_member/ENT_registView";	
 	}
 	
 	
@@ -117,22 +87,14 @@ public class KDH_MemberController {
 	// loginView에서 전달되어오는 값 꺼내기
 	// 1. HttpServletRequest 객체로부터 getParameter로 id, pw값 꺼내기
 	// 2. loginDo 파라미터에 name의 id, pw 를 작성
-	// 3. 아이디, 비밀번호 값은 MemberDTO 객체 내부 필드변수에 해당
-	//    MemberDTO 객체 하나면 모두 담을 수 있음
-	//    input 태그의 name에 적힌 값이 MemberDTO의 필드변수명과 일치해야함
+	// 3. 아이디, 비밀번호 값은 KDH_MemberDTO 객체 내부 필드변수에 해당
+	//    KDH_MemberDTO 객체 하나면 모두 담을 수 있음
+	//    input 태그의 name에 적힌 값이 KDH_MemberDTO의 필드변수명과 일치해야함
 	@PostMapping("/loginDo")
 	public String loginDo(KDH_MemberDTO member, Model model, HttpServletResponse response, String from
 			, HttpSession session, boolean rememberId, RedirectAttributes attr) {  // member 필드변수 memId, memPassword에 값 들어옴
-		
-		// 1.
-//		System.out.println(request.getParameter("id"));
-//		System.out.println(request.getParameter("pw"));
-
-		// 2.
-//		System.out.println(id);
-//		System.out.println(pw);
-
-		// 3. memId와 memPassword 값이 채워져 있음
+	
+		// memId와 memPassword 값이 채워져 있음
 		System.out.println("로그인 요청");
 		System.out.println(member);
 		// checkbox 값을 String으로 받으면 on 또는 null 임
@@ -148,20 +110,6 @@ public class KDH_MemberController {
 		 
 		// 로그인 성공 여부 판별
 		if(login != null) {
-			
-			// passwordEncoder 를 이용하여
-			// 사용자가 입력한 비밀번호와 DB에 암호화된 비밀번호를 비교
-			
-/*			
-			// 일치하면 true, 틀리면 false 리턴
-			boolean isMatch = passwordEncoder.matches(member.getMemPassword(), login.getMemPassword());
-
-			
-			if(isMatch == false) {
-				attr.addFlashAttribute("failMsg", "아이디 혹은 비밀번호가 올바르지 않습니다.");
-				return "redirect:/loginView";
-			}
-*/			
 			
 			// 로그인 성공시 세션 객체에 로그인 정보 저장
 			// 키값: login, 들어가는 value값: KDH_MemberDTO 객체
@@ -212,7 +160,19 @@ public class KDH_MemberController {
 		
 		// 로그인 후 홈화면 이동 -> 홈화면("/") 으로 리다이렉트
 		// 로그인 후 이전 화면으로 이동 -> from 으로 리다이렉트
-		return "redirect:" + from;
+		return "redirect:" + "/";
+	}
+	
+	@RequestMapping("/ENT_loginView")
+	public String ENT_loginView(HttpServletRequest request, Model model) {
+		
+		// 어느 페이지에서 /ENT_loginView 요청을 했는지 확인
+		String from = request.getHeader("Referer");
+		System.out.println(from + " 으로부터 요청이 옴");
+		
+		model.addAttribute("keyFrom", from);
+		
+		return "KDH_member/ENT_loginView";
 	}
 
 	// 로그아웃시 실행

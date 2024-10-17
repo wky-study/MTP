@@ -10,7 +10,7 @@
 		content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<meta name="description" content="" />
 	<meta name="author" content="" />
-	<title>로그인</title>
+	<title>기업회원 로그인</title>
 	
 	<style type="text/css">
 	.error-msg {
@@ -26,7 +26,7 @@
 		<div class="container pt-5">
 			<!-- Contact Section Heading-->
 			<h2
-				class="page-section-heading text-center text-uppercase text-secondary mb-0">로그인</h2>
+				class="page-section-heading text-center text-uppercase text-secondary mb-0">기업회원 로그인</h2>
 				<div class="divider-custom-line"></div>
 			</div>
 			<!-- Contact Section Form-->
@@ -40,14 +40,14 @@
 						<!-- /loginDo 로 쏠때, /loginView 를 요청했었던 URL 주소를 같이 보냄 -->
 						<input type="hidden" name="from" value="${keyFrom }">
 						
-						<!-- 아이디 input-->
+						<!-- 사업자번호 input-->
 						<div class="form-floating mb-3">
 							<!-- inputId의 값이 id=value 형태로 전송되어야 함 -->
 							<!-- 키값으로 사용될 id를 name 속성에 넣어주어야 함 -->
 							<!-- 쿠키에 rememberId가 있으면 값 넣음 -->
 							<input class="form-control" id="inputId" type="text" name="memId"
 								 value="${cookie.rememberId.value }"  ${cookie.rememberId.value == null ? "autofocus" : "" }  />					
-							<label for="inputId">아이디</label>
+							<label for="inputId">사업자번호(-없이작성)</label>
 						</div>
 
 						<!-- 비밀번호 input-->
@@ -58,12 +58,12 @@
 							<label for="inputPw">비밀번호</label>
 						</div>
 
-						<!-- 이메일 기억하기 체크박스 -->
+						<!-- 사업자번호 기억하기 체크박스 -->
 						<div class="form-check mb-3">
 							<!-- 쿠키에 rememberId가 있으면 태그 내에 checked 문구 넣기 -->
 							<!-- ${cookie.rememberId.value != null ? "checked" : "" } -->
 							<input class="form-check-input" type="checkbox" name="rememberId" id="flexCheckDefault" ${cookie.rememberId.value != null ? "checked" : "" } > 
-							<label class="form-check-label" for="flexCheckDefault"> 아이디 기억하기 </label>
+							<label class="form-check-label" for="flexCheckDefault"> 사업자번호 기억하기 </label>
 						</div>
 
 						<!-- 서버로부터 failMsg가 전달되어 오면 화면에 출력 -->
@@ -73,7 +73,7 @@
 						</div>
 
 						<!-- Submit Button-->
-						<button class="btn btn-primary btn-xl" id="submitButton" type="submit">로그인</button>
+						<button class="btn btn-primary btn-xl" id="submitButton" type="submit">기업회원 로그인</button>
 					</form>
 				</div>
 			</div>

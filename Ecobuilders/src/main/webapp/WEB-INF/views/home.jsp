@@ -101,7 +101,7 @@
 				<li><a href="index.html">Main</a></li>
 				<li><a href="products.html">Products</a></li>
 				<li><a href="elements.html">Reviews</a></li>
-				<li><a href="#" class="button special">Sign Up</a></li>
+				<li><a href="registView.html" class="button special">Sign Up</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -115,7 +115,7 @@
 				<a href="#" class="button big">리모델링 견적확인</a>
 			</li>
 			<li>
-				<a href="#" class="button big" style="background-color: #0faf24c9;">기업회원 바로가기</a>
+				<a href="ENT_loginView" class="button big" style="background-color: #0faf24c9;">기업회원 바로가기</a>
 			</li>
 		</ul>
 	</section>
