@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.team.ecobuilders.common.vo.SearchVO;
 import com.team.ecobuilders.review.dto.ReviewDTO;
-import com.team.ecobuilders.review.vo.SearchVO;
 
 @Mapper
 public interface IReviewDAO {
@@ -18,4 +18,7 @@ public interface IReviewDAO {
 	
 	// 리뷰 게시글 한개 조회 하기
 	ReviewDTO getReview(int no);
+	
+	// 리뷰 게시글 작성하기
+	int writeReview(ReviewDTO review);
 }
