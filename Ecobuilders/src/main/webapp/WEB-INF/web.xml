@@ -27,6 +27,13 @@
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
+
+		<!-- 첨부파일에 대한 설정 추가 -->
+		<multipart-config>
+			<max-file-size>31457280</max-file-size>				<!-- 파일 한개당 최대 크기 30MB -->
+			<max-request-size>1004857600</max-request-size>		<!-- 한번에 최대 100MB 까지 요청 가능 -->
+		</multipart-config>		
+		
 	</servlet>
 
 	<servlet-mapping>

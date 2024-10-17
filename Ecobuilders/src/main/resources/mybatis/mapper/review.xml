@@ -4,21 +4,55 @@
 
 
 	<!-- 리뷰 게시판 목록 불러오기 -->
-	<select id="getReviewList" resultType="com.team.ecobuilders.review.dto.ReviewDTO">
-		SELECT
-		      a.review_no
-		    , a.mem_id
-		    , a.review_title
-		    , a.review_content
-		    , b.atch_path
-		    , a.review_date
-		    , a.del_yn
-		FROM review a, attach b
-		WHERE 1=1
-		    AND a.del_yn = 'N'
-		    AND a.review_no = b.review_no
+	<select id="getReviewList" resultType="com.team.ecobuilders.review.dto.ReviewDTO" parameterType="com.team.ecobuilders.review.vo.SearchVO">
+		WITH review_with_rownum AS (
+		    SELECT
+		        a.review_no,
+		        a.mem_id,
+		        a.review_title,
+		        a.review_content,
+		        b.atch_path,
+		        a.review_date,
+		        a.del_yn,
+		        ROW_NUMBER() OVER (ORDER BY a.review_no DESC) AS rn
+		    FROM review a
+		    JOIN attach b ON a.review_no = b.review_no
+		    WHERE a.del_yn = 'N'
+		    AND b.atch_no = 1
+		)
+		SELECT *
+		FROM review_with_rownum
+		WHERE rn BETWEEN #{start} AND #{end}
 		ORDER BY review_no DESC
 	</select>
+
+	<!-- 리뷰 게시판 총 갯수 가져오기 -->
+	<select id="getReviewCount" resultType="int">
+		SELECT COUNT(*)
+			FROM review 
+			WHERE 1=1 
+	    AND del_yn = 'N'
+	</select>
+
+	<!-- 리뷰 게시글 한개 조회 하기 (미완) -->
+	<select id="getReview" parameterType="int" resultType="com.team.ecobuilders.review.dto.ReviewDTO">
+		SELECT 
+		      review_no
+		    , review_title 
+		    , mem_id 
+		    , review_content 
+		    , TO_CHAR(review_date,'YYYY-MM-DD HH24:MI:SS') AS review_date
+		FROM review
+		WHERE 1=1
+			<!-- 밑에 AND 완성해야함 -->
+		    <!-- AND a.mem_id = b.mem_id(+) -->
+		    AND del_yn = 'N'
+		    AND review_no = #{no}		
+	</select>
+
+
+
+
 
 
 
