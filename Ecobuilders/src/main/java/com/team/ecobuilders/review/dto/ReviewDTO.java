@@ -4,32 +4,33 @@ public class ReviewDTO {
 
 	private int reviewNo;				/* 리뷰 게시글 번호 */
 	private String memId;				/* 작성자 아이디 */
+	private String memName;				/* 작성자 이름 */
 	private String reviewTitle;			/* 리뷰 게시글 제목 */
 	private String reviewContent;		/* 리뷰 게시글 내용 */
 	private String reviewDate;			/* 작성일 */
-	private String atchPath;			/* 파일경로 */
+	private String reviewPath;			/* 파일경로 */
 	private String delYn;				/* 삭제 여부 */
 	
 	public ReviewDTO() {
 	}
 
-	public ReviewDTO(int reviewNo, String memId, String reviewTitle, String reviewContent, String reviewDate,
-			String atchPath, String delYn, int reviewCount) {
+	public ReviewDTO(int reviewNo, String memId, String memName, String reviewTitle, String reviewContent,
+			String reviewDate, String reviewPath, String delYn) {
 		this.reviewNo = reviewNo;
 		this.memId = memId;
+		this.memName = memName;
 		this.reviewTitle = reviewTitle;
 		this.reviewContent = reviewContent;
 		this.reviewDate = reviewDate;
-		this.atchPath = atchPath;
+		this.reviewPath = reviewPath;
 		this.delYn = delYn;
 	}
 
-
 	@Override
 	public String toString() {
-		return "ReviewDTO [reviewNo=" + reviewNo + ", memId=" + memId + ", reviewTitle=" + reviewTitle
-				+ ", reviewContent=" + reviewContent + ", reviewDate=" + reviewDate + ", atchPath=" + atchPath
-				+ ", delYn=" + delYn + "]";
+		return "ReviewDTO [reviewNo=" + reviewNo + ", memId=" + memId + ", memName=" + memName + ", reviewTitle="
+				+ reviewTitle + ", reviewContent=" + reviewContent + ", reviewDate=" + reviewDate + ", reviewPath="
+				+ reviewPath + ", delYn=" + delYn + "]";
 	}
 
 	public int getReviewNo() {
@@ -46,6 +47,14 @@ public class ReviewDTO {
 
 	public void setMemId(String memId) {
 		this.memId = memId;
+	}
+
+	public String getMemName() {
+		return memName;
+	}
+
+	public void setMemName(String memName) {
+		this.memName = memName;
 	}
 
 	public String getReviewTitle() {
@@ -72,12 +81,12 @@ public class ReviewDTO {
 		this.reviewDate = reviewDate;
 	}
 
-	public String getAtchPath() {
-		return atchPath;
+	public String getReviewPath() {
+		return reviewPath;
 	}
 
-	public void setAtchPath(String atchPath) {
-		this.atchPath = atchPath;
+	public void setReviewPath(String reviewPath) {
+		this.reviewPath = reviewPath;
 	}
 
 	public String getDelYn() {
@@ -87,10 +96,6 @@ public class ReviewDTO {
 	public void setDelYn(String delYn) {
 		this.delYn = delYn;
 	}
-
-
-	
-	
 
 	
 	
