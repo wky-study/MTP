@@ -4,7 +4,7 @@
 
 
 	<!-- 리뷰 게시판 목록 불러오기 -->
-	<select id="getReviewList" resultType="com.team.ecobuilders.review.dto.ReviewDTO" parameterType="com.team.ecobuilders.review.vo.SearchVO">
+	<select id="getReviewList" resultType="com.team.ecobuilders.review.dto.ReviewDTO" parameterType="com.team.ecobuilders.common.vo.SearchVO">
 		SELECT * FROM (
 		    SELECT
 		        a.*
