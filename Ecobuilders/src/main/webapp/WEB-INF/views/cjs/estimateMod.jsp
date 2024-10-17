@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>그린리모델링 견적서 입력 페이지</title>
+    <title>시공사 측 견적서 수정</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -56,7 +56,7 @@
         <table>
         <tr>
             <td>견적서 분류번호</td>
-            <td> est_id</td>
+            <td>est_id</td>
         </tr>
         <tr>
             <td>상 호 일 자</td>
@@ -71,8 +71,8 @@
                 <p>연락처: mem_phone</p>
                 <p>주소: est_address</p>
             </td>
-            <td>시 공 사 명</td>
-            <td><input class="input-box" type="text"></td>
+            <td>시공사 명</td>
+            <td>ent_name</td>
         </tr>
         <tr>
             <td>수기사항</td>
@@ -104,12 +104,12 @@
         </thead>
         <tbody>
             <tr>
-                <td rowspan="2">전구</td>
-                <td>자재종류들어오면 될거같음</td>
+                <td rowspan="2">예시) 전구</td>
+                <td>자재 종류</td>
                 <td>1</td>
                 <td>12</td>
                 <td>10,000</td>
-                <td> <input type="number" placeholder="0"> </td>
+                <td> <input type="number" placeholder="0"> (원)</td>
                 <td></td>
             </tr>
             
@@ -120,10 +120,10 @@
             <tr>
                 <td rowspan="2">item_name</td>
                 <td>item_type</td>
-                <td>단위쪽 고민해봐야함</td>
-                <td>수량 나중에 불러온다했고</td>
+                <td></td>
+                <td>수량 나중에 불러오기</td>
                 <td>item_price</td>
-                <td> <input type="number" placeholder="0"> </td>
+                <td> <input type="number" placeholder="0"> (원)</td>
                 <td></td>
             </tr>
         </tbody>
@@ -134,7 +134,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> </td>
+                <td> <input type="number" placeholder="0"> (원)</td>
                 <td></td>
             </tr>
         </tbody>
@@ -145,7 +145,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> </td>
+                <td> <input type="number" placeholder="0"> (원)</td>
                 <td></td>
             </tr>
         </tbody>
@@ -156,7 +156,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> </td>
+                <td> <input type="number" placeholder="0"> (원)</td>
                 <td></td>
             </tr>
         </tbody>
@@ -167,7 +167,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> </td>
+                <td> <input type="number" placeholder="0"> (원)</td>
                 <td></td>
             </tr>
         </tbody>
@@ -178,7 +178,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> </td>
+                <td> <input type="number" placeholder="0"> (원)</td>
                 <td></td>
             </tr>
         </tbody>
@@ -189,7 +189,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> </td>
+                <td> <input type="number" placeholder="0"> (원)</td>
                 <td></td>
             </tr>
         </tbody>
@@ -200,7 +200,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> </td>
+                <td> <input type="number" placeholder="0"> (원)</td>
                 <td></td>
             </tr>
         </tbody>
@@ -211,7 +211,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> </td>
+                <td> <input type="number" placeholder="0"> (원)</td>
                 <td></td>
             </tr>
         </tbody>
@@ -222,7 +222,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> </td>
+                <td> <input type="number" placeholder="0"> (원)</td>
                 <td></td>
             </tr>
         </tbody>
@@ -233,7 +233,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> </td>
+                <td> <input type="number" placeholder="0"> (원)</td>
                 <td></td>
             </tr>
         </tbody>
@@ -244,7 +244,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> </td>
+                <td> <input type="number" placeholder="0"> (원)</td>
                 <td></td>
             </tr>
         </tbody>
@@ -255,7 +255,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> </td>
+                <td> <input type="number" placeholder="0"> (원)</td>
                 <td></td>
             </tr>
         </tbody>
@@ -266,7 +266,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> </td>
+                <td> <input type="number" placeholder="0"> (원)</td>
                 <td></td>
             </tr>
         </tbody>
@@ -277,7 +277,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> </td>
+                <td> <input type="number" placeholder="0"> (원)</td>
                 <td></td>
             </tr>
         </tbody>
@@ -288,7 +288,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> </td>
+                <td> <input type="number" placeholder="0"> (원)</td>
                 <td></td>
             </tr>
         </tbody>
@@ -299,7 +299,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> </td>
+                <td> <input type="number" placeholder="0"> (원)</td>
                 <td></td>
             </tr>
         </tbody>
@@ -310,7 +310,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> </td>
+                <td> <input type="number" placeholder="0"> (원)</td>
                 <td></td>
             </tr>
         </tbody>
@@ -321,7 +321,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td> <input type="number" placeholder="0"> </td>
+                <td> <input type="number" placeholder="0"> (원)</td>
                 <td></td>
             </tr>
         </tbody>
@@ -334,22 +334,8 @@
         
     </table>
 
-    <!-- <div class="green-section">
-        <h3>그린 리모델링 효과</h3>
-        <table>
-            <tr>
-                <td>에너지 효율 상승</td>
-                <td><input placeholder="계산식 넣어야됨"></td>
-            </tr>
-            <tr>
-                <td>탄소 배출 감소</td>
-                <td><input placeholder="계산식 넣어야됨"></td>
-            </tr>
-        </table>
-    </div> -->
-
-    <button class="btn-submit" onclick="submitForm()">제안서 수락</button>
-    <a href="${pageContext.request.contextPath }/estimateMod"><button class="btn-submit">견적 수정 및 제안하기</button></a>
+    <button class="btn-submit" onclick="submitForm()">제안서 임시저장</button>
+    <button class="btn-submit" onclick="submitForm()">견적서 보내기</button>
 
 </div>
 

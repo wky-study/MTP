@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.ecobuilders.attach.dao.IAttachDAO">
+	
+	<insert id="insertAttach" parameterType="com.team.ecobuilders.attach.dto.AttachDTO">
+		INSERT INTO attach (
+		      atch_no 
+		    , review_no 
+		    , atch_file_name 
+		    , atch_original_name
+		    , atch_file_size 
+		    , atch_fancy_size
+		    , atch_content_type
+		    , atch_path 
+		) VALUES (
+		      seq_attach.NEXTVAL
+		    , (SELECT COUNT(*)+1 FROM review)
+		    , #{atchFileName}
+		    , #{atchOriginalName}
+		    , #{atchFileSize}
+		    , #{atchFancySize}
+		    , #{atchContentType}
+		    , #{atchPath}
+		)		
+	</insert>
+
+	<select id="getAttachList" parameterType="int" resultType="com.team.ecobuilders.attach.dto.AttachDTO">
+		SELECT
+		      atch_no 
+		    , review_no 
+		    , atch_file_name 
+		    , atch_original_name
+		    , atch_file_size 
+		    , atch_fancy_size
+		    , atch_content_type
+		    , atch_path 
+		FROM attach
+		WHERE review_no = #{reviewNo}	
+	</select>
+
+
+
+
+
+
+</mapper>

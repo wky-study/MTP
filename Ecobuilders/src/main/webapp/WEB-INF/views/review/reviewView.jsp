@@ -73,7 +73,9 @@
 			<!-- 게시글 그리기 -->
 			<c:forEach items="${keyReview}" var="ReviewDTO">
 				<div class="card-box" id="cardBox" onclick='window.location.href = "${pageContext.request.contextPath }/reviewDetailView?no=${ReviewDTO.reviewNo}"'>
-					<img src="${pageContext.request.contextPath }/resources/assets/img/test1.jpg">
+					<%-- <img src="${pageContext.request.contextPath }/resources/assets/img/test1.jpg"> --%>
+					<!-- 위는 하드코딩 아래로 바꾸기 -->
+					<img src="${pageContext.request.contextPath }/displayImage?fileName=${ReviewDTO.reviewPath}">
 					<span class="card-title">${ReviewDTO.reviewTitle}</span>
 					<span class="card-name">${ReviewDTO.memId}</span>
 				</div>
