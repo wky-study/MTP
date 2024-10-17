@@ -98,10 +98,10 @@
 		<h1><a href="index.html">Eco Builders</a></h1>
 		<nav id="nav">
 			<ul>
-				<li><a href="index.html">Main</a></li>
+				<li><a href="${pageContext.request.contextPath }/">Main</a></li>
 				<li><a href="products.html">Products</a></li>
-				<li><a href="elements.html">Reviews</a></li>
-				<li><a href="#" class="button special">Sign Up</a></li>
+				<li><a href="${pageContext.request.contextPath}/reviewView">Reviews</a></li>
+				<li><a href="${pageContext.request.contextPath}/" class="button special">Sign Up</a></li>
 			</ul>
 		</nav>
 	</header>
