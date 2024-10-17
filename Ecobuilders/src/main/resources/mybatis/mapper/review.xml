@@ -4,26 +4,28 @@
 
 
 	<!-- 리뷰 게시판 목록 불러오기 -->
-	<select id="getReviewList" resultType="com.team.ecobuilders.review.dto.ReviewDTO" parameterType="com.team.ecobuilders.review.vo.SearchVO">
-		WITH review_with_rownum AS (
+	<select id="getReviewList" resultType="com.team.ecobuilders.review.dto.ReviewDTO" parameterType="com.team.ecobuilders.common.vo.SearchVO">
+		SELECT * FROM (
 		    SELECT
-		        a.review_no,
-		        a.mem_id,
-		        a.review_title,
-		        a.review_content,
-		        b.atch_path,
-		        a.review_date,
-		        a.del_yn,
-		        ROW_NUMBER() OVER (ORDER BY a.review_no DESC) AS rn
-		    FROM review a
-		    JOIN attach b ON a.review_no = b.review_no
-		    WHERE a.del_yn = 'N'
-		    AND b.atch_no = 1
+		        a.*
+		        , ROWNUM AS rnum
+		    FROM (
+		        SELECT 
+		              a.review_no
+		            , a.review_title 
+		            , a.mem_id 
+		            , NVL(b.mem_name, '탈퇴한 회원') AS mem_name
+		            , a.review_content 
+		            , a.review_path
+		            , TO_CHAR(review_date,'MM-DD HH24:MI') AS review_date
+		        FROM review a , members b
+		        WHERE 1=1
+		            AND a.mem_id = b.mem_id(+)
+		            AND a.del_yn = 'N'
+		        ORDER BY review_no DESC
+		    ) a
 		)
-		SELECT *
-		FROM review_with_rownum
-		WHERE rn BETWEEN #{start} AND #{end}
-		ORDER BY review_no DESC
+		WHERE rnum BETWEEN #{start} AND #{end}
 	</select>
 
 	<!-- 리뷰 게시판 총 갯수 가져오기 -->
@@ -34,23 +36,40 @@
 	    AND del_yn = 'N'
 	</select>
 
-	<!-- 리뷰 게시글 한개 조회 하기 (미완) -->
+	<!-- 리뷰 게시글 한개 조회 하기 -->
 	<select id="getReview" parameterType="int" resultType="com.team.ecobuilders.review.dto.ReviewDTO">
 		SELECT 
-		      review_no
-		    , review_title 
-		    , mem_id 
-		    , review_content 
+		      a.review_no
+		    , a.review_title 
+		    , a.mem_id 
+		    , NVL(b.mem_name, '탈퇴한 회원') AS mem_name
+		    , a.review_content 
+		    , a.review_path
 		    , TO_CHAR(review_date,'YYYY-MM-DD HH24:MI:SS') AS review_date
-		FROM review
+		FROM review a , members b
 		WHERE 1=1
-			<!-- 밑에 AND 완성해야함 -->
-		    <!-- AND a.mem_id = b.mem_id(+) -->
+		    AND a.mem_id = b.mem_id(+) 
 		    AND del_yn = 'N'
 		    AND review_no = #{no}		
 	</select>
 
-
+	<!-- 리뷰게시글 작성  -->
+	<insert id="writeReview" parameterType="com.team.ecobuilders.review.dto.ReviewDTO">
+	INSERT INTO review(
+		 review_no
+	   , mem_id
+	   , review_title
+	   , review_content
+	   , review_date
+	   , del_yn
+	) VALUES
+		  (SELECT COUNT(*)+1 FROM review)
+		, #{memId}
+		, #{reviewTitle}
+		, #{reviewContent}
+		, SYSDATE
+		, 'N'
+	</insert>
 
 
 

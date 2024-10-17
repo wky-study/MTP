@@ -5,9 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.team.ecobuilders.common.exception.BizNotFoundException;
+import com.team.ecobuilders.common.vo.SearchVO;
 import com.team.ecobuilders.review.dao.IReviewDAO;
 import com.team.ecobuilders.review.dto.ReviewDTO;
-import com.team.ecobuilders.review.vo.SearchVO;
 
 
 @Service
@@ -29,8 +30,19 @@ public class ReviewService {
 	};
 	
 	// 글 한개 조회 하기
-	public ReviewDTO getReview(int no) {
+	public ReviewDTO getReview(int no) throws BizNotFoundException {
 		ReviewDTO result = dao.getReview(no);
+		
+		if(result == null) {
+			throw new BizNotFoundException("해당 게시글의 번호가 존재하지 않습니다.", "API_001");
+		}
+		
+		return result;
+	};
+	
+	// 글 작성하기
+	public int writeReview(ReviewDTO review) {
+		int result = dao.writeReview(review);
 		return result;
 	};
 	
