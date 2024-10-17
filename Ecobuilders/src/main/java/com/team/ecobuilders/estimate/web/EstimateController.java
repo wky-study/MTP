@@ -25,5 +25,15 @@ public class EstimateController {
 		
 		return "cjs/tradePost";
 	}
+	
+	@RequestMapping("/estimateDetailView")
+	public String estimateDetailView() {
+		return "cjs/estimateDetailView";
+	}
+	
+	@RequestMapping("/estimateMod")
+	public String estimateMod() {
+		return "cjs/estimateMod";
+	}
 
 }
