@@ -1031,7 +1031,7 @@
 /* Banner */
 
 	#banner {
-		background-image: url(../images/dark_tint.png), url(../images/eco_builders_main.jpg);
+		background-image: url(${pageContext.request.contextPath}/images/dark_tint.png), url(${pageContext.request.contextPath}/images/eco_builders_main.jpg);
 		background-position: center center;
 		background-size: cover;
 		color: #ffffff;

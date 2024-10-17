@@ -30,7 +30,6 @@ public class KDH_MemberDTO {
 		this.memProfileImg = memProfileImg;
 	}
 
-	@Override
 	public String toString() {
 		return "MemberDTO [memId=" + memId + ", memPassword=" + memPassword + ", memName=" + memName + ", memPhone="
 				+ memPhone + ", memEmail=" + memEmail + ", memProfileImg=" + memProfileImg + "]";
