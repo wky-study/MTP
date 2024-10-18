@@ -54,10 +54,27 @@
 				</div>
 			</div>
 		</div>
-		<div class="pd-list">
-			<div class="pd-list-top"></div>
-			<div class="pd-list-bottom"></div>
-		</div>
+		<c:forEach items= "${prodList}" var="prod">
+			<div class="pd-list">
+				<div class="pd-list-top">
+					<img class="pd-img" src="images/window_icon.jpg" alt="">
+				</div>
+				<div class="pd-list-bottom">
+					<div class="labels">
+						<span class="label-grd">${prod.itemLv}</span>
+						<span class="label-sts">${prod.itemEfi}</span>
+					</div>
+					<div class="product-title">
+						<a href="" style="font-size: 23px;">${prod.itemName}</a>
+						<span>후기 30건</span>
+					</div>
+					<div class="price-section">
+						<span class="price">${prod.itemPrice}원</span>
+						<button class="buy-btn">구매하기</button>
+					</div>
+				</div>
+			</div>
+		</c:forEach>
 		<div class="pd-list">
 			<div class="pd-list-top"></div>
 			<div class="pd-list-bottom"></div>
