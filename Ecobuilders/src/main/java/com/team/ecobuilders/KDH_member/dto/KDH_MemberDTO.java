@@ -2,14 +2,14 @@
 package com.team.ecobuilders.KDH_member.dto;
 
 
-//members Å×ÀÌºíÀÇ È¸¿ø µ¥ÀÌÅÍ¸¦ ¸ÅÇÎÇÏ´Âµ¥ »ç¿ëµÇ´Â DTO °´Ã¼
-//ÄÃ·³: mem_id, mem_password, mem_name, mem_birthdate, mem_phone, mem_address, mem_email À» 
-//ÇÊµåº¯¼ö: memId, memPassword, memName, memBirthdate, memPhone, memAddress, memEmail ·Î ¼³Á¤ÇØÁÖ¾î¾ß ÀÚµ¿À¸·Î º¯È¯µÊ
+//members í…Œì´ë¸”ì˜ íšŒì› ë°ì´í„°ë¥¼ ë§¤í•‘í•˜ëŠ”ë° ì‚¬ìš©ë˜ëŠ” DTO ê°ì²´
+//ì»¬ëŸ¼: mem_id, mem_password, mem_name, mem_birthdate, mem_phone, mem_address, mem_email ì„ 
+//í•„ë“œë³€ìˆ˜: memId, memPassword, memName, memBirthdate, memPhone, memAddress, memEmail ë¡œ ì„¤ì •í•´ì£¼ì–´ì•¼ ìžë™ìœ¼ë¡œ ë³€í™˜ë¨
 public class KDH_MemberDTO {
-	// ÇÊµåº¯¼ö Á¤ÀÇ³»¸° ÈÄ Ä¸½¶È­ Àû¿ë (ÇÊ¼ö!!)
-	// 1. ¸ðµç ÇÊµåº¯¼ö¿¡ private Á¢±Ù Á¦¾îÀÚ Àû¿ë
+	// í•„ë“œë³€ìˆ˜ ì •ì˜ë‚´ë¦° í›„ ìº¡ìŠí™” ì ìš© (í•„ìˆ˜!!)
+	// 1. ëª¨ë“  í•„ë“œë³€ìˆ˜ì— private ì ‘ê·¼ ì œì–´ìž ì ìš©
 	
-	// ÀÏ¹ÝÈ¸¿øÁ¤º¸
+	// ì¼ë°˜íšŒì›ì •ë³´
 	private String memId;
 	private String memPassword;
 	private String memName;
@@ -18,11 +18,11 @@ public class KDH_MemberDTO {
 	private String memAddress;
 	private String memEmail;
 
-	// ±â¾÷È¸¿øÁ¤º¸
+	// ê¸°ì—…íšŒì›ì •ë³´
 	
 	
 
-	// 2. ±âº»»ý¼ºÀÚ¿Í Ç®»ý¼ºÀÚ Ãß°¡
+	// 2. ê¸°ë³¸ìƒì„±ìžì™€ í’€ìƒì„±ìž ì¶”ê°€
 	// 	  Alt + Shift + S
 	public KDH_MemberDTO() {
 	}
@@ -95,103 +95,3 @@ public class KDH_MemberDTO {
 	
 
 }
-
-=======
-package com.team.ecobuilders.KDH_member.dto;
-
-
-//members Å×ÀÌºíÀÇ È¸¿ø µ¥ÀÌÅÍ¸¦ ¸ÅÇÎÇÏ´Âµ¥ »ç¿ëµÇ´Â DTO °´Ã¼
-//ÄÃ·³: mem_id, mem_password, mem_name, mem_birthdate, mem_phone, mem_address, mem_email À» 
-//ÇÊµåº¯¼ö: memId, memPassword, memName, memBirthdate, memPhone, memAddress, memEmail ·Î ¼³Á¤ÇØÁÖ¾î¾ß ÀÚµ¿À¸·Î º¯È¯µÊ
-public class KDH_MemberDTO {
-	// ÇÊµåº¯¼ö Á¤ÀÇ³»¸° ÈÄ Ä¸½¶È­ Àû¿ë (ÇÊ¼ö!!)
-	// 1. ¸ðµç ÇÊµåº¯¼ö¿¡ private Á¢±Ù Á¦¾îÀÚ Àû¿ë
-	
-	// ÀÏ¹ÝÈ¸¿øÁ¤º¸
-	private String memId;
-	private String memPassword;
-	private String memName;
-	private String membirthdate;
-	private String memPhone;
-	private String memAddress;
-	private String memEmail;
-
-	// ±â¾÷È¸¿øÁ¤º¸
-	
-	
-
-	// 2. ±âº»»ý¼ºÀÚ¿Í Ç®»ý¼ºÀÚ Ãß°¡
-	// 	  Alt + Shift + S
-	public KDH_MemberDTO() {
-	}
-
-	public KDH_MemberDTO(String memId, String memPassword, String memName, String memBirthdate, String memPhone, String memAddress,
-			String memEmail) {
-		super();
-		this.memId = memId;
-		this.memPassword = memPassword;
-		this.memName = memName;
-		this.memName = memBirthdate;
-		this.memPhone = memPhone;
-		this.memAddress = memAddress;
-		this.memEmail = memEmail;
-		
-	}
-
-	public String toString() {
-		return "KDH_MemberDTO [memId=" + memId + ", memPassword=" + memPassword + ", memName=" + memName + ", memPhone="
-				+ memPhone + ", memAddress=" + memAddress + ", memEmail=" + memEmail + "]";
-	}
-
-	public String getMemId() {
-		return memId;
-	}
-
-	public void setMemId(String memId) {
-		this.memId = memId;
-	}
-
-	public String getMemPassword() {
-		return memPassword;
-	}
-
-	public void setMemPassword(String memPassword) {
-		this.memPassword = memPassword;
-	}
-
-	public String getMemName() {
-		return memName;
-	}
-
-	public void setMemName(String memName) {
-		this.memName = memName;
-	}
-
-	public String getMemPhone() {
-		return memPhone;
-	}
-
-	public void setMemPhone(String memPhone) {
-		this.memPhone = memPhone;
-	}
-
-	public String getMemAddress() {
-		return memAddress;
-	}
-
-	public void setMemAddress(String memAddress) {
-		this.memAddress = memAddress;
-	}
-
-	public String getMemEmail() {
-		return memEmail;
-	}
-
-	public void setMemEmail(String memEmail) {
-		this.memEmail = memEmail;
-	}
-	
-
-}
-
->>>>>>> branch 'main' of https://github.com/wky-study/MTP.git
