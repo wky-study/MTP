@@ -8,10 +8,16 @@
 <meta charset="UTF-8">
 <title>리뷰 게시판 목록</title>
 
+<!--Style-->
+<%@ include file= "/WEB-INF/inc/style.jsp" %>
+	
+ <!-- jQuery 추가 -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+<!-- 밑에 두줄 부트스트랩 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery 추가 -->
 
 	<style type="text/css">
 		div{
@@ -44,7 +50,7 @@
 		
 		.card-box > img {
 			width: 100%;
-			height: auto;
+			height: 240px;
 			object-fit: cover;
 		}
 		
@@ -56,26 +62,60 @@
 			border-top: 0.5px solid #dddddd;
 		}
 		
+		.my-write-btn{
+			position: fixed;
+			right: 200px;
+			bottom: 50px;
+		}
+		
+		.my-page-up{
+			position: fixed;
+			right: 120px;
+			bottom: 50px;
+			
+			width: 38px;
+			
+			border-radius: 19px;
+			
+			
+			box-shadow : 0 0 0 1px #6c757d;
+		}
+		
+		.my-page-up:hover{
+			background-color: #6c757d;
+		}
+		
+		.my-page-up > img{
+			width: 100%;
+			cursor:pointer;
+		}
+		
 	
 	</style>
 </head>
 <body>
 
+<!-- Header -->
+<%@ include file= "/WEB-INF/inc/header.jsp" %>
+
+
+
+
 	<div class="container">
 		
 		<!-- 글쓰기 버튼 임시 -->
-		<div class="d-flex justify-content-end">
-			<button id="writeBtn" class="btn btn-primary" >글쓰기</button>
+		<div class="d-flex justify-content-end my-write-btn" >
+			<button id="writeBtn" class="btn btn-outline-secondary" >글쓰기</button>
 		</div>
+		
+		<div class="d-flex justify-content-end my-page-up " >
+			<img onclick="window.scrollTo(0,0)" src="${pageContext.request.contextPath }/resources/images/upBtn.png">
+		</div>		
 
-		<div class="content-box">
-			
-			
+		<div class="content-box mt-3 mb-3">
 			<!-- 게시글 그리기 -->
 			<c:forEach items="${keyReview}" var="ReviewDTO">
 				<div class="card-box" id="cardBox" onclick='window.location.href = "${pageContext.request.contextPath }/reviewDetailView?no=${ReviewDTO.reviewNo}"'>
-					<%-- <img src="${pageContext.request.contextPath }/resources/assets/img/test1.jpg"> --%>
-					<!-- 위는 하드코딩 아래로 바꾸기 -->
 					<img src="${pageContext.request.contextPath }/displayImage?fileName=${ReviewDTO.reviewPath}">
 					<span class="card-title">${ReviewDTO.reviewTitle}</span>
 					<span class="card-name">${ReviewDTO.memName}</span>
@@ -85,6 +125,11 @@
 
 		</div>
 	</div>
+	
+	
+<!-- Footer -->
+<%@ include file= "/WEB-INF/inc/footer.jsp" %>
+	
 	
 	<!-- 글 작성 script -->
 	<script type="text/javascript">

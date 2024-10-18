@@ -46,5 +46,11 @@ public class ReviewService {
 		return result;
 	};
 	
+	// 리뷰게시글 조회수 업데이트
+	public int reviewCountUp(int no) {
+		int result = dao.reviewCountUp(no);
+		return result;
+	};
+	
 	
 }
