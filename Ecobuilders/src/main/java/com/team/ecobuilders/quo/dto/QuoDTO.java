@@ -13,11 +13,12 @@ public class QuoDTO {
     private String quoPrice;     // 총 가격
     private String quoOpen;      // 임시저장 여부 ('Y' 또는 'N')
     private byte[] quoBlueprint;  // 도면 (BLOB으로 저장)
-    private int est_id;           // 견적서 분류번호 (다른 테이블 참조 또는 quo_id와 동일할 수 있음)
+    private String est_id;           // 견적서 분류번호 (다른 테이블 참조 또는 quo_id와 동일할 수 있음)
     private String ent_br;        // 사업자 등록번호
     private String remarks;		 // 비고(기타)
     
-    
+    public QuoDTO() {
+    }
     
 	@Override
 	public String toString() {
@@ -27,7 +28,7 @@ public class QuoDTO {
 				+ "]";
 	}
 	public QuoDTO(String quoId, Date quoDate, Date quoStart, Date quoEnd, String quoItems, String quoPrice,
-			String quoOpen, byte[] quoBlueprint, int est_id, String ent_br, String remarks) {
+			String quoOpen, byte[] quoBlueprint, String est_id, String ent_br, String remarks) {
 		super();
 		this.quoId = quoId;
 		this.quoDate = quoDate;
@@ -89,10 +90,10 @@ public class QuoDTO {
 	public void setQuoBlueprint(byte[] quoBlueprint) {
 		this.quoBlueprint = quoBlueprint;
 	}
-	public int getEst_id() {
+	public String getEst_id() {
 		return est_id;
 	}
-	public void setEst_id(int est_id) {
+	public void setEst_id(String est_id) {
 		this.est_id = est_id;
 	}
 	public String getEnt_br() {

@@ -105,30 +105,194 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><input type="text" name="item_name_1" placeholder="예시) 전구" /></td>
-                    <td><input type="text" name="item_type_1" /></td>
-                    <td><input type="text" name="unit_1" /></td>
+                    <td><input type="text" name="item_name" placeholder="예시) 전구" /></td>
+                    <td><input type="text" name="item_type" /></td>
+                    <td><input type="text" name="unit" /></td>
                     <td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" /></td>
 					<td><input type="number" name="item_price" placeholder="0" oninput="calculateTotal()" /></td>
 					<td><input type="number" name="total_price" placeholder="0" readonly /></td>
-                    <td><input type="text" name="remarks_1" /></td>
+                    <td><input type="text" name="remarks" /></td>
                 </tr>
-                <!-- 추가 항목들 -->
-                <!-- 필요에 따라 더 많은 항목 추가 -->
             </tbody>
-            <tbody>
+                        <tbody>
                 <tr>
-                    <td><input type="text" name="item_name_1" placeholder="예시) 전구" /></td>
-                    <td><input type="text" name="item_type_1" /></td>
-                    <td><input type="text" name="unit_1" /></td>
+                    <td><input type="text" name="item_name" placeholder="예시) 전구" /></td>
+                    <td><input type="text" name="item_type" /></td>
+                    <td><input type="text" name="unit" /></td>
                     <td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" /></td>
 					<td><input type="number" name="item_price" placeholder="0" oninput="calculateTotal()" /></td>
 					<td><input type="number" name="total_price" placeholder="0" readonly /></td>
-                    <td><input type="text" name="remarks_1" /></td>
+                    <td><input type="text" name="remarks" /></td>
                 </tr>
-                <!-- 추가 항목들 -->
-                <!-- 필요에 따라 더 많은 항목 추가 -->
             </tbody>
+                        <tbody>
+                <tr>
+                    <td><input type="text" name="item_name" placeholder="예시) 전구" /></td>
+                    <td><input type="text" name="item_type" /></td>
+                    <td><input type="text" name="unit" /></td>
+                    <td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" /></td>
+					<td><input type="number" name="item_price" placeholder="0" oninput="calculateTotal()" /></td>
+					<td><input type="number" name="total_price" placeholder="0" readonly /></td>
+                    <td><input type="text" name="remarks" /></td>
+                </tr>
+            </tbody>
+                        <tbody>
+                <tr>
+                    <td><input type="text" name="item_name" placeholder="예시) 전구" /></td>
+                    <td><input type="text" name="item_type" /></td>
+                    <td><input type="text" name="unit" /></td>
+                    <td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" /></td>
+					<td><input type="number" name="item_price" placeholder="0" oninput="calculateTotal()" /></td>
+					<td><input type="number" name="total_price" placeholder="0" readonly /></td>
+                    <td><input type="text" name="remarks" /></td>
+                </tr>
+            </tbody>
+                        <tbody>
+                <tr>
+                    <td><input type="text" name="item_name" placeholder="예시) 전구" /></td>
+                    <td><input type="text" name="item_type" /></td>
+                    <td><input type="text" name="unit" /></td>
+                    <td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" /></td>
+					<td><input type="number" name="item_price" placeholder="0" oninput="calculateTotal()" /></td>
+					<td><input type="number" name="total_price" placeholder="0" readonly /></td>
+                    <td><input type="text" name="remarks" /></td>
+                </tr>
+            </tbody>
+                        <tbody>
+                <tr>
+                    <td><input type="text" name="item_name" placeholder="예시) 전구" /></td>
+                    <td><input type="text" name="item_type" /></td>
+                    <td><input type="text" name="unit" /></td>
+                    <td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" /></td>
+					<td><input type="number" name="item_price" placeholder="0" oninput="calculateTotal()" /></td>
+					<td><input type="number" name="total_price" placeholder="0" readonly /></td>
+                    <td><input type="text" name="remarks" /></td>
+                </tr>
+            </tbody>
+                        <tbody>
+                <tr>
+                    <td><input type="text" name="item_name" placeholder="예시) 전구" /></td>
+                    <td><input type="text" name="item_type" /></td>
+                    <td><input type="text" name="unit" /></td>
+                    <td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" /></td>
+					<td><input type="number" name="item_price" placeholder="0" oninput="calculateTotal()" /></td>
+					<td><input type="number" name="total_price" placeholder="0" readonly /></td>
+                    <td><input type="text" name="remarks" /></td>
+                </tr>
+            </tbody>
+                        <tbody>
+                <tr>
+                    <td><input type="text" name="item_name" placeholder="예시) 전구" /></td>
+                    <td><input type="text" name="item_type" /></td>
+                    <td><input type="text" name="unit" /></td>
+                    <td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" /></td>
+					<td><input type="number" name="item_price" placeholder="0" oninput="calculateTotal()" /></td>
+					<td><input type="number" name="total_price" placeholder="0" readonly /></td>
+                    <td><input type="text" name="remarks" /></td>
+                </tr>
+            </tbody>
+                        <tbody>
+                <tr>
+                    <td><input type="text" name="item_name" placeholder="예시) 전구" /></td>
+                    <td><input type="text" name="item_type" /></td>
+                    <td><input type="text" name="unit" /></td>
+                    <td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" /></td>
+					<td><input type="number" name="item_price" placeholder="0" oninput="calculateTotal()" /></td>
+					<td><input type="number" name="total_price" placeholder="0" readonly /></td>
+                    <td><input type="text" name="remarks" /></td>
+                </tr>
+            </tbody>
+                        <tbody>
+                <tr>
+                    <td><input type="text" name="item_name" placeholder="예시) 전구" /></td>
+                    <td><input type="text" name="item_type" /></td>
+                    <td><input type="text" name="unit" /></td>
+                    <td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" /></td>
+					<td><input type="number" name="item_price" placeholder="0" oninput="calculateTotal()" /></td>
+					<td><input type="number" name="total_price" placeholder="0" readonly /></td>
+                    <td><input type="text" name="remarks" /></td>
+                </tr>
+            </tbody>
+                        <tbody>
+                <tr>
+                    <td><input type="text" name="item_name" placeholder="예시) 전구" /></td>
+                    <td><input type="text" name="item_type" /></td>
+                    <td><input type="text" name="unit" /></td>
+                    <td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" /></td>
+					<td><input type="number" name="item_price" placeholder="0" oninput="calculateTotal()" /></td>
+					<td><input type="number" name="total_price" placeholder="0" readonly /></td>
+                    <td><input type="text" name="remarks" /></td>
+                </tr>
+            </tbody>
+                        <tbody>
+                <tr>
+                    <td><input type="text" name="item_name" placeholder="예시) 전구" /></td>
+                    <td><input type="text" name="item_type" /></td>
+                    <td><input type="text" name="unit" /></td>
+                    <td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" /></td>
+					<td><input type="number" name="item_price" placeholder="0" oninput="calculateTotal()" /></td>
+					<td><input type="number" name="total_price" placeholder="0" readonly /></td>
+                    <td><input type="text" name="remarks" /></td>
+                </tr>
+            </tbody>
+                        <tbody>
+                <tr>
+                    <td><input type="text" name="item_name" placeholder="예시) 전구" /></td>
+                    <td><input type="text" name="item_type" /></td>
+                    <td><input type="text" name="unit" /></td>
+                    <td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" /></td>
+					<td><input type="number" name="item_price" placeholder="0" oninput="calculateTotal()" /></td>
+					<td><input type="number" name="total_price" placeholder="0" readonly /></td>
+                    <td><input type="text" name="remarks" /></td>
+                </tr>
+            </tbody>
+                        <tbody>
+                <tr>
+                    <td><input type="text" name="item_name" placeholder="예시) 전구" /></td>
+                    <td><input type="text" name="item_type" /></td>
+                    <td><input type="text" name="unit" /></td>
+                    <td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" /></td>
+					<td><input type="number" name="item_price" placeholder="0" oninput="calculateTotal()" /></td>
+					<td><input type="number" name="total_price" placeholder="0" readonly /></td>
+                    <td><input type="text" name="remarks" /></td>
+                </tr>
+            </tbody>
+                        <tbody>
+                <tr>
+                    <td><input type="text" name="item_name" placeholder="예시) 전구" /></td>
+                    <td><input type="text" name="item_type" /></td>
+                    <td><input type="text" name="unit" /></td>
+                    <td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" /></td>
+					<td><input type="number" name="item_price" placeholder="0" oninput="calculateTotal()" /></td>
+					<td><input type="number" name="total_price" placeholder="0" readonly /></td>
+                    <td><input type="text" name="remarks" /></td>
+                </tr>
+            </tbody>
+                        <tbody>
+                <tr>
+                    <td><input type="text" name="item_name" placeholder="예시) 전구" /></td>
+                    <td><input type="text" name="item_type" /></td>
+                    <td><input type="text" name="unit" /></td>
+                    <td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" /></td>
+					<td><input type="number" name="item_price" placeholder="0" oninput="calculateTotal()" /></td>
+					<td><input type="number" name="total_price" placeholder="0" readonly /></td>
+                    <td><input type="text" name="remarks" /></td>
+                </tr>
+            </tbody>
+                        <tbody>
+                <tr>
+                    <td><input type="text" name="item_name" placeholder="예시) 전구" /></td>
+                    <td><input type="text" name="item_type" /></td>
+                    <td><input type="text" name="unit" /></td>
+                    <td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" /></td>
+					<td><input type="number" name="item_price" placeholder="0" oninput="calculateTotal()" /></td>
+					<td><input type="number" name="total_price" placeholder="0" readonly /></td>
+                    <td><input type="text" name="remarks" /></td>
+                </tr>
+            </tbody>
+            
+
+            
             <tbody>
                 <tr>
                     <td colspan="2">합 계</td>
@@ -147,6 +311,7 @@
     <script>
         function submitForm() {
             // 입력된 값들을 수집
+            // 추가로 수정 필요함
             const formData = {
                 quo_id: document.getElementsByName('quo_id')[0].value,
                 quo_date: document.getElementsByName('quo_date')[0].value,
@@ -193,8 +358,23 @@
                 totalPrices[i].value = totalPrice;
             }
 
-            // 총합 계산 및 표시
+            // 총합 계산 및 표시해주는 함수 실행
             calculateTotalSum();
+            
+            
+        }
+        
+        function calculateTotalSum() {
+            let totalPrices = document.getElementsByName('total_price');
+            let totalSum = 0;
+
+            // 총 가격 필드들을 순회하며 총합 계산
+            for (let i = 0; i < totalPrices.length; i++) {
+                totalSum += parseFloat(totalPrices[i].value) || 0;
+            }
+
+            // 총합을 'total_sum' 필드에 표시
+            document.getElementsByName('total_sum')[0].value = totalSum;
         }
         
         
