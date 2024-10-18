@@ -1,7 +1,6 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -10,8 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>일반회원가입</title>
-
+    <title>기업회원가입</title>
 
 </head>
 <body id="page-top">
@@ -21,16 +19,15 @@
     	<!-- 부트스트랩으로 padding-top 을 좀 주고자 한다. -->
         <div class="container pt-5">
             <!-- Contact Section Heading-->
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">일반회원가입</h2>
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">기업회원가입</h2>
             <!-- Contact Section Form-->
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-xl-7">          	
                     <form id="contactForm" action="${pageContext.request.contextPath }/registDo" method="POST">
-                        
-                        <!-- 아이디 input-->
+                        <!-- 사업자번호 input-->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="inputId" type="text" name="id" />	
-                            <label for="inputId">아이디</label>
+                            <input class="form-control" id="inputBr" type="text" name="Br" />	
+                            <label for="inputBr">사업자번호(-없이입력)</label>
                         </div>
 
                         <!-- 비밀번호 input-->
@@ -40,38 +37,38 @@
                             <label for="inputPw">비밀번호</label>
                         </div>
                         
-                        <!-- 이름 input-->
+                        <!-- 회사명 input-->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="inputName" type="text" name="name" />	
-                            <label for="inputName">이름</label>
-                        </div> 
-                            
-                        <!-- 생년월일 input-->
-                        <div class="form-floating mb-3">
-                            <input class="form-control" id="inputBd" type="text" name="Bd" />	
-                            <label for="inputBd">생년월일</label>
+                            <input class="form-control" id="inputEnt" type="text" name="Ent" />	
+                            <label for="inputEnt">회사명</label>
                         </div>     
                         
-                        <!-- 휴대폰 번호 input -->                                                   
+                        <!-- 대표자명 input -->                                                   
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="inputPhone" type="tel" name="phone" />	
-                            <label for="inputPhone">휴대폰 번호</label>
+                            <input class="form-control" id="inputCEO" type="text" name="CEO" />	
+                            <label for="inputCEO">대표자명</label>
                         </div> 
                         
-                        <!-- 주소 input -->
+                        <!-- 전화번호 input -->                                                   
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="inputPhone" type="tel" name="Phone" />	
+                            <label for="inputPhone">전화번호</label>
+                        </div> 
+                        
+                        <!-- 회사주소 input -->
                         <div class="form-floating mb-3">
                             <input class="form-control" id="inputAddress" type="address" name="address" />	
-                            <label for="inputAddress">주소</label>
+                            <label for="inputAddress">회사주소</label>
                         </div> 
-                        
-                        <!-- 이메일 input-->
+                            
+                        <!-- 이메일 input -->
                         <div class="form-floating mb-3">
                             <input class="form-control" id="inputEmail" type="email" name="email" />	
                             <label for="inputEmail">이메일</label>
-                        </div>
-                                             
+                        </div>     
+                        
                         <!-- Submit Button-->
-                        <button class="btn btn-primary btn-xl" id="submitButton" type="submit">회원가입</button>
+                        <button class="btn btn-primary btn-xl" id="submitButton" type="submit">기업회원가입</button>
                     </form>
                 </div>
             </div>

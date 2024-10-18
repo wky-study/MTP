@@ -11,14 +11,14 @@
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
 	<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
-	<script src="resources/js/jquery.min.js"></script>
-	<script src="resources/js/skel.min.js"></script>
-	<script src="resources/js/skel-layers.min.js"></script>
-	<script src="resources/js/init.js"></script>
+	<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/skel.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/skel-layers.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/init.js"></script>
 	<noscript>
-		<link rel="stylesheet" href="resources/css/skel.css" />
-		<link rel="stylesheet" href="resources/css/style.css" />
-		<link rel="stylesheet" href="resources/css/style-xlarge.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/skel.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style-xlarge.css" />
 
 	</noscript>
 
@@ -98,10 +98,11 @@
 		<h1><a href="index.html">Eco Builders</a></h1>
 		<nav id="nav">
 			<ul>
-				<li><a href="index.html">Main</a></li>
-				<li><a href="products.html">Products</a></li>
-				<li><a href="elements.html">Reviews</a></li>
-				<li><a href="#" class="button special">Sign Up</a></li>
+
+				<li><a href="${pageContext.request.contextPath}/">Main</a></li>
+				<li><a href="${pageContext.request.contextPath}/prodView">Products</a></li>
+				<li><a href="${pageContext.request.contextPath}/reviewView">Reviews</a></li>
+				<li><a href="${pageContext.request.contextPath}/" class="button special">Sign Up</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -112,7 +113,7 @@
 		<p>지속가능한 리모델링으로 지구를 지키세요.</p>
 		<ul class="actions">
 			<li>
-				<a href="#" class="button big">리모델링 견적확인</a>
+				<a href="${pageContext.request.contextPath}/estStep1" class="button big">리모델링 견적확인</a>
 			</li>
 			<li>
 				<a href="#" class="button big" style="background-color: #0faf24c9;">기업회원 바로가기</a>
