@@ -9,6 +9,8 @@
 <title>리뷰 게시판 목록</title>
 
 
+
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery 추가 -->
 
 	<style type="text/css">
