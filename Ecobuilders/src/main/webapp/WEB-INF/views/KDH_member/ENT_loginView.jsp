@@ -45,16 +45,16 @@
 							<!-- inputId의 값이 id=value 형태로 전송되어야 함 -->
 							<!-- 키값으로 사용될 id를 name 속성에 넣어주어야 함 -->
 							<!-- 쿠키에 rememberId가 있으면 값 넣음 -->
-							<input class="form-control" id="inputId" type="text" name="memId"
+							<input class="form-control" id="inputBr" type="text" name="Br"
 								 value="${cookie.rememberId.value }"  ${cookie.rememberId.value == null ? "autofocus" : "" }  />					
-							<label for="inputId">사업자번호(-없이작성)</label>
+							<label for="inputBr">사업자번호(-없이작성)</label>
 						</div>
 
 						<!-- 비밀번호 input-->
 						<div class="form-floating mb-3">
 							<!-- inputPw의 값이 pw=value 형태로 전송되어야 함. pw를 name속성에 넣어주기 -->
 							<input class="form-control" id="inputPw" type="password" 
-								name="memPassword" ${cookie.rememberId.value != null ? "autofocus" : "" } />
+								name="ent_memPassword" ${cookie.rememberId.value != null ? "autofocus" : "" } />
 							<label for="inputPw">비밀번호</label>
 						</div>
 
