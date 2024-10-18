@@ -171,10 +171,10 @@
 	/* 댓글 입력 창 클릭 이벤트 */
 	document.getElementById("replyInput").addEventListener("click", ()=>{
 		
-		/* 로그인 기능 완료후 할것 */
-/* 		if(!v_name){
+		
+		if(!v_name){
 			location.href = "${pageContext.request.contextPath}/loginView";
-		} */
+		} 
 		
 		
 	})

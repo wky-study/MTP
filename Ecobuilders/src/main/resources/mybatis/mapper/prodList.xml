@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.ecobuilders.prodList.dao.IProdListDAO">
+	<select id="getProdList" resultType="com.team.ecobuilders.prodList.dto.ProdListDTO">
+	
+		SELECT * 
+		FROM (
+		   SELECT 
+		         ITEM_ID
+		       , ITEM_TYPE
+		       , ITEM_NAME
+		       , ITEM_LV
+		       , ITEM_EFI
+		       , ITEM_PRICE
+		       , ROW_NUMBER() OVER (ORDER BY ITEM_ID) AS rnum
+		   FROM ITEMS
+		)
+		WHERE rnum BETWEEN 1 AND 9
+
+	
+	</select>
+
+
+</mapper>

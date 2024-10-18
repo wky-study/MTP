@@ -1,38 +1,47 @@
 package com.team.ecobuilders.KDH_member.dto;
 
 
-//members Å×ÀÌºíÀÇ È¸¿ø µ¥ÀÌÅÍ¸¦ ¸ÅÇÎÇÏ´Âµ¥ »ç¿ëµÇ´Â DTO °´Ã¼
-//ÄÃ·³: mem_id, mem_password, mem_name, mem_phone, mem_email À» 
-//ÇÊµåº¯¼ö: memId, memPassword, memName, memPhone, memEmail ·Î ¼³Á¤ÇØÁÖ¾î¾ß ÀÚµ¿À¸·Î º¯È¯µÊ
+//members í…Œì´ë¸”ì˜ íšŒì› ë°ì´í„°ë¥¼ ë§¤í•‘í•˜ëŠ”ë° ì‚¬ìš©ë˜ëŠ” DTO ê°ì²´
+//ì»¬ëŸ¼: mem_id, mem_password, mem_name, mem_birthdate, mem_phone, mem_address, mem_email ì„ 
+//í•„ë“œë³€ìˆ˜: memId, memPassword, memName, memBirthdate, memPhone, memAddress, memEmail ë¡œ ì„¤ì •í•´ì£¼ì–´ì•¼ ìë™ìœ¼ë¡œ ë³€í™˜ë¨
 public class KDH_MemberDTO {
-	// ÇÊµåº¯¼ö Á¤ÀÇ³»¸° ÈÄ Ä¸½¶È­ Àû¿ë (ÇÊ¼ö!!)
-	// 1. ¸ğµç ÇÊµåº¯¼ö¿¡ private Á¢±Ù Á¦¾îÀÚ Àû¿ë
+	// í•„ë“œë³€ìˆ˜ ì •ì˜ë‚´ë¦° í›„ ìº¡ìŠí™” ì ìš© (í•„ìˆ˜!!)
+	// 1. ëª¨ë“  í•„ë“œë³€ìˆ˜ì— private ì ‘ê·¼ ì œì–´ì ì ìš©
+	
+	// ì¼ë°˜íšŒì›ì •ë³´
 	private String memId;
 	private String memPassword;
 	private String memName;
+	private String membirthdate;
 	private String memPhone;
+	private String memAddress;
 	private String memEmail;
-	private String memProfileImg;
 
-	// 2. ±âº»»ı¼ºÀÚ¿Í Ç®»ı¼ºÀÚ Ãß°¡
+	// ê¸°ì—…íšŒì›ì •ë³´
+	
+	
+
+	// 2. ê¸°ë³¸ìƒì„±ìì™€ í’€ìƒì„±ì ì¶”ê°€
 	// 	  Alt + Shift + S
 	public KDH_MemberDTO() {
 	}
 
-	public KDH_MemberDTO(String memId, String memPassword, String memName, String memPhone, String memEmail,
-			String memProfileImg) {
+	public KDH_MemberDTO(String memId, String memPassword, String memName, String memBirthdate, String memPhone, String memAddress,
+			String memEmail) {
 		super();
 		this.memId = memId;
 		this.memPassword = memPassword;
 		this.memName = memName;
+		this.memName = memBirthdate;
 		this.memPhone = memPhone;
+		this.memAddress = memAddress;
 		this.memEmail = memEmail;
-		this.memProfileImg = memProfileImg;
+		
 	}
 
 	public String toString() {
-		return "MemberDTO [memId=" + memId + ", memPassword=" + memPassword + ", memName=" + memName + ", memPhone="
-				+ memPhone + ", memEmail=" + memEmail + ", memProfileImg=" + memProfileImg + "]";
+		return "KDH_MemberDTO [memId=" + memId + ", memPassword=" + memPassword + ", memName=" + memName + ", memPhone="
+				+ memPhone + ", memAddress=" + memAddress + ", memEmail=" + memEmail + "]";
 	}
 
 	public String getMemId() {
@@ -67,6 +76,14 @@ public class KDH_MemberDTO {
 		this.memPhone = memPhone;
 	}
 
+	public String getMemAddress() {
+		return memAddress;
+	}
+
+	public void setMemAddress(String memAddress) {
+		this.memAddress = memAddress;
+	}
+
 	public String getMemEmail() {
 		return memEmail;
 	}
@@ -74,13 +91,6 @@ public class KDH_MemberDTO {
 	public void setMemEmail(String memEmail) {
 		this.memEmail = memEmail;
 	}
-
-	public String getMemProfileImg() {
-		return memProfileImg;
-	}
-
-	public void setMemProfileImg(String memProfileImg) {
-		this.memProfileImg = memProfileImg;
-	}
+	
 
 }

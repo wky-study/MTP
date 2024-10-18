@@ -12,7 +12,7 @@
 		    , mem_name
 		    , mem_phone
 		    , mem_email
-		    , mem_profile_img
+		    , mem_address
 		FROM 
 			members
 		WHERE 1=1
@@ -74,12 +74,5 @@
 		DELETE FROM members
 		WHERE mem_id = #{memId}
 	</delete>
-	
-	<update id="updateProfile" parameterType="KDH_MemberDTO">
-		UPDATE members
-		  SET mem_profile_img = #{memProfileImg}
-		WHERE mem_id = #{memId}
-	</update>
-	
 	
 </mapper>
