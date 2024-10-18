@@ -1,7 +1,7 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
+
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -18,6 +18,8 @@
 		color: red;
 	}
 	</style>
+	
+
 </head>
 <body id="page-top">
 
@@ -28,6 +30,12 @@
 			<!-- Contact Section Heading-->
 			<h2
 				class="page-section-heading text-center text-uppercase text-secondary mb-0">로그인</h2>
+			<!-- Icon Divider-->
+			<div class="divider-custom">
+				<div class="divider-custom-line"></div>
+				<div class="divider-custom-icon">
+					<i class="fas fa-star"></i>
+				</div>
 				<div class="divider-custom-line"></div>
 			</div>
 			<!-- Contact Section Form-->
@@ -59,7 +67,7 @@
 							<label for="inputPw">비밀번호</label>
 						</div>
 
-						<!-- 이메일 기억하기 체크박스 -->
+						<!-- 아이디 기억하기 체크박스 -->
 						<div class="form-check mb-3">
 							<!-- 쿠키에 rememberId가 있으면 태그 내에 checked 문구 넣기 -->
 							<!-- ${cookie.rememberId.value != null ? "checked" : "" } -->
@@ -78,7 +86,9 @@
 					</form>
 				</div>
 			</div>
+		</div>
 	</section>
 
-
 </body>
+</html>
+
