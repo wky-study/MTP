@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package com.team.ecobuilders.KDH_member.dto;
 
 
