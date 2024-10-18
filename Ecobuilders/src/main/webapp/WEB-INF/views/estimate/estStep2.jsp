@@ -8,6 +8,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<!-- 자재 입력 페이지 -->
+	<!-- 오른쪽엔 관련 계산 정보가 나와야 함 -->
+	<div>
+	</div>
 
 </body>
 </html>
