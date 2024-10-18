@@ -9,6 +9,8 @@
 <title>리뷰 게시판 목록</title>
 
 
+
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery 추가 -->
 
 	<style type="text/css">
@@ -54,7 +56,6 @@
 			border-top: 0.5px solid #dddddd;
 		}
 		
-		
 	
 	</style>
 </head>
@@ -63,10 +64,10 @@
 	<div class="container">
 		
 		<!-- 글쓰기 버튼 임시 -->
-		<div >
-			<button id="writeBtn">글쓰기(임시)</button>
+		<div class="d-flex justify-content-end">
+			<button id="writeBtn" class="btn btn-primary" >글쓰기</button>
 		</div>
-		
+
 		<div class="content-box">
 			
 			
@@ -77,7 +78,7 @@
 					<!-- 위는 하드코딩 아래로 바꾸기 -->
 					<img src="${pageContext.request.contextPath }/displayImage?fileName=${ReviewDTO.reviewPath}">
 					<span class="card-title">${ReviewDTO.reviewTitle}</span>
-					<span class="card-name">${ReviewDTO.memId}</span>
+					<span class="card-name">${ReviewDTO.memName}</span>
 				</div>
 			</c:forEach>
 			
@@ -94,14 +95,13 @@
 		
 		location.href = '${pageContext.request.contextPath }/reviewWriteView';
 		
-		/* 로그인 기능 넣으면 밑에꺼로 변경 */
-		/* if(v_id){
+		if(v_id){
 			location.href = '${pageContext.request.contextPath }/reviewWriteView';
 		}
 		else{
 			alert("로그인 후 글쓰기가 가능합니다.");
 			location.href = '${pageContext.request.contextPath}/loginView';
-		} */
+		} 
 		
 	})
 	</script>

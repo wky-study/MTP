@@ -1,14 +1,6 @@
 package com.team.ecobuilders.KDH_member.dto;
-
-
-//members 테이블의 회원 데이터를 매핑하는데 사용되는 DTO 객체
-//컬럼: mem_id, mem_password, mem_name, mem_birthdate, mem_phone, mem_address, mem_email 을 
-//필드변수: memId, memPassword, memName, memBirthdate, memPhone, memAddress, memEmail 로 설정해주어야 자동으로 변환됨
 public class KDH_MemberDTO {
-	// 필드변수 정의내린 후 캡슐화 적용 (필수!!)
-	// 1. 모든 필드변수에 private 접근 제어자 적용
-	
-	// 일반회원정보
+  
 	private String memId;
 	private String memPassword;
 	private String memName;
@@ -16,13 +8,7 @@ public class KDH_MemberDTO {
 	private String memPhone;
 	private String memAddress;
 	private String memEmail;
-
-	// 기업회원정보
-	
-	
-
-	// 2. 기본생성자와 풀생성자 추가
-	// 	  Alt + Shift + S
+  
 	public KDH_MemberDTO() {
 	}
 
@@ -94,4 +80,3 @@ public class KDH_MemberDTO {
 	
 
 }
-
