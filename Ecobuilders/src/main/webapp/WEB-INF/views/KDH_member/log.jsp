@@ -105,8 +105,18 @@
 				<li><a href="${pageContext.request.contextPath}/">Main</a></li>
 				<li><a href="${pageContext.request.contextPath}/prodView">Products</a></li>
 				<li><a href="${pageContext.request.contextPath}/reviewView">Reviews</a></li>
-				<li><a href="${pageContext.request.contextPath}/log/loginView"
-					, class="button special">로그인</a></li>
+
+				<c:if test="${sessionScope.login == null }">
+					<li><a href="${pageContext.request.contextPath}/log/loginView"
+						, class="button special">로그인</a></li>
+				</c:if>
+
+				<c:if test="${sessionScope.login != null }">
+					<li><a href="${pageContext.request.contextPath }/log/loginView"
+						, class="button special">${sessionScope.login.memName}님</a></li>
+					<li><a href="<c:url value="/logoutDo"/>"
+						, class="button special">로그아웃</a></li>
+				</c:if>
 
 			</ul>
 
