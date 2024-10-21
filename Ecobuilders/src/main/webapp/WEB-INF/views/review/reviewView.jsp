@@ -162,26 +162,7 @@
 		    <!-- 다음 페이지 -->
 		    <!-- 마지막 페이지 도달 시 disabled 추가 -->
 			    <li class="page-item ${keySearch.pageNo == keySearch.finalPage ? 'disabled' : ''  }">
-				    <c:if test="${keySearch.searchWord == null && keySearch.lastPage >= 10}">
-				     <a class="page-link" href="${pageContext.request.contextPath }/reviewView?pageNo=${keySearch.lastPage + 1 }&rowSizePerPage=${keySearch.rowSizePerPage}" aria-label="Next">
-				    	 <span aria-hidden="true">&raquo;</span>
-				     </a>
-				    </c:if>
-				    <c:if test="${keySearch.searchWord != null && keySearch.lastPage >= 10}">
-				     <a class="page-link" href="${pageContext.request.contextPath }/reviewView?pageNo=${keySearch.lastPage + 1 }&rowSizePerPage=${keySearch.rowSizePerPage}&searchOption=${keySearch.searchOption}&searchWord=${keySearch.searchWord}" aria-label="Next">
-				    	 <span aria-hidden="true">&raquo;</span>
-				     </a>
-				    </c:if>
-				    <c:if test="${keySearch.searchWord != null && keySearch.lastPage <= 10}">
-				     <a class="page-link" href="${pageContext.request.contextPath }/reviewView?pageNo=${keySearch.lastPage }&rowSizePerPage=${keySearch.rowSizePerPage}&searchOption=${keySearch.searchOption}&searchWord=${keySearch.searchWord}" aria-label="Next">
-				    	 <span aria-hidden="true">&raquo;</span>
-				     </a>
-				    </c:if>
-				    <c:if test="${keySearch.searchWord != null && keySearch.lastPage <= 10}">
-				     <a class="page-link" href="${pageContext.request.contextPath }/reviewView?pageNo=${keySearch.lastPage }&rowSizePerPage=${keySearch.rowSizePerPage}" aria-label="Next">
-				    	 <span aria-hidden="true">&raquo;</span>
-				     </a>
-				    </c:if>
+			    	<a id="aTagBtn" class="page-link"  style="cursor: pointer;" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
 			    </li>
 
 		    
@@ -190,15 +171,15 @@
 	</div>					
 	<!-- 검색기능 -->
 	<div class="d-flex justify-content-center">
-		<form class="d-flex" action="${pageContext.request.contextPath }/reviewView" method="GET" >
-			<select class="form-select me-1" name="searchOption">
+		<form id="searchForm" class="d-flex" action="${pageContext.request.contextPath }/reviewView" method="GET" >
+			<select id="searchOption" class="form-select me-1" name="searchOption">
 				<option value="title" selected>제목</option>
 				<option value="content">내용</option>
 				<option value="name">작성자</option>
 			</select>
 
-			<input class="form-control me-1" type="text" name="searchWord">
-			<button class="btn btn-primary" type="submit">
+			<input id="searchWord" class="form-control me-1" type="text" name="searchWord">
+			<button id="searchButton" class="btn btn-primary" type="submit">
 				<svg xmlns="http:www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
 					<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12">
 				</svg>
@@ -211,6 +192,14 @@
 <!-- Footer -->
 <%@ include file= "/WEB-INF/inc/footer.jsp" %>
 	
+	
+	<script type="text/javascript">
+	    window.onload = function() {
+	        const baseUrl = "${pageContext.request.contextPath}/reviewView";
+	        // 주소창의 URL을 기본 URL로 설정
+	        window.history.replaceState({}, '', baseUrl);
+	    };	
+	</script>
 	
 	<!-- 글 작성 script -->
 	<script type="text/javascript">
@@ -232,6 +221,7 @@
 		})
 	</script>
 	
+	
 	<!-- 페이징 script -->
 	<script type="text/javascript">
 		let v_search = '${keySearch.searchWord}';
@@ -251,10 +241,38 @@
 				
 			
 			location.href = v_url + v_query;
-			
 		}	
+		
+		/* 끝으로 이동 */
+		let v_aTagBtn = document.getElementById("aTagBtn");
+		v_aTagBtn.addEventListener("click", ()=>{
+			
+		     let v_searchWord = '${keySearch.searchWord}';
+		     let v_lastPage = '${keySearch.lastPage}';
+		     let v_rowSizePerPage = '${keySearch.rowSizePerPage}';
+		     console.log(v_searchWord);
+		     console.log(v_lastPage);
+		     console.log(v_rowSizePerPage);
+		     
+		     if(v_searchWord == "" ){
+		    	 if(v_lastPage <= 10){
+		    		 v_aTagBtn.href = "${pageContext.request.contextPath }/reviewView?pageNo=${keySearch.lastPage}";
+		    	 }else if(v_lastPage > 10){
+		    		 v_aTagBtn.href = "${pageContext.request.contextPath }/reviewView?pageNo=${keySearch.lastPage + 1}";
+		    	 }
+		     }else if(v_searchWord != ""){
+		    	 if(v_lastPage <= 10){
+		    		 v_aTagBtn.href = "${pageContext.request.contextPath }/reviewView?pageNo=${keySearch.lastPage}&rowSizePerPage=${keySearch.rowSizePerPage}&searchOption=${keySearch.searchOption}&searchWord=${keySearch.searchWord}";
+		    	 }else if(v_lastPage > 10){
+		    		 v_aTagBtn.href = "${pageContext.request.contextPath }/reviewView?pageNo=${keySearch.lastPage + 1}&rowSizePerPage=${keySearch.rowSizePerPage}&searchOption=${keySearch.searchOption}&searchWord=${keySearch.searchWord}";
+		    	 }
+		     }
+			
+		})
+		
 	</script>
-	
+
+			
 	
 </body>
 </html>

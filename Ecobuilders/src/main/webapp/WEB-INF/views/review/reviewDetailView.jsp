@@ -188,7 +188,7 @@
     	}, 100);
     };
 	
-	
+	let v_name = '${sessionScope.login.memName}';
 	
 	/* 댓글 입력 창 클릭 이벤트 */
 	document.getElementById("replyInput").addEventListener("click", ()=>{
