@@ -87,8 +87,7 @@
 	<!-- Header -->
 	
 	<%@ include file= "/WEB-INF/inc/header.jsp" %>
-
-
+	
 
 
 	<!-- Banner -->
@@ -111,7 +110,7 @@
 			<h2 style="padding-top: 100px;">Products</h2>
 		</header>
 
-		<div class="container" >
+		<div class="container">
 			<div class="" style="justify-content: center; display: flex; text-align: center;">
 				<div class=" ">
 					<div class="product">

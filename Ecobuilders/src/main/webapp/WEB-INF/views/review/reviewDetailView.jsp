@@ -12,8 +12,11 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-	<!-- jQuery 추가 -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+<!-- jQuery 추가 -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+
+<!--Style-->
+<%@ include file= "/WEB-INF/inc/style.jsp" %>
 
 
 	<style type="text/css">
@@ -59,6 +62,8 @@
 		    font-size: 13px;
 		    line-height: 18px;
 		    color: #828C94;
+		    
+		    cursor: pointer;
 		}
 		
 		.my-info {
@@ -73,6 +78,10 @@
 	</style>
 </head>
 <body>
+
+<!-- Header -->
+<%@ include file= "/WEB-INF/inc/header.jsp" %>
+
 
 	<div class="top-box mb-5">
 		<img src="${pageContext.request.contextPath }/displayImage?fileName=${keyReview.reviewPath}">
@@ -98,18 +107,19 @@
 				<div class="mt-5 mb-5">${keyReview.reviewContent}</div>
 				
 				<!-- 내용 끝  -->
-				<!-- 현재 하드코딩 -->
+				<!-- 좋아요는 귀찮아서 안함 신고하기 기능도 x-->
 				<div >
 					<div class="d-flex justify-content-between mt-3">
 						<div>
 							<span class="my-span">좋아요 : 0</span>
-							<span class="my-span">조회수 : 0</span>
+							<span class="my-span">조회수 : ${keyReview.reviewCount} </span>
 						</div>
 						<div>
 							<span class="my-span">신고하기</span>
 						</div>
 					</div>
 					
+					<!-- 팔로우 기능은 일단 보류 -->
 					<div class="d-flex justify-content-between align-items-center mb-5 mt-3 my-info">
 						<h4>${keyReview.memName}</h4>
 						<button type="button" class="btn btn-info">팔로우</button>
@@ -119,9 +129,8 @@
 				<!-- 댓글 창 -->
 				<div>
 					
-					<!-- 하드코딩상태 -->
 					<div>
-						<h2>댓글 : 0</h2>
+						<h2>댓글 : ${keyReplyCount} </h2>
 					</div>
 				
 					<!-- 댓글 리스트 -->
@@ -130,9 +139,9 @@
 						<c:forEach items="${keyReplyList }" var="replyDTO">
 							<div class="row pt-2 pb-2">
 								<input type="hidden" value="${replyDTO.replyNo }">
-								<div class="col-2">${replyDTO.memName }</div>
-								<div class="col-7">${replyDTO.replyContent }</div>
-								<div class="col-2">${replyDTO.replyDate }</div>
+								<div class="col-2"><span> ${replyDTO.memName }</span></div>
+								<div class="col-7"><span>${replyDTO.replyContent }</span></div>
+								<div class="col-2"><span>${replyDTO.replyDate }</span></div>
 								<div class="col-1">
 								
 									<!-- 로그인 기능 나오면 변경 -->
@@ -153,7 +162,7 @@
 							<div class="col-10">
 								<input id="replyInput" class="form-control" type="text" name="replyContent">
 							</div>
-							<button id="replyBtn" class="btn btn-primary col-2" type="button">등록</button>
+							<button id="replyBtn" class="btn btn-primary col-2" style="padding: 0px"  type="button">등록</button>
 						</form>
 					</div>
 				</div>				
@@ -165,8 +174,21 @@
 		</div>
 	</div>
 
+<!-- Footer -->
+<%@ include file= "/WEB-INF/inc/footer.jsp" %>
+	
+
 	
 	<script type="text/javascript">
+	
+    // 페이지 벗어나기 직전에 스크롤을 최상단에 올리는 코드 넣기
+	window.onload = function(){
+    	setTimeout (function (){
+    		scrollTo(0,0);
+    	}, 100);
+    };
+	
+	let v_name = '${sessionScope.login.memName}';
 	
 	/* 댓글 입력 창 클릭 이벤트 */
 	document.getElementById("replyInput").addEventListener("click", ()=>{
