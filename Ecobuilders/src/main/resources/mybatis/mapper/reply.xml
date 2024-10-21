@@ -64,8 +64,13 @@
 		WHERE reply_no = #{replyNo}	
 	</update>
 
-
-
+	<!-- 해당 게시글의 보여질 댓글 개수 가져오기 -->
+	<select id="replyCount" parameterType="int" resultType="int">
+		SELECT COUNT(*) AS reply_count
+		FROM replys
+		WHERE review_no = #{reviewNo}
+		  AND del_yn = 'N'	
+	</select>
 
 
 

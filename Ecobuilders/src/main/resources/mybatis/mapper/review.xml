@@ -2,6 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.team.ecobuilders.review.dao.IReviewDAO">
 
+	<sql id="reviewSearch">
+	    <if test="searchWord != null">
+	    	<choose>
+	    		<when test="searchOption == 'title'">AND a.review_title LIKE '%' || #{searchWord} || '%'</when>
+	    		<when test="searchOption == 'content'">AND a.review_content LIKE '%' || #{searchWord} || '%'</when>
+	    		<when test="searchOption == 'name'">AND b.mem_name = #{searchWord} </when>
+	    	</choose>
+	    </if>
+	</sql>
 
 	<!-- 리뷰 게시판 목록 불러오기 -->
 	<select id="getReviewList" resultType="com.team.ecobuilders.review.dto.ReviewDTO" parameterType="com.team.ecobuilders.common.vo.SearchVO">
@@ -18,10 +27,12 @@
 		            , a.review_content 
 		            , a.review_path
 		            , TO_CHAR(review_date,'MM-DD HH24:MI') AS review_date
+		            , a.review_count
 		        FROM review a , members b
 		        WHERE 1=1
 		            AND a.mem_id = b.mem_id(+)
 		            AND a.del_yn = 'N'
+		       	<include refid="reviewSearch"/>
 		        ORDER BY review_no DESC
 		    ) a
 		)
@@ -29,11 +40,13 @@
 	</select>
 
 	<!-- 리뷰 게시판 총 갯수 가져오기 -->
-	<select id="getReviewCount" resultType="int">
+	<select id="getReviewCount" resultType="int" parameterType="com.team.ecobuilders.common.vo.SearchVO">
 		SELECT COUNT(*)
-			FROM review 
-			WHERE 1=1 
-	    AND del_yn = 'N'
+		FROM review a , members b 
+		WHERE 1=1 
+		    AND del_yn = 'N'
+		    AND a.mem_id = b.mem_id(+)
+		    <include refid="reviewSearch"/>
 	</select>
 
 	<!-- 리뷰 게시글 한개 조회 하기 -->
@@ -46,6 +59,7 @@
 		    , a.review_content 
 		    , a.review_path
 		    , TO_CHAR(review_date,'YYYY-MM-DD HH24:MI:SS') AS review_date
+		    , a.review_count
 		FROM review a , members b
 		WHERE 1=1
 		    AND a.mem_id = b.mem_id(+) 
@@ -55,23 +69,38 @@
 
 	<!-- 리뷰게시글 작성  -->
 	<insert id="writeReview" parameterType="com.team.ecobuilders.review.dto.ReviewDTO">
-	INSERT INTO review(
-		 review_no
-	   , mem_id
-	   , review_title
-	   , review_content
-	   , review_date
-	   , del_yn
-	) VALUES
-		  (SELECT COUNT(*)+1 FROM review)
-		, #{memId}
-		, #{reviewTitle}
-		, #{reviewContent}
-		, SYSDATE
-		, 'N'
+		INSERT INTO review(
+			 review_no
+		   , mem_id
+		   , mem_name
+		   , review_title
+		   , review_content
+		   , review_date
+		   , del_yn
+		   , review_count
+		   , review_path
+		) VALUES(
+			  (SELECT COUNT(*)+1 FROM review)
+			, #{memId}
+			, #{memName}
+			, #{reviewTitle}
+			, #{reviewContent}
+			, SYSDATE
+			, 'N'
+			, 0
+			, #{reviewPath}
+		)
 	</insert>
 
 
+	<!-- 리뷰게시글 조회수 -->
+	<update id="reviewCountUp" parameterType="int">
+		UPDATE review
+		SET 
+			review_count = review_count + 1
+		WHERE 1=1
+			AND review_no = #{no}
+	</update>
 
 
 
