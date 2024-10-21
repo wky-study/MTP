@@ -10,7 +10,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>일반회원수정</title>
+<title>기업회원수정</title>
 
 <!-- header 부분 -->
 
@@ -52,66 +52,63 @@
 						action="${pageContext.request.contextPath }/memEditDo"
 						method="POST">
 
-						<!-- 아이디 input-->
+						<!-- 사업자번호 input-->
 						<div class="form-floating mb-3">
-							<!-- inputId의 값이 id=value 형태로 전송되어야 함 -->
-							<!-- 키값으로 사용될 id를 name 속성에 넣어주어야 함 -->
-							<input class="form-control" id="inputId" type="text" name="memId"
-								value="${sessionScope.login.memId }" readonly /> <label
-								for="inputId">아이디</label>
+							<input class="form-control" id="inputBr" type="text" name="entBr"
+								value="${sessionScope.login.entBr }" readonly /> <label
+								for="inputBr">사업자번호</label>
 						</div>
 
 						<!-- 비밀번호 input-->
 						<div class="form-floating mb-3">
-							<!-- inputPw의 값이 pw=value 형태로 전송되어야 함. pw를 name속성에 넣어주기 -->
 							<input class="form-control" id="inputPw" type="password"
-								name="memPassword" /> <label for="inputPw">비밀번호</label>
+								name="entPassword" /> <label for="inputPw">비밀번호</label>
 						</div>
 
-						<!-- 이름 input-->
+						<!-- 기업명 input-->
 						<div class="form-floating mb-3">
 							<input class="form-control" id="inputName" type="text"
-								name="memName" value="${sessionScope.login.memName }" /> <label
-								for="inputName">이름</label>
+								name="entName" value="${sessionScope.login.entName }" /> <label
+								for="inputName">기업명</label>
+						</div>
+						
+						<!-- 대표자명 input-->
+						<div class="form-floating mb-3">
+							<input class="form-control" id="inputCeo" type="text"
+								name="entCeo" value="${sessionScope.login.entCeo }" /> <label
+								for="inputCeo">대표자명</label>
 						</div>
 
-						<!-- 생년월일 input -->
+						<!-- 주소 input -->
 						<div class="form-floating mb-3">
-							<input class="form-control" id="inputBirthdate" type="text"
-								name="memBirthdate" value="${sessionScope.login.memBirthdate }" /> <label
-								for="inputBirthdate">생년월일</label>
+							<input class="form-control" id="inputAddress" type="text"
+								name="entAddress" value="${sessionScope.login.entAddress }" /> <label
+								for="inputAddress">주소</label>
 						</div>
 						
 						<!-- 전화번호 input -->
 						<div class="form-floating mb-3">
 							<input class="form-control" id="inputPhone" type="tel"
-								name="memPhone" value="${sessionScope.login.memPhone }" /> <label
+								name="entPhone" value="${sessionScope.login.entPhone }" /> <label
 								for="inputPhone">전화번호</label>
-						</div>
-						
-						<!-- 주소 input -->
-						<div class="form-floating mb-3">
-							<input class="form-control" id="inputAddress" type="text"
-								name="memAddress" value="${sessionScope.login.memAddress }" /> <label
-								for="inputAddress">주소</label>
 						</div>
 
 						<!-- 이메일 input -->
 						<div class="form-floating mb-3">
 							<input class="form-control" id="inputEmail" type="email"
-								name="memEmail" value="${sessionScope.login.memEmail }" /> <label
+								name="memEmail" value="${sessionScope.login.entEmail }" /> <label
 								for="inputEmail">이메일</label>
 						</div>
 
 					</form>
 
-					<form id="memDelForm"
+					<form id="ent_memDelForm"
 						action="${pageContext.request.contextPath }/memDelDo"
 						method="POST"></form>
 
 					<div class="d-flex justify-content-center">
-						<button class="btn btn-primary me-2" id="memEditBtn" type="button">수정</button>
-						<button class="btn btn-danger" id="memDelBtn" type="button">회원탈퇴</button>
+						<button class="btn btn-primary me-2" id="ent_memEditBtn" type="button">기업회원수정</button>
+						<button class="btn btn-danger" id="ent_memDelBtn" type="button">기업회원탈퇴</button>
 					</div>
 
 				</div>
@@ -124,9 +121,9 @@
 	<script type="text/javascript">
 		// input 태그 내 value값에 대한 validation 체크하는 경우
 		
-		let v_memId = '${sessionScope.login.memId}';
+		let v_memId = '${sessionScope.login.entBr}';
 		
-		document.getElementById("memDelBtn").addEventListener("click", ()=>{
+		document.getElementById("ent_memDelBtn").addEventListener("click", ()=>{
 			
 			let v_input = prompt('정말로 삭제하시겠습니까? 삭제를 원하시면 아이디를 입력해주세요.');
 			
@@ -135,15 +132,15 @@
 			// 입력받은 아이디가 로그인 중인 아이디와 일치하는지 확인
 			if(v_input == v_memId){
 				// action=/memDelDo 인 form 태그의 submit 실행 
-				document.getElementById('memDelForm').submit();
+				document.getElementById('ent_memDelForm').submit();
 			}
 			
 		});
 		
-		document.getElementById("memEditBtn").addEventListener("click", ()=>{
+		document.getElementById("ent_memEditBtn").addEventListener("click", ()=>{
 			
 			// action=/memEditDo 인 form 태그의 submit 실행 
-			document.getElementById('memEditForm').submit();
+			document.getElementById('ent_memEditForm').submit();
 			
 		});
 </script>
