@@ -67,6 +67,10 @@ public class SearchVO {
 		}
 		
 	}
+	
+	public void ProdSetting() {
+		
+	}
 
 
 	@Override
