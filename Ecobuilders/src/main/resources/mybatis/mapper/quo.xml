@@ -7,8 +7,8 @@
 		 INSERT INTO quo (
             quo_id, 
             quo_date, 
-            quo_start, 
-            quo_end, 
+            quo_startdate, 
+            quo_enddate, 
             quo_items, 
             quo_price, 
             quo_open, 
@@ -19,17 +19,18 @@
         ) VALUES (
             #{quoId}, 
             SYSDATE, 
-            #{quoStart}, 
-            #{quoEnd}, 
+            #{quoStartdate}, 
+            #{quoEnddate}, 
             #{quoItems}, 
             #{quoPrice}, 
             #{quoOpen}, 
-            #{estBlueprint}, 
+            #{quoBlueprint}, 
             #{estId}, 
             #{entBr}, 
             #{remarks}
         )
 	</insert>
+	
 
 
 </mapper>
