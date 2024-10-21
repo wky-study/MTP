@@ -47,7 +47,9 @@ public class KDH_MemberController {
 		member.setMemId(request.getParameter("id"));
 		member.setMemPassword(request.getParameter("pw")); // 암호화된 비밀번호 반영
 		member.setMemName(request.getParameter("name"));
-		member.setMemPhone(request.getParameter("phone"));
+		member.setMemPhone(request.getParameter("birthdate"));
+		member.setMemEmail(request.getParameter("phone"));
+		member.setMemEmail(request.getParameter("address"));
 		member.setMemEmail(request.getParameter("email"));
 
 		System.out.println(member);
@@ -106,7 +108,7 @@ public class KDH_MemberController {
 
 		// DB에 member 전달 후 id가 일치하는 데이터 가져옴 (1개)
 		// members 테이블의 회원 데이터의 각 컬럼 값이
-		// MemberDTO 객체의 각 필드변수에 대입되어 채워짐
+		// KDH_MemberDTO 객체의 각 필드변수에 대입되어 채워짐
 		KDH_MemberDTO login = memberService.loginMember(member);
 		System.out.println(login); // 로그인 실패시 null 값이 리턴됨
 
@@ -156,7 +158,7 @@ public class KDH_MemberController {
 			// redirect:/loginView 를 하면 model의 내용이 사라짐
 			// forward:/loginView 를 하면 현재 메소드의 model, request 값 등이 전달됨
 			// redirect 할 때 데이터 보내는 경우 RedirectAttributes 객체 이용
-			return "redirect:/loginView";
+			return "redirect:/log/loginView";
 		}
 
 		// 로그인 후 홈화면 이동 -> 홈화면("/") 으로 리다이렉트
