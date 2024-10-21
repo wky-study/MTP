@@ -110,7 +110,7 @@
 					<li><a href="${pageContext.request.contextPath}/log/loginView"
 						, class="button special">로그인</a></li>
 				</c:if>
-
+				
 				<c:if test="${sessionScope.login != null }">
 					<li><a href="${pageContext.request.contextPath }/log/loginView"
 						, class="button special">${sessionScope.login.memName}님</a></li>
@@ -130,7 +130,7 @@
 		<ul class="actions">
 			<li><a href="${pageContext.request.contextPath}/estStep1"
 				class="button big">리모델링 견적확인</a></li>
-			<li><a href="ENT_loginView" class="button big"
+			<li><a href="${pageContext.request.contextPath}/#" class="button big"
 				style="background-color: #0faf24c9;">기업회원 바로가기</a></li>
 		</ul>
 

@@ -1,4 +1,3 @@
-
 package com.team.ecobuilders.KDH_member.web;
 
 import javax.servlet.http.Cookie;
@@ -27,6 +26,7 @@ public class KDH_MemberController {
 	public String registView() {
 
 		System.out.println("registView 실행");
+		
 
 		// 회원가입 화면을 응답시킴
 		return "KDH_member/KDH_registView";
@@ -36,9 +36,8 @@ public class KDH_MemberController {
 	@PostMapping("/registDo") // POST 방식 요청만 받음 (위와 같음)
 	public String registDo(HttpServletRequest request) {
 
-		System.out.println(request.getParameter("email"));
+		System.out.println(request.getParameter("id"));
 		System.out.println(request.getParameter("pw"));
-		System.out.println(request.getParameter("name"));
 
 		// 사용자가 입력한 비밀번호
 		String pw = request.getParameter("pw");
@@ -60,22 +59,13 @@ public class KDH_MemberController {
 		return "redirect:/loginView"; // redirect:/ 에서 redirect:/loginView 로 변경
 	}
 
-	@RequestMapping("/ENT_registView")
-	public String ENT_registView() {
-
-		System.out.println("ENT_registView 실행");
-
-		// 기업회원가입 화면을 응답시킴
-		return "KDH_member/ENT_registView";
+	// 화면
+	@RequestMapping("/")
+	public String ecobuilders() {
+		return "/";
 	}
 
-	// 로그인아웃화면 체크중
-	@RequestMapping("/log")
-	public String log() {
-		return "KDH_member/log";
-	}
-
-	@RequestMapping("/log/loginView")
+	@RequestMapping("/loginView")
 	public String loginView(HttpServletRequest request, Model model) {
 
 		// 어느 페이지에서 /loginView 요청을 했는지 확인
@@ -158,25 +148,12 @@ public class KDH_MemberController {
 			// redirect:/loginView 를 하면 model의 내용이 사라짐
 			// forward:/loginView 를 하면 현재 메소드의 model, request 값 등이 전달됨
 			// redirect 할 때 데이터 보내는 경우 RedirectAttributes 객체 이용
-			return "redirect:/log/loginView";
+			return "redirect:/loginView";
 		}
 
 		// 로그인 후 홈화면 이동 -> 홈화면("/") 으로 리다이렉트
 		// 로그인 후 이전 화면으로 이동 -> from 으로 리다이렉트
-		// /log는 테스트화면
-		return "redirect:" + "/log";
-	}
-
-	@RequestMapping("/ENT_loginView")
-	public String ENT_loginView(HttpServletRequest request, Model model) {
-
-		// 어느 페이지에서 /ENT_loginView 요청을 했는지 확인
-		String from = request.getHeader("Referer");
-		System.out.println(from + " 으로부터 요청이 옴");
-
-		model.addAttribute("keyFrom", from);
-
-		return "KDH_member/ENT_loginView";
+		return "redirect:" + "/";
 	}
 
 	// 로그아웃시 실행
@@ -233,7 +210,7 @@ public class KDH_MemberController {
 		// 로그인 정보를 담고 있는 세션 객체 제거(= 로그아웃)
 		session.invalidate();
 
-		return "redirect:/log";
+		return "redirect:/";
 	}
 
 }

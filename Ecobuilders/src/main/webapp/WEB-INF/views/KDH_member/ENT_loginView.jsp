@@ -36,7 +36,7 @@
 					<!-- 회원가입 요청시 서버에서 이를 받아줘야 함 -->
 					<!-- /registDo 주소로 요청시 서버에서 회원가입 진행 -->
 					<!-- 회원가입은 GET 방식으로 하면 문제가 있을 수 있으니 POST 방식 사용 -->
-					<form id="contactForm" action="${pageContext.request.contextPath }/loginDo" method="POST">
+					<form id="contactForm" action="${pageContext.request.contextPath }/ent/ENT_loginDo" method="POST">
 						<!-- /loginDo 로 쏠때, /loginView 를 요청했었던 URL 주소를 같이 보냄 -->
 						<input type="hidden" name="from" value="${keyFrom }">
 						
@@ -46,7 +46,7 @@
 							<!-- 키값으로 사용될 id를 name 속성에 넣어주어야 함 -->
 							<!-- 쿠키에 rememberId가 있으면 값 넣음 -->
 							<input class="form-control" id="inputBr" type="text" name="Br"
-								 value="${cookie.rememberId.value }"  ${cookie.rememberId.value == null ? "autofocus" : "" }  />					
+								 value="${cookie.rememberBr.value }"  ${cookie.rememberBr.value == null ? "autofocus" : "" }  />					
 							<label for="inputBr">사업자번호(-없이작성)</label>
 						</div>
 
@@ -54,15 +54,15 @@
 						<div class="form-floating mb-3">
 							<!-- inputPw의 값이 pw=value 형태로 전송되어야 함. pw를 name속성에 넣어주기 -->
 							<input class="form-control" id="inputPw" type="password" 
-								name="ent_memPassword" ${cookie.rememberId.value != null ? "autofocus" : "" } />
+								name="entPassword" ${cookie.rememberBr.value != null ? "autofocus" : "" } />
 							<label for="inputPw">비밀번호</label>
 						</div>
 
 						<!-- 사업자번호 기억하기 체크박스 -->
 						<div class="form-check mb-3">
-							<!-- 쿠키에 rememberId가 있으면 태그 내에 checked 문구 넣기 -->
-							<!-- ${cookie.rememberId.value != null ? "checked" : "" } -->
-							<input class="form-check-input" type="checkbox" name="rememberId" id="flexCheckDefault" ${cookie.rememberId.value != null ? "checked" : "" } > 
+							<!-- 쿠키에 rememberBr가 있으면 태그 내에 checked 문구 넣기 -->
+							<!-- ${cookie.rememberBr.value != null ? "checked" : "" } -->
+							<input class="form-check-input" type="checkbox" name="rememberBr" id="flexCheckDefault" ${cookie.rememberId.value != null ? "checked" : "" } > 
 							<label class="form-check-label" for="flexCheckDefault"> 사업자번호 기억하기 </label>
 						</div>
 
