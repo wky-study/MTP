@@ -75,46 +75,7 @@
 				</div>
 			</div>
 		</c:forEach>
-		<div class="pd-list">
-			<div class="pd-list-top"></div>
-			<div class="pd-list-bottom"></div>
-		</div>
-		<div class="pd-list">
-			<div class="pd-list-top"></div>
-			<div class="pd-list-bottom"></div>
-		</div>
-		<div class="pd-list">
-			<div class="pd-list-top"></div>
-			<div class="pd-list-bottom"></div>
-		</div>
-		<div class="pd-list">
-			<div class="pd-list-top"></div>
-			<div class="pd-list-bottom"></div>
-		</div>
-		<div class="pd-list">
-			<div class="pd-list-top"></div>
-			<div class="pd-list-bottom"></div>
-		</div>
-		<div class="pd-list">
-			<div class="pd-list-top"></div>
-			<div class="pd-list-bottom"></div>
-		</div>
-		<div class="pd-list">
-			<div class="pd-list-top"></div>
-			<div class="pd-list-bottom"></div>
-		</div>
-		<div class="pd-list">
-			<div class="pd-list-top"></div>
-			<div class="pd-list-bottom"></div>
-		</div>
-		<div class="pd-list">
-			<div class="pd-list-top"></div>
-			<div class="pd-list-bottom"></div>
-		</div>
-		<div class="pd-list">
-			<div class="pd-list-top"></div>
-			<div class="pd-list-bottom"></div>
-		</div>
+
 
 
 	</div>

@@ -15,7 +15,7 @@
 		       , ROW_NUMBER() OVER (ORDER BY ITEM_ID) AS rnum
 		   FROM ITEMS
 		)
-		WHERE rnum BETWEEN 1 AND 9
+		WHERE rnum BETWEEN #{firstRow} AND #{lastRow}
 
 	
 	</select>

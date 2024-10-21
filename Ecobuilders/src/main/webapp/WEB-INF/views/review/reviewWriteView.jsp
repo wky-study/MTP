@@ -18,6 +18,10 @@
 <!-- jquery (AJAX 통신) -->
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 	
+
+<!--Style-->
+<%@ include file= "/WEB-INF/inc/style.jsp" %>
+	
 	
 	<style type="text/css">
 	
@@ -41,12 +45,21 @@
 			color: #ccc;
 		}
 
-
+		#smartEditor{
+			width: 99%;
+			height: 670px;
+		}
+		
+		
 	</style>
 	
 	
 </head>
 <body>
+
+<!-- Header -->
+<%@ include file= "/WEB-INF/inc/header.jsp" %>
+
 
 	<div class="top-box">
 		<span>리뷰 작성</span>		
@@ -73,13 +86,31 @@
 					<!-- form 태그의 submit 역할을 함 -> type=submit 넣어주기 -->
 					<button id="writeBtn" class="btn btn-primary" type="button">등록</button>
 				</div>
+				
+				<input type="text" id="imageFileName" name="imgFileName" hidden="true" >
+				
 			</form>
+			
+			
 			
 		</div>
 	</section>
 	
+	
+<!-- Footer -->
+<%@ include file= "/WEB-INF/inc/footer.jsp" %>
+	
+	
 	<!-- 네이버 스마트 에디터 -->
 	<script type="text/javascript">
+	
+    // 페이지 벗어나기 직전에 스크롤을 최상단에 올리는 코드 넣기
+	window.onload = function(){
+    	setTimeout (function (){
+    		scrollTo(0,0);
+    	}, 100);
+    };
+	
 		var oEditors = [];
 		
 		nhn.husky.EZCreator.createInIFrame({
@@ -87,6 +118,7 @@
 			elPlaceHolder : "smartEditor",  // textarea의 id
 			sSkinURI : "${pageContext.request.contextPath }/nse/SmartEditor2Skin.html"
 			
+
 		});
 		
 		document.getElementById("writeBtn").addEventListener('click', ()=>{
@@ -135,9 +167,15 @@
 				data: v_formData,
 				success: function(resp){
 					// 이미지 태그 생성
-					let imgTag = '<img style="width: 400px" src="';
+					let imgTag = '<img style="width: 800px; display: block; margin-left: auto; margin-right: auto;" src="';
 						imgTag += '${pageContext.request.contextPath}/displayImage?fileName=' + resp;
 						imgTag += '">'; 
+					// 지금 시점에 resp 를 쏘기
+					// 816c1e3e-a785-42da-97ba-462b058edf47
+					console.log(resp);
+					// 이미지 파일 이름을 숨겨진 input에 저장
+					document.getElementById('imageFileName').value = resp; 
+					
 						
 					// 에디터 내부에 이미지 태그 넣기
 					oEditors.getById['smartEditor'].exec("PASTE_HTML", [imgTag]);
@@ -146,7 +184,6 @@
 		}
 		
 	</script>
-	
 	
 </body>
 </html>
