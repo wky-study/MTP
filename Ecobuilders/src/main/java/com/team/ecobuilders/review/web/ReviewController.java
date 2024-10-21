@@ -46,7 +46,7 @@ public class ReviewController {
 	@RequestMapping("/reviewView")
 	public String reviewView(Model model, SearchVO search) {
 		
-		int reviewCount = reviewService.getReviewCount();
+		int reviewCount = reviewService.getReviewCount(search);
 		
 		System.out.println(reviewCount);
 		

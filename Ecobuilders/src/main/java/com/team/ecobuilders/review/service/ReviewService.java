@@ -24,8 +24,8 @@ public class ReviewService {
 	}
 	
 	// ±Û ÃÑ °¹¼ö °¡Á®¿À±â
-	public int getReviewCount() {
-		int result = dao.getReviewCount();
+	public int getReviewCount(SearchVO search) {
+		int result = dao.getReviewCount(search);
 		return result;
 	};
 	

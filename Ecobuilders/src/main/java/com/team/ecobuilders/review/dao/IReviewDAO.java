@@ -14,7 +14,7 @@ public interface IReviewDAO {
 	List<ReviewDTO> getReviewList(SearchVO search);
 	
 	// 리뷰 게시판 글 총 갯수 가져오기
-	int getReviewCount();
+	int getReviewCount(SearchVO search);
 	
 	// 리뷰 게시글 한개 조회 하기
 	ReviewDTO getReview(int no);

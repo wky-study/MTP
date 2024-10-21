@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
@@ -46,7 +47,9 @@ public class KDH_MemberController {
 		member.setMemId(request.getParameter("id"));
 		member.setMemPassword(request.getParameter("pw")); // 암호화된 비밀번호 반영
 		member.setMemName(request.getParameter("name"));
-		member.setMemPhone(request.getParameter("phone"));
+		member.setMemPhone(request.getParameter("birthdate"));
+		member.setMemEmail(request.getParameter("phone"));
+		member.setMemEmail(request.getParameter("address"));
 		member.setMemEmail(request.getParameter("email"));
 
 		System.out.println(member);
@@ -66,7 +69,13 @@ public class KDH_MemberController {
 		return "KDH_member/ENT_registView";
 	}
 
-	@RequestMapping("/loginView")
+	// 로그인아웃화면 체크중
+	@RequestMapping("/log")
+	public String log() {
+		return "KDH_member/log";
+	}
+
+	@RequestMapping("/log/loginView")
 	public String loginView(HttpServletRequest request, Model model) {
 
 		// 어느 페이지에서 /loginView 요청을 했는지 확인
@@ -99,7 +108,7 @@ public class KDH_MemberController {
 
 		// DB에 member 전달 후 id가 일치하는 데이터 가져옴 (1개)
 		// members 테이블의 회원 데이터의 각 컬럼 값이
-		// MemberDTO 객체의 각 필드변수에 대입되어 채워짐
+		// KDH_MemberDTO 객체의 각 필드변수에 대입되어 채워짐
 		KDH_MemberDTO login = memberService.loginMember(member);
 		System.out.println(login); // 로그인 실패시 null 값이 리턴됨
 
@@ -149,12 +158,13 @@ public class KDH_MemberController {
 			// redirect:/loginView 를 하면 model의 내용이 사라짐
 			// forward:/loginView 를 하면 현재 메소드의 model, request 값 등이 전달됨
 			// redirect 할 때 데이터 보내는 경우 RedirectAttributes 객체 이용
-			return "redirect:/loginView";
+			return "redirect:/log/loginView";
 		}
 
 		// 로그인 후 홈화면 이동 -> 홈화면("/") 으로 리다이렉트
 		// 로그인 후 이전 화면으로 이동 -> from 으로 리다이렉트
-		return "redirect:" + "/";
+		// /log는 테스트화면
+		return "redirect:" + "/log";
 	}
 
 	@RequestMapping("/ENT_loginView")
@@ -207,6 +217,23 @@ public class KDH_MemberController {
 		session.setAttribute("login", login);
 
 		return "redirect:/memEditView";
+
+	}
+
+	// 회원삭제 기능 요청
+	@PostMapping("/memDelDo")
+	public String memDelDo(HttpSession session) {
+
+		// 세션에 담긴 로그인 정보를 꺼낸다.
+		KDH_MemberDTO login = (KDH_MemberDTO) session.getAttribute("login");
+
+		// DB에 DELETE문 전송
+		memberService.deleteMember(login.getMemId());
+
+		// 로그인 정보를 담고 있는 세션 객체 제거(= 로그아웃)
+		session.invalidate();
+
+		return "redirect:/log";
 	}
 
 }

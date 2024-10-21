@@ -2,6 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.team.ecobuilders.review.dao.IReviewDAO">
 
+	<sql id="reviewSearch">
+	    <if test="searchWord != null">
+	    	<choose>
+	    		<when test="searchOption == 'title'">AND a.review_title LIKE '%' || #{searchWord} || '%'</when>
+	    		<when test="searchOption == 'content'">AND a.review_content LIKE '%' || #{searchWord} || '%'</when>
+	    		<when test="searchOption == 'name'">AND b.mem_name = #{searchWord} </when>
+	    	</choose>
+	    </if>
+	</sql>
 
 	<!-- 리뷰 게시판 목록 불러오기 -->
 	<select id="getReviewList" resultType="com.team.ecobuilders.review.dto.ReviewDTO" parameterType="com.team.ecobuilders.common.vo.SearchVO">
@@ -23,6 +32,7 @@
 		        WHERE 1=1
 		            AND a.mem_id = b.mem_id(+)
 		            AND a.del_yn = 'N'
+		       	<include refid="reviewSearch"/>
 		        ORDER BY review_no DESC
 		    ) a
 		)
@@ -30,11 +40,13 @@
 	</select>
 
 	<!-- 리뷰 게시판 총 갯수 가져오기 -->
-	<select id="getReviewCount" resultType="int">
+	<select id="getReviewCount" resultType="int" parameterType="com.team.ecobuilders.common.vo.SearchVO">
 		SELECT COUNT(*)
-			FROM review 
-			WHERE 1=1 
-	    AND del_yn = 'N'
+		FROM review a , members b 
+		WHERE 1=1 
+		    AND del_yn = 'N'
+		    AND a.mem_id = b.mem_id(+)
+		    <include refid="reviewSearch"/>
 	</select>
 
 	<!-- 리뷰 게시글 한개 조회 하기 -->
