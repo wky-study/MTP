@@ -10,6 +10,7 @@
 				<li><a href="${pageContext.request.contextPath}/prodView">Products</a></li>
 				<li><a href="${pageContext.request.contextPath}/reviewView">Reviews</a></li>
 				<li><a href="${pageContext.request.contextPath}/loginView" class="button special">Login</a></li>
+				
 			</ul>
 		</nav>
 	</header>

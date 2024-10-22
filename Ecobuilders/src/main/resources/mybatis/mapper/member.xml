@@ -10,9 +10,10 @@
 		      mem_id
 		    , mem_password
 		    , mem_name
+		    , mem_birthdate
 		    , mem_phone
-		    , mem_email
 		    , mem_address
+		    , mem_email
 		FROM 
 			members
 		WHERE 1=1
@@ -30,13 +31,17 @@
 		      mem_id
 		    , mem_password
 		    , mem_name
+		    , mem_birthdate
 		    , mem_phone
+		    , mem_address
 		    , mem_email
 		) VALUES (
 		      #{memId}    
 		    , #{memPassword}
 		    , #{memName}
+		    , #{memBirthdate}
 		    , #{memPhone}
+		    , #{memAddress}
 		    , #{memEmail}
 		)
 	</insert>
@@ -61,7 +66,9 @@
 		      mem_id
 		    , mem_password
 		    , mem_name
+		    , mem_birthdate
 		    , mem_phone
+		    , mem_address
 		    , mem_email
 		FROM 
 			members

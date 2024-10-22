@@ -87,8 +87,7 @@
 	<!-- Header -->
 	
 	<%@ include file= "/WEB-INF/inc/header.jsp" %>
-
-
+	
 
 
 	<!-- Banner -->
