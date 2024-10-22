@@ -68,7 +68,29 @@ public class SearchVO {
 		
 	}
 	
-	public void ProdSetting() {
+	public void prodSetting() {
+		rowSizePerPage = 32;
+		start = rowSizePerPage * (pageNo - 1) + 1;
+		end = rowSizePerPage * pageNo;
+
+		// 화면에 그려질 페이지넘버의 개수가 10개인 경우
+		// pageNo가  1~10 면  1~10 페이지 출력 firstPage = 1 | lastPage = 10
+		// pageNo가 11~20 면 11~20 페이지 출력 firstPage = 11 | lastPage = 20 
+		// pageNo가 21~30 면 21~30 페이지 출력 firstPage = 21 | lastPage = 30 
+		firstPage = ((pageNo - 1) / 10) * 10 + 1;
+		lastPage = firstPage + 9;
+		
+		// 전체 게시글 수가 409개가 있다
+		// 전체 페이지의 수는? 41개 (=마지막 페이지 번호)
+		// 전체 게시글수가 324개가 있다.
+		// 전체 페이지의 수는 33개 
+		// 324 / rowSizePerPage -> 32.4 -> 33 
+		finalPage = (int)Math.ceil((double)reviewCount / rowSizePerPage);
+		 
+		// 계산된 lastPage가 finalPage보다 크다면 동일하게 수정
+		if(lastPage > finalPage) {
+			lastPage = finalPage;
+		}
 		
 	}
 
