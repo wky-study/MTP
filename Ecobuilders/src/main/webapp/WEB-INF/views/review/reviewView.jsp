@@ -8,8 +8,7 @@
 <meta charset="UTF-8">
 <title>리뷰 게시판 목록</title>
 
-<!--Style-->
-<%@ include file= "/WEB-INF/inc/style.jsp" %>
+
 	
  <!-- jQuery 추가 -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -18,48 +17,77 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
+<!--Style-->
+<%@ include file= "/WEB-INF/inc/style.jsp" %>
 
 	<style type="text/css">
 		div{
 			border: 0px solid black;
 		}
 		
+		.container{
+			display: flex;
+			justify-content: center;
+		}
+		
 		.content-box{
 			display: flex;
 			justify-content: center	; 
-			width: 1200px;
+			width: 1800px;
 			flex-wrap: wrap;
 			height: auto; 
 			
 			overflow-y: auto;
 			
-			transition: height 0.5s ease; /* 높이 변화에 애니메이션 추가 */
-			gap: 20px;
+			transition: height 0.5s ease; 
+			gap: 15px;
 			margin: auto;
 		}
 		
 		.card-box{
 			width: calc(100% / 4 + 1px);
 			height: auto;
-			margin: 10px;
-			box-shadow: 0px 0px 5px 2px gray;
-			border-radius: 2px;
+			margin: 5px;
+			border-radius: 5px;
+			overflow: hidden;
+			
+			display: flex;
+			flex-direction: column;
 			
 			cursor: pointer;
 		}
 		
-		.card-box > img {
+		.card-box-img {
 			width: 100%;
-			height: 240px;
+			height: 200px;
 			object-fit: cover;
 		}
 		
-		.card-box > span{
-			display: block;
+		
+		.card-title {
+			font-size: 14px;
+			margin-top: 3px;
+			margin-bottom: 3px;
+			color: rgb(47, 52, 56);
+		}
+		
+		.my-profile-img{
+			margin-left: 5px;
+			height: 20px;
+			width: auto;
+			border-radius: 50%;
+			overflow: hidden;
 		}
 		
 		.card-name {
 			border-top: 0.5px solid #dddddd;
+			
+			margin-top: 3px;
+			margin-bottom: 3px;
+			font-size: 12px;
+			
+			color: rgb(47, 52, 56);
+			
 		}
 		
 		.my-write-btn{
@@ -116,9 +144,11 @@
 			<!-- 게시글 그리기 -->
 			<c:forEach items="${keyReview}" var="ReviewDTO">
 				<div class="card-box" id="cardBox" onclick='window.location.href = "${pageContext.request.contextPath }/reviewDetailView?no=${ReviewDTO.reviewNo}"'>
-					<img src="${pageContext.request.contextPath }/displayImage?fileName=${ReviewDTO.reviewPath}">
+					<img class="card-box-img" src="${pageContext.request.contextPath }/displayImage?fileName=${ReviewDTO.reviewPath}">
 					<span class="card-title">${ReviewDTO.reviewTitle}</span>
-					<span class="card-name">${ReviewDTO.memName}</span>
+					
+					<!-- 맴버 프로필 생긴다면 img 변경하기 -->
+					<span class="card-name"><img class="my-profile-img" src="${pageContext.request.contextPath }/resources/images/profileImg.jpg"> ${ReviewDTO.memName}</span>
 				</div>
 			</c:forEach>
 		</div>
@@ -133,15 +163,15 @@
 			<!-- searchWord가 null이면 a태그의 href에서 searchOption 과 searchWord 떼어내기 -->
 
 	    	<!-- 이전 페이지 -->
-			    <li class="page-item ${keySearch.firstPage == 1 ? 'disabled' : '' }">
+			    <li id="backBtn" class="">
 			    	<c:if test="${keySearch.searchWord != null}">
-				      <a class="page-link" href="${pageContext.request.contextPath }/reviewView?pageNo=${keySearch.firstPage - 1 }&rowSizePerPage=${keySearch.rowSizePerPage}&searchOption=${keySearch.searchOption}&searchWord=${keySearch.searchWord}" aria-label="Previous">
-				        <span aria-hidden="true">&laquo;</span>
+				      <a class="" href="${pageContext.request.contextPath }/reviewView?pageNo=${keySearch.firstPage - 1 }&rowSizePerPage=${keySearch.rowSizePerPage}&searchOption=${keySearch.searchOption}&searchWord=${keySearch.searchWord}" aria-label="Previous">
+				        <span aria-hidden="true">Previous</span>
 				      </a>
 			    	</c:if>
 			    	<c:if test="${keySearch.searchWord == null}">
-				      <a class="page-link" href="${pageContext.request.contextPath }/reviewView?pageNo=${keySearch.firstPage - 1 }&rowSizePerPage=${keySearch.rowSizePerPage}" aria-label="Previous">
-				        <span aria-hidden="true">&laquo;</span>
+				      <a class="" href="${pageContext.request.contextPath }/reviewView?pageNo=${keySearch.firstPage - 1 }&rowSizePerPage=${keySearch.rowSizePerPage}" aria-label="Previous">
+				        <span aria-hidden="true">Previous</span>
 				      </a>
 			    	</c:if>
 			    </li>
@@ -149,21 +179,21 @@
 		    <!-- model에 keySearch 이름으로 searchVO를 담음 -->
 		    <!-- searchVO 내 pageNo, firstPage, lastPage 채워져있음 -->
 			    <c:forEach begin="${keySearch.firstPage }" end="${keySearch.lastPage }" var="num">
-					    <li class="page-item ${keySearch.pageNo == num ? 'active' : '' } ">
+					    <li class=" ${keySearch.pageNo == num ? 'active' : '' } ">
 					    	<c:if test="${keySearch.searchWord != null}">
-							    <a class="page-link" href="${pageContext.request.contextPath }/reviewView?pageNo=${num }&rowSizePerPage=${keySearch.rowSizePerPage}&searchOption=${keySearch.searchOption}&searchWord=${keySearch.searchWord}">${num }</a>
+							    <a class="" href="${pageContext.request.contextPath }/reviewView?pageNo=${num }&rowSizePerPage=${keySearch.rowSizePerPage}&searchOption=${keySearch.searchOption}&searchWord=${keySearch.searchWord}">${num }</a>
 					    	</c:if>						    
 					    	<c:if test="${keySearch.searchWord == null}">
-							    <a class="page-link" href="${pageContext.request.contextPath }/reviewView?pageNo=${num }&rowSizePerPage=${keySearch.rowSizePerPage}">${num }</a>
+							    <a class="" href="${pageContext.request.contextPath }/reviewView?pageNo=${num }&rowSizePerPage=${keySearch.rowSizePerPage}">${num }</a>
 					    	</c:if>						    
 					    </li>
 			    </c:forEach>
 		   
 		    <!-- 다음 페이지 -->
 		    <!-- 마지막 페이지 도달 시 disabled 추가 -->
-			    <li class="page-item ${keySearch.pageNo == keySearch.finalPage ? 'disabled' : ''  }">
-			    	<a id="aTagBtn" class="page-link"  style="cursor: pointer;" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-			    </li>
+		    <li class=" ${keySearch.pageNo == keySearch.finalPage ? 'disabled' : ''  }">
+		    	<a id="aTagBtn" class=""  style="cursor: pointer;" aria-label="Next"><span aria-hidden="true">Next</span></a>
+		    </li>
 
 		    
 		  </ul>
@@ -179,7 +209,7 @@
 			</select>
 
 			<input id="searchWord" class="form-control me-1" type="text" name="searchWord">
-			<button id="searchButton" class="btn btn-primary" type="submit">
+			<button id="searchButton" class="btn btn-primary" type="button">
 				<svg xmlns="http:www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
 					<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12">
 				</svg>
@@ -199,6 +229,21 @@
 	        // 주소창의 URL을 기본 URL로 설정
 	        window.history.replaceState({}, '', baseUrl);
 	    };	
+	</script>
+	
+	<!-- 이전 페이지로 이동 -->
+	<script type="text/javascript">
+		
+		let v_firstPage = "${keySearch.firstPage}";
+		
+		console.log(v_firstPage);
+		
+		if(v_firstPage == 1){
+			document.getElementById("backBtn").classList.add("disabled");
+		}else{
+			document.getElementById("backBtn").classList.remove("disabled");
+		}
+		
 	</script>
 	
 	<!-- 글 작성 script -->
@@ -255,20 +300,31 @@
 		     console.log(v_rowSizePerPage);
 		     
 		     if(v_searchWord == "" ){
-		    	 if(v_lastPage <= 10){
+		    	 if(v_lastPage % 10 != 0){
 		    		 v_aTagBtn.href = "${pageContext.request.contextPath }/reviewView?pageNo=${keySearch.lastPage}";
-		    	 }else if(v_lastPage > 10){
+		    	 }else if(v_lastPage % 10 == 0){
 		    		 v_aTagBtn.href = "${pageContext.request.contextPath }/reviewView?pageNo=${keySearch.lastPage + 1}";
 		    	 }
 		     }else if(v_searchWord != ""){
-		    	 if(v_lastPage <= 10){
+		    	 if(v_lastPage % 10 != 0){
 		    		 v_aTagBtn.href = "${pageContext.request.contextPath }/reviewView?pageNo=${keySearch.lastPage}&rowSizePerPage=${keySearch.rowSizePerPage}&searchOption=${keySearch.searchOption}&searchWord=${keySearch.searchWord}";
-		    	 }else if(v_lastPage > 10){
+		    	 }else if(v_lastPage % 10 == 0){
 		    		 v_aTagBtn.href = "${pageContext.request.contextPath }/reviewView?pageNo=${keySearch.lastPage + 1}&rowSizePerPage=${keySearch.rowSizePerPage}&searchOption=${keySearch.searchOption}&searchWord=${keySearch.searchWord}";
 		    	 }
 		     }
 			
 		})
+		
+		/* 인풋태그 엔터 입력시 반응 */
+		let v_searchButton = document.getElementById("searchButton");
+		
+		document.addEventListener("keydown", ()=>{
+			if (event.key === "Enter"){
+				v_searchButton.click();
+			}
+			
+		})
+		
 		
 	</script>
 

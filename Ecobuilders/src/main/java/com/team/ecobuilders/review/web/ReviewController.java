@@ -154,9 +154,42 @@ public class ReviewController {
 		return "review/reviewDetailView";
 	}
 	
+	// 리뷰게시판 글 수정 화면
+	@PostMapping("/reviewEditView")
+	public String reviewEditView(int no, Model model) {
+		
+		try {
+			ReviewDTO review = reviewService.getReview(no);
+			model.addAttribute("keyReview", review);
+		} catch (BizNotFoundException e) {
+			e.printStackTrace();
+			return "errPage";
+		}
+		
+		return "review/reviewEditView";
+	}
 	
+	// 자유게시판 글 수정 등록
+	@PostMapping("/reviewEditDo")
+	public String reviewEditDo(ReviewDTO review) {
+		
+		System.out.println(review);
+		
+		reviewService.updateReview(review);
+		
+		return "redirect:/reviewDetailView?no=" + review.getReviewNo();
+		
+	}
 	
-	
+	// 자유게시판 글 삭제
+	@PostMapping("/reviewDeleteDo")
+	public String reviewDeleteDo(int no) {
+		
+		reviewService.deleteReview(no);
+		
+		return "redirect:/reviewView";
+		
+	}
 	
 	
 	

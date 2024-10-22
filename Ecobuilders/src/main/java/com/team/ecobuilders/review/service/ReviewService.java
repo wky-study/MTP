@@ -52,5 +52,18 @@ public class ReviewService {
 		return result;
 	};
 	
+	// 리뷰게시글 수정
+	public int updateReview(ReviewDTO review) {
+		int result = dao.updateReview(review);
+		return result;
+		
+	}
+	
+	// 리뷰 게시글 삭제
+	public int deleteReview(int reviewNo) {
+		int result = dao.deleteReview(reviewNo);
+		return result;
+	};
+	
 	
 }
