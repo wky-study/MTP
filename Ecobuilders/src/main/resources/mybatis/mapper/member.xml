@@ -10,10 +10,11 @@
 		      mem_id
 		    , mem_password
 		    , mem_name
-		    , mem_birthdate
 		    , mem_phone
 		    , mem_address
 		    , mem_email
+		    , mem_date
+		    , mem_admin
 		FROM 
 			members
 		WHERE 1=1
@@ -31,18 +32,20 @@
 		      mem_id
 		    , mem_password
 		    , mem_name
-		    , mem_birthdate
 		    , mem_phone
 		    , mem_address
 		    , mem_email
+		    , mem_date
+		    , mem_admin
 		) VALUES (
 		      #{memId}    
 		    , #{memPassword}
 		    , #{memName}
-		    , #{memBirthdate}
 		    , #{memPhone}
 		    , #{memAddress}
 		    , #{memEmail}
+		    , #{memDate}
+		    , #{memAdmin}
 		)
 	</insert>
 	
@@ -53,7 +56,10 @@
 		UPDATE members
 		SET mem_name = #{memName}
 		  , mem_phone = #{memPhone}
+		  , mem_address = #{memAddress}
 		  , mem_email = #{memEmail}
+		  , mem_date = #{memDate}
+		  , mem_admin = #{memAdmin}
 		<if test="memPassword.isEmpty() == false">
 		  , mem_password = #{memPassword}
 		</if>
@@ -66,10 +72,11 @@
 		      mem_id
 		    , mem_password
 		    , mem_name
-		    , mem_birthdate
 		    , mem_phone
 		    , mem_address
 		    , mem_email
+		    , mem_date
+		    , mem_admin
 		FROM 
 			members
 		WHERE 1=1

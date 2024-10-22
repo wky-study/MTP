@@ -46,16 +46,10 @@
 								name="name" /> <label for="inputName">이름</label>
 						</div>
 
-						<!-- 생년월일 input-->
-						<div class="form-floating mb-3">
-							<input class="form-control" id="inputBd" type="text" name="Bd" />
-							<label for="inputBd">생년월일</label>
-						</div>
-
-						<!-- 휴대폰 번호 input -->
+						<!-- 전화번호 input -->
 						<div class="form-floating mb-3">
 							<input class="form-control" id="inputPhone" type="tel"
-								name="phone" /> <label for="inputPhone">휴대폰 번호</label>
+								name="phone" /> <label for="inputPhone">전화번호</label>
 						</div>
 
 						<!-- 주소 input -->
@@ -69,10 +63,11 @@
 							<input class="form-control" id="inputEmail" type="email"
 								name="email" /> <label for="inputEmail">이메일</label>
 						</div>
+						
 
 						<!-- Submit Button-->
 						<button class="btn btn-primary btn-xl" id="submitButton"
-							type="submit">회원가입</button>
+							type="submit">일반회원가입</button>
 					</form>
 				</div>
 			</div>
