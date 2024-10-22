@@ -1,5 +1,9 @@
 package com.team.ecobuilders.KDH_member.web;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,6 +36,13 @@ public class KDH_MemberController {
 		return "KDH_member/KDH_registView";
 
 	}
+	
+    public void registerMember(KDH_MemberDTO member, String joinDateString) {
+    	SimpleDateFormat Timestamp = new SimpleDateFormat("yyyy년 MM월 dd일");
+    	Date memdate = new Date();
+    	String date = Timestamp.format(memdate);
+
+    }
 
 	@PostMapping("/registDo") // POST 방식 요청만 받음 (위와 같음)
 	public String registDo(HttpServletRequest request) {
@@ -46,10 +57,11 @@ public class KDH_MemberController {
 		member.setMemId(request.getParameter("id"));
 		member.setMemPassword(request.getParameter("pw")); // 암호화된 비밀번호 반영
 		member.setMemName(request.getParameter("name"));
-		member.setMemPhone(request.getParameter("birthdate"));
-		member.setMemEmail(request.getParameter("phone"));
-		member.setMemEmail(request.getParameter("address"));
+		member.setMemPhone(request.getParameter("phone"));
+		member.setMemAddress(request.getParameter("address"));
 		member.setMemEmail(request.getParameter("email"));
+
+		member.setMemAdmin(request.getParameter("admin"));
 
 		System.out.println(member);
 
