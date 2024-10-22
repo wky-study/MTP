@@ -138,7 +138,24 @@
 			
 			<!-- 바디 부분 -->
 			<div class="d-block">
-				<h1>${keyReview.reviewTitle }</h1>
+				<div>
+					<h1>${keyReview.reviewTitle }</h1>
+					<c:if test="${ sessionScope.login.memId == keyReview.memId && sessionScope.login.memId != null}">
+						<form action="${pageContext.request.contextPath }/reviewEditView" method="POST">
+							<input type="hidden" value="${keyreview.reviewNo}" name="no">
+							<button class="btn btn-warning" type="submit">수정</button>
+						</form>
+					</c:if>
+	
+					<c:if test="${ sessionScope.login.memId == keyReview.memId && sessionScope.login.memId != null}">  <!-- << 추가하기 || sessionScope.login.memLv == '0' -->
+						<form id="delForm" action="${pageContext.request.contextPath }/reviewDeleteDo" method="POST">
+							<input type="hidden" value="${keyreview.reviewNo}" name="no">
+							<button id="delBtn" class="btn btn-danger ms-2" type="button">삭제</button>
+						</form>
+						
+					</c:if>					
+				</div>
+				
 				<div class="d-flex justify-content-between align-items-center mb-3 mt-3">
 					<h4 class="my-h4"><img class="my-profile-img" src="${pageContext.request.contextPath }/resources/images/profileImg.jpg"> ${keyReview.memName}</h4>
 					<button type="button" class="btn btn-info">팔로우</button>
@@ -360,7 +377,17 @@
 		
 	}	
 	
-	/* 대댓글 */
+	/* 게시글 삭제 경고 창 */
+	let v_delForm = document.getElementById("delForm");
+	
+	if(document.getElementById("delBtn")){
+		document.getElementById("delBtn").addEventListener("click", ()=>{
+			/*  삭제 확인 메시지를 띄움 */
+			if(confirm("정말로 삭제하시겠습니까?")){
+				v_delForm.submit();  // submit 버튼을 누른것과 동일
+			};
+		})
+	}
 	
 	
 	

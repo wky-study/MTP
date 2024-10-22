@@ -191,9 +191,9 @@
 		   
 		    <!-- 다음 페이지 -->
 		    <!-- 마지막 페이지 도달 시 disabled 추가 -->
-			    <li class=" ${keySearch.pageNo == keySearch.finalPage ? 'disabled' : ''  }">
-			    	<a id="aTagBtn" class=""  style="cursor: pointer;" aria-label="Next"><span aria-hidden="true">Next</span></a>
-			    </li>
+		    <li class=" ${keySearch.pageNo == keySearch.finalPage ? 'disabled' : ''  }">
+		    	<a id="aTagBtn" class=""  style="cursor: pointer;" aria-label="Next"><span aria-hidden="true">Next</span></a>
+		    </li>
 
 		    
 		  </ul>

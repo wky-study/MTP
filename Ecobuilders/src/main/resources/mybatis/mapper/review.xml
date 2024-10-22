@@ -26,7 +26,7 @@
 		            , NVL(b.mem_name, '탈퇴한 회원') AS mem_name
 		            , a.review_content 
 		            , a.review_path
-		            , TO_CHAR(review_date,'MM-DD HH24:MI') AS review_date
+		            , TO_CHAR(review_date,'YYYY-MM-DD HH24:MI') AS review_date
 		            , a.review_count
 		        FROM review a , members b
 		        WHERE 1=1
@@ -102,8 +102,24 @@
 			AND review_no = #{no}
 	</update>
 
+	<!-- 리뷰게시글 수정 -->
+	<update id="updateReview" parameterType="com.team.ecobuilders.review.dto.ReviewDTO">
+		UPDATE review 
+		SET
+		      review_title = #{reviewTitle}
+		    , review_content = #{reviewContent}
+		WHERE 1=1
+		    AND review_no = #{reviewNo}	
+	</update>
 
-
+	<!-- 리뷰게시판 글 삭제 -->
+	<update id="deleteReview">
+		UPDATE review
+		SET
+			del_yn = 'Y'
+		WHERE 1=1
+			AND review_no = #{reviewNo}
+	</update>
 
 
 
