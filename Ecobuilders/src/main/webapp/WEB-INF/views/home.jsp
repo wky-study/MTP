@@ -111,52 +111,54 @@
 		</header>
 
 		<div class="container">
+			<form id="searchForm" class="d-flex" action="${pageContext.request.contextPath }/prodView" method="GET" >
 			<div class="" style="justify-content: center; display: flex; text-align: center;">
-				<div class=" ">
-					<div class="product">
+				
+					<div class="product" data-category="창호">
 						<h3 style=" line-height: 150px; color: white;">창호 교체</h3>
 					</div>
-				</div>
-				<div class=" ">
-					<div class="product">
+				
+				
+					<div class="product" data-category="환기장치">
 						<h3 style=" line-height: 150px; color: white;">환기 장치</h3>
 					</div>
-				</div>
-				<div class=" ">
-					<div class="product">
+				
+				
+					<div class="product" data-category="냉난방장치">
 						<h3 style=" line-height: 150px; color: white;">냉난방 장치</h3>
 					</div>
-				</div>
-				<div class=" ">
-					<div class="product">
+				
+				
+					<div class="product" data-category="단열보강재">
 						<h3 style=" line-height: 150px; color: white;">단열 보강</h3>
 					</div>
-				</div>
+				
 			</div>
 			<div class="container" style="padding-bottom: 100px;">
 				<div class="" style="justify-content: center; display: flex; text-align: center;">
-					<div class=" ">
-						<div class="product">
+					
+						<div class="product" data-category="조명">
 							<h3 style=" line-height: 150px; color: white;">조명(LED)</h3>
 						</div>
-					</div>
-					<div class=" ">
-						<div class="product">
+					
+					
+						<div class="product" data-category="태양광패널">
 							<h3 style=" line-height: 150px; color: white;">태양광 패널</h3>
 						</div>
-					</div>
-					<div class=" ">
-						<div class="product">
+					
+					
+						<div class="product" data-category="차열도료">
 							<h3 style=" line-height: 150px; color: white;">차열 도료</h3>
 						</div>
-					</div>
-					<div class=" ">
-						<div class="product">
+					
+					
+						<div class="product" data-category="일사조절장치">
 							<h3 style=" line-height: 150px; color: white;">일사조절장치</h3>
 						</div>
-					</div>
+					
 				</div>
 			</div>
+			</form>
 	</section>
 
 	<!-- Reviews -->
@@ -166,33 +168,17 @@
 			<h2 style="padding-top: 100px;">Reviews</h2>
 		</header>
 		<div class="reviews-container">
-			<div class="reviews-in">
-				<div class="reviews-img" >
-					<img src="./images/window_icon.jpg" class="img-in" alt="">
+			<c:forEach items="${keyReview}" var="ReviewDTO">
+				<div class="reviews-in">
+					<div class="reviews-img" id="cardBox" onclick='window.location.href = "${pageContext.request.contextPath }/reviewDetailView?no=${ReviewDTO.reviewNo}"'>
+						<img src="${pageContext.request.contextPath }/displayImage?fileName=${ReviewDTO.reviewPath}" class="img-in" alt=""onerror="this.src='resources/images/window_icon.jpg'">
+					</div>
+					<div class="reviews-contents" id="cardBox" onclick='window.location.href = "${pageContext.request.contextPath }/reviewDetailView?no=${ReviewDTO.reviewNo}"'>
+						<h3 style="margin: 0; padding-left: 10px;">${ReviewDTO.reviewTitle}</h3>
+						<h4 style="margin-top: 5px; padding-left: 10px">${ReviewDTO.memName}</h4>
+					</div>
 				</div>
-				<div class="reviews-contents">
-					<h3 style="margin: 0; padding-left: 10px;">시공사</h3>
-					<h4 style="margin-top: 5px; padding-left: 10px">리뷰 내용 ...</h4>
-				</div>
-			</div>
-			<div class="reviews-in">
-				<div class="reviews-img" >
-					<img src="./images/window_icon.jpg" class="img-in" alt="">
-				</div>
-				<div class="reviews-contents">
-					<h3 style="margin: 0; padding-left: 10px;">시공사</h3>
-					<h4 style="margin-top: 5px; padding-left: 10px">리뷰 내용 ...</h4>
-				</div>
-			</div>
-			<div class="reviews-in">
-				<div class="reviews-img" >
-					<img src="./images/window_icon.jpg" class="img-in" alt="">
-				</div>
-				<div class="reviews-contents">
-					<h3 style="margin: 0; padding-left: 10px;">시공사</h3>
-					<h4 style="margin-top: 5px; padding-left: 10px">리뷰 내용 ...</h4>
-				</div>
-			</div>
+			</c:forEach>
 		</div>
 	</section>
 
@@ -203,6 +189,21 @@
 		<%@ include file= "/WEB-INF/inc/footer.jsp" %>
 	
 
+		<script type="text/javascript">
+		 	document.querySelectorAll('.product').forEach(function(banner) {
+		        banner.addEventListener('click', function() {
+		            // 클릭된 배너의 data-category 속성 값 가져오기
+		            var category = this.getAttribute('data-category');
+		            
+		            // 페이지 이동 (카테고리를 쿼리 파라미터로 넘김)
+		            window.location.href = '${pageContext.request.contextPath}/prodView?searchOption=category&searchWord='+category;
+		        });
+		    });
+		
+		</script>
+
 </body>
+
+
 
 </html>
