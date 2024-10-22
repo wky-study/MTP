@@ -64,9 +64,9 @@
                 <td>작성된 날짜</td>
                 <td><input type="date" name="quoDate" class="input-box" /></td>
                 <td>시공 시작 날짜</td>
-                <td><input type="date" name="quoStart" class="input-box" /></td>
+                <td><input type="date" name="quoStartdate" class="input-box" /></td>
                 <td>시공 종료 날짜</td>
-                <td><input type="date" name="quoEnd" class="input-box" /></td>
+                <td><input type="date" name="quoEnddate" class="input-box" /></td>
             </tr>
             <tr>
                 <td style="height: 50px;">고객 정보</td>
