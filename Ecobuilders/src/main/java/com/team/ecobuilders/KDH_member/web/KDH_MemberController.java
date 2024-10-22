@@ -35,17 +35,15 @@ public class KDH_MemberController {
 		// 회원가입 화면을 응답시킴
 		return "KDH_member/KDH_registView";
 
-	}
-	
-    public void registerMember(KDH_MemberDTO member, String joinDateString) {
-    	SimpleDateFormat Timestamp = new SimpleDateFormat("yyyy년 MM월 dd일");
-    	Date memdate = new Date();
-    	String date = Timestamp.format(memdate);
-
-    }
+	}   
 
 	@PostMapping("/registDo") // POST 방식 요청만 받음 (위와 같음)
 	public String registDo(HttpServletRequest request) {
+		
+		//	오늘 날짜 받아오기	->	교안, chatgpt써도되고
+		//	날짜 형식이 뭔지는 모르겠는데 -> TimeStamp타입으로 바꿔주기
+		//	문제생기면 바로 물어봐
+
 
 		System.out.println(request.getParameter("id"));
 		System.out.println(request.getParameter("pw"));
@@ -56,20 +54,27 @@ public class KDH_MemberController {
 		KDH_MemberDTO member = new KDH_MemberDTO();
 		member.setMemId(request.getParameter("id"));
 		member.setMemPassword(request.getParameter("pw")); // 암호화된 비밀번호 반영
-		member.setMemName(request.getParameter("name"));
-		member.setMemPhone(request.getParameter("phone"));
-		member.setMemAddress(request.getParameter("address"));
-		member.setMemEmail(request.getParameter("email"));
+        member.setMemName(request.getParameter("name"));
+        member.setMemPhone(request.getParameter("phone"));
+        member.setMemAddress(request.getParameter("address"));
+        member.setMemEmail(request.getParameter("email"));
+        member.setMemAdmin("1");
 
-		member.setMemAdmin(request.getParameter("admin"));
+        try {
+            // 문자열을 Date로 변환
+        	Timestamp date = new Timestamp(new Date().getTime());
+        	System.out.println(date);
+            member.setMemDate(date);
+        } catch (Exception e) {
+            e.printStackTrace();
+            // 예외 처리 로직 추가
+        }
 
-		System.out.println(member);
+        // DB에 해당 회원정보를 저장 -> mybatis 사용
+        memberService.insertMember(member);
 
-		// DB에 해당 회원정보를 저장 -> mybatis 사용
-		memberService.insertMember(member);
-
-		return "redirect:/loginView"; // redirect:/ 에서 redirect:/loginView 로 변경
-	}
+        return "redirect:/loginView"; // redirect:/ 에서 redirect:/loginView 로 변경
+    }
 
 	// 화면
 	@RequestMapping("/")

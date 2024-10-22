@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -63,6 +64,11 @@ public class KDH_MemberService {
 
 		int result = dao.deleteMember(memId);
 
+		return result;
+	}
+	
+	public List<KDH_MemberDTO> getMemList(){
+		List<KDH_MemberDTO> result = dao.getMemList();
 		return result;
 	}
 }

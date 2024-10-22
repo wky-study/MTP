@@ -1,5 +1,7 @@
 package com.team.ecobuilders.KDH_member.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.team.ecobuilders.KDH_member.dto.KDH_MemberDTO;
@@ -26,5 +28,8 @@ public interface KDH_IMemberDAO {
 	
 	// 회원탈퇴 메소드
 	int deleteMember(String memId);
+	
+	// 회원 리스트
+	List<KDH_MemberDTO> getMemList();
 	
 }
