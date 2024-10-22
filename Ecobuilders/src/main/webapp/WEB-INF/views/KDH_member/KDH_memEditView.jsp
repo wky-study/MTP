@@ -10,7 +10,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>회원수정</title>
+<title>일반회원수정</title>
 
 <!-- header 부분 -->
 
@@ -68,18 +68,32 @@
 								name="memPassword" /> <label for="inputPw">비밀번호</label>
 						</div>
 
-						<!-- 닉네임 input-->
+						<!-- 이름 input-->
 						<div class="form-floating mb-3">
 							<input class="form-control" id="inputName" type="text"
 								name="memName" value="${sessionScope.login.memName }" /> <label
-								for="inputName">닉네임</label>
+								for="inputName">이름</label>
 						</div>
 
-						<!-- 휴대폰 번호 input -->
+						<!-- 생년월일 input -->
+						<div class="form-floating mb-3">
+							<input class="form-control" id="inputBirthdate" type="text"
+								name="memBirthdate" value="${sessionScope.login.memBirthdate }" /> <label
+								for="inputBirthdate">생년월일</label>
+						</div>
+						
+						<!-- 전화번호 input -->
 						<div class="form-floating mb-3">
 							<input class="form-control" id="inputPhone" type="tel"
 								name="memPhone" value="${sessionScope.login.memPhone }" /> <label
-								for="inputPhone">휴대폰 번호</label>
+								for="inputPhone">전화번호</label>
+						</div>
+						
+						<!-- 주소 input -->
+						<div class="form-floating mb-3">
+							<input class="form-control" id="inputAddress" type="text"
+								name="memAddress" value="${sessionScope.login.memAddress }" /> <label
+								for="inputAddress">주소</label>
 						</div>
 
 						<!-- 이메일 input -->

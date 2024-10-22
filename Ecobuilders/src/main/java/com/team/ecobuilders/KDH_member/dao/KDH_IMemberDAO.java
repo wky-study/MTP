@@ -1,5 +1,7 @@
 package com.team.ecobuilders.KDH_member.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.team.ecobuilders.KDH_member.dto.KDH_MemberDTO;
@@ -12,8 +14,6 @@ public interface KDH_IMemberDAO {
 	
 	// 회원가입 메소드
 	// insert, update, delete의 경우 return 타입을 int 로 한다.
-	// insert 쿼리문에 들어갈 id, pw, name, phone, email 값이 파라미터로 들어와야 한다.
-	// -> MemberDTO 는 id, pw, name, phone, email 에 대한 값을 필드변수에 담을 수 있음
 	int insertMember(KDH_MemberDTO member);
 
 	// 로그인 메소드
@@ -29,7 +29,7 @@ public interface KDH_IMemberDAO {
 	// 회원탈퇴 메소드
 	int deleteMember(String memId);
 	
-	// 회원 프로필 사진 수정 메소드 (UPDATE)
-	int updateProfile(KDH_MemberDTO member);
+	// 회원 리스트
+	List<KDH_MemberDTO> getMemList();
 	
 }
