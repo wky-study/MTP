@@ -87,5 +87,4 @@ public class ENT_MemberDTO {
 			this.entEmail = entEmail;
 		}
 		
-
 	}

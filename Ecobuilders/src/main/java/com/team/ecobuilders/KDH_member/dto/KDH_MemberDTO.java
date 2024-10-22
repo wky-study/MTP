@@ -1,34 +1,39 @@
 package com.team.ecobuilders.KDH_member.dto;
 
+import java.sql.Timestamp;
+
 public class KDH_MemberDTO {
   
 	private String memId;
 	private String memPassword;
 	private String memName;
-	private String memBirthdate;
 	private String memPhone;
 	private String memAddress;
 	private String memEmail;
-  
+	private Timestamp memDate;
+	private String memAdmin;
+	
 	public KDH_MemberDTO() {
 	}
 
-	public KDH_MemberDTO(String memId, String memPassword, String memName, String memBirthdate, String memPhone, String memAddress,
-			String memEmail) {
+	public KDH_MemberDTO(String memId, String memPassword, String memName, String memPhone, String memAddress,
+			String memEmail, Timestamp memDate, String memAdmin) {
 		super();
 		this.memId = memId;
 		this.memPassword = memPassword;
 		this.memName = memName;
-		this.memBirthdate = memBirthdate;
 		this.memPhone = memPhone;
 		this.memAddress = memAddress;
 		this.memEmail = memEmail;
-		
+		this.memDate = memDate;
+		this.memAdmin = memAdmin;
 	}
 
+	@Override
 	public String toString() {
-		return "KDH_MemberDTO [memId=" + memId + ", memPassword=" + memPassword + ", memName=" + memName + ", memBirthdate=" + memBirthdate + ", memPhone="
-				+ memPhone + ", memAddress=" + memAddress + ", memEmail=" + memEmail + "]";
+		return "KDH_MemberDTO [memId=" + memId + ", memPassword=" + memPassword + ", memName=" + memName + ", memPhone="
+				+ memPhone + ", memAddress=" + memAddress + ", memEmail=" + memEmail + ", memDate=" + memDate
+				+ ", memAdmin=" + memAdmin + "]";
 	}
 
 	public String getMemId() {
@@ -54,14 +59,6 @@ public class KDH_MemberDTO {
 	public void setMemName(String memName) {
 		this.memName = memName;
 	}
-	
-	public String getMemBirthdate() {
-		return memBirthdate;
-	}
-
-	public void setMemBirthdate(String memBirthdate) {
-		this.memBirthdate = memBirthdate;
-	}
 
 	public String getMemPhone() {
 		return memPhone;
@@ -86,6 +83,21 @@ public class KDH_MemberDTO {
 	public void setMemEmail(String memEmail) {
 		this.memEmail = memEmail;
 	}
-	
 
+	public Timestamp getMemDate() {
+		return memDate;
+	}
+
+	public void setMemDate(Timestamp memDate) {
+		this.memDate = memDate;
+	}
+
+	public String getMemAdmin() {
+		return memAdmin;
+	}
+
+	public void setMemAdmin(String memAdmin) {
+		this.memAdmin = memAdmin;
+	}
+	
 }
