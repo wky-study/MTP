@@ -138,18 +138,21 @@
 			
 			<!-- 바디 부분 -->
 			<div class="d-block">
-				<div>
+				<div class="d-flex justify-content-between">
 					<h1>${keyReview.reviewTitle }</h1>
+					<span>${keyReview.reviewDate }</span>
+				</div>
+				<div class="d-flex justify-content-end">
 					<c:if test="${ sessionScope.login.memId == keyReview.memId && sessionScope.login.memId != null}">
 						<form action="${pageContext.request.contextPath }/reviewEditView" method="POST">
-							<input type="hidden" value="${keyreview.reviewNo}" name="no">
+							<input type="hidden" value="${keyReview.reviewNo}" name="no">
 							<button class="btn btn-warning" type="submit">수정</button>
 						</form>
 					</c:if>
 	
 					<c:if test="${ sessionScope.login.memId == keyReview.memId && sessionScope.login.memId != null}">  <!-- << 추가하기 || sessionScope.login.memLv == '0' -->
 						<form id="delForm" action="${pageContext.request.contextPath }/reviewDeleteDo" method="POST">
-							<input type="hidden" value="${keyreview.reviewNo}" name="no">
+							<input type="hidden" value="${keyReview.reviewNo}" name="no">
 							<button id="delBtn" class="btn btn-danger ms-2" type="button">삭제</button>
 						</form>
 						

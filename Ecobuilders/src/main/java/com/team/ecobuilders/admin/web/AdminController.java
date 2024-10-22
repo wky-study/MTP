@@ -28,9 +28,8 @@ public class AdminController {
 	@RequestMapping("adminView")
 	public String adminView(Model model, SearchVO search) {
 		
-		// 밑에 만들어야함 회원 수정
-		// List<KDH_MemberDTO> memList = memService.getMemList();
-		// model.addAttribute("keyMemList" , memList);
+		List<KDH_MemberDTO> memList = memService.getMemList();
+		model.addAttribute("keyMemList" , memList);
 		
 		// ToDay
 		int reviewCount = reviewService.getReviewCount(search);

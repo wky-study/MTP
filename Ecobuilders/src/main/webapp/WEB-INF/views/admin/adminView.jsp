@@ -67,7 +67,6 @@
 							<th scope="col">핸드폰</th>
 							<th scope="col">이메일</th>
 							<th scope="col">등급</th>
-							<th scope="col">권한변경</th>
 							<th scope="col">계정삭제</th>
 						</tr>
 					</thead>
@@ -81,32 +80,17 @@
 								<td>${memberDTO.memPhone }</td>
 								<td>${memberDTO.memEmail }</td>
 
-								<c:if test="${memberDTO.memLv == '1' }">
+								<c:if test="${memberDTO.memAdmin == '1' }">
 									<td>일반</td>
 								</c:if>
-								<c:if test="${memberDTO.memLv == '0' }">
+								<c:if test="${memberDTO.memAdmin == '0' }">
 									<td>관리자</td>
 								</c:if>
 
-								<c:if test="${memberDTO.memLv == '1'}">
-									<td><button class="btn btn-primary"
-											onclick="f_edit('${memberDTO.memId }')" type="button">추가</button></td>
+								<c:if test="${memberDTO.memAdmin == '1' }">
+									<td><button class="btn btn-danger" onclick="f_delete('${memberDTO.memId }')" type="button">삭제</button></td>
 								</c:if>
-								<c:if
-									test="${memberDTO.memLv == '0' && memberDTO.memId != 'admin'}">
-									<td><button class="btn btn-warning"
-											onclick="f_out('${memberDTO.memId }')" type="button">제거</button></td>
-								</c:if>
-
-								<c:if test="${memberDTO.memId == 'admin' }">
-									<td></td>
-								</c:if>
-
-								<c:if test="${memberDTO.memId != 'admin' }">
-									<td><button class="btn btn-danger"
-											onclick="f_delete('${memberDTO.memId }')" type="button">삭제</button></td>
-								</c:if>
-								<c:if test="${memberDTO.memId == 'admin' }">
+								<c:if test="${memberDTO.memAdmin == '0' }">
 									<td>관리자</td>
 								</c:if>
 							</tr>
