@@ -7,5 +7,6 @@
 	
 	<typeAliases>
 		<typeAlias type="com.team.ecobuilders.KDH_member.dto.KDH_MemberDTO" alias="KDH_MemberDTO"/>
+		<typeAlias type="com.team.ecobuilders.ENT_member.dto.ENT_MemberDTO" alias="ENT_MemberDTO"/>
 	</typeAliases>
 </configuration>

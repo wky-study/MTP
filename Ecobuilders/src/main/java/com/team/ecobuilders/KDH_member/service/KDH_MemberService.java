@@ -64,14 +64,6 @@ public class KDH_MemberService {
 		int result = dao.deleteMember(memId);
 		
 		return result;
-	}
-	
-	
-	// 회원 프로필 이미지 반영 메소드
-	public int updateProfile(KDH_MemberDTO member) {
-		int result = dao.updateProfile(member);
-		return result;
-	}
-	
+	}	
 	
 }

@@ -1,10 +1,11 @@
 package com.team.ecobuilders.KDH_member.dto;
+
 public class KDH_MemberDTO {
   
 	private String memId;
 	private String memPassword;
 	private String memName;
-	private String membirthdate;
+	private String memBirthdate;
 	private String memPhone;
 	private String memAddress;
 	private String memEmail;
@@ -18,7 +19,7 @@ public class KDH_MemberDTO {
 		this.memId = memId;
 		this.memPassword = memPassword;
 		this.memName = memName;
-		this.memName = memBirthdate;
+		this.memBirthdate = memBirthdate;
 		this.memPhone = memPhone;
 		this.memAddress = memAddress;
 		this.memEmail = memEmail;
@@ -26,7 +27,7 @@ public class KDH_MemberDTO {
 	}
 
 	public String toString() {
-		return "KDH_MemberDTO [memId=" + memId + ", memPassword=" + memPassword + ", memName=" + memName + ", memPhone="
+		return "KDH_MemberDTO [memId=" + memId + ", memPassword=" + memPassword + ", memName=" + memName + ", memBirthdate=" + memBirthdate + ", memPhone="
 				+ memPhone + ", memAddress=" + memAddress + ", memEmail=" + memEmail + "]";
 	}
 
@@ -52,6 +53,14 @@ public class KDH_MemberDTO {
 
 	public void setMemName(String memName) {
 		this.memName = memName;
+	}
+	
+	public String getMemBirthdate() {
+		return memBirthdate;
+	}
+
+	public void setMemBirthdate(String memBirthdate) {
+		this.memBirthdate = memBirthdate;
 	}
 
 	public String getMemPhone() {
