@@ -92,8 +92,8 @@
         <section class="card">
             <a href="${pageContext.request.contextPath}/estimateDetailView" style="text-decoration: none; color: inherit;">
                 <div class="thumbnail">
-                    <!-- 썸네일 이미지 (주석 처리됨) -->
-                    
+                    <!-- 견적서가 썸네일로 나타나게 하기까지 해보기(안되면 아쉽고) -->
+                    <!-- 글제목이랑 글번호쪽 수정해야함 -->
                 </div>
                 <div class="title">${cjs.post_no }</div>
                 <div class="title">${cjs.post_title }</div>
@@ -105,7 +105,7 @@
         <section class="card">
             <a href="${pageContext.request.contextPath}/estimateDetailView" style="text-decoration: none; color: inherit;">
                 <div class="thumbnail">
-                    <!-- 썸네일 이미지 (주석 처리됨) -->
+                    <!-- 견적서가 썸네일로 나타나게 하기까지 해보기(안되면 아쉽고) -->
                 </div>
                 <div class="title">${cjs.post_no }</div>
                 <div class="title">${cjs.post_title }</div>
@@ -117,7 +117,7 @@
         <section class="card">
             <a href="${pageContext.request.contextPath}/estimateDetailView" style="text-decoration: none; color: inherit;">
                 <div class="thumbnail">
-                    <!-- 썸네일 이미지 (주석 처리됨) -->
+                    <!-- 견적서가 썸네일로 나타나게 하기까지 해보기(안되면 아쉽고) -->
                 </div>
                 <div class="title">글 제목 3</div>
                 <div class="author">작성자: 닉네임</div>
@@ -127,7 +127,9 @@
         <!-- 추가 카드 예시 -->
         <section class="card">
             <a href="${pageContext.request.contextPath}/estimateDetailView" style="text-decoration: none; color: inherit;">
+            
                 <div class="thumbnail">
+                	<!-- 견적서가 썸네일로 나타나게 하기까지 해보기(안되면 아쉽고) -->
                 </div>
                 <div class="title">${cjs.post_no }</div>
                 <div class="title">${cjs.post_title }</div>

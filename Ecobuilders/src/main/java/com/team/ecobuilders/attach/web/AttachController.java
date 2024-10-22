@@ -85,7 +85,7 @@ public class AttachController {
 		String uuid = "";
 		
 		try {
-			AttachDTO uploadImg = fileUpload.saveImg(file);
+			AttachDTO uploadImg = fileUpload.saveFile(file);
 			System.out.println(uploadImg);
 			
 			uuid = uploadImg.getAtchFileName();
@@ -93,6 +93,8 @@ public class AttachController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		System.out.println("Attach컨트롤러에서 uuid reviewWriteView로 보냄 : " + uuid);
 		
 		return uuid;
 		

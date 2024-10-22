@@ -36,6 +36,7 @@
             border: none;
             cursor: pointer;
         }
+        
         .green-section {
             margin-top: 30px;
             background-color: #e0f7fa;
@@ -43,307 +44,227 @@
             border: 1px solid #000;
         }
 
-        .container{
+        .container {
             width: 1000px;
             align-content: center;
         }
     </style>
 </head>
 <body>
+<form action="${pageContext.request.contextPath}/insertQuo" method="post">
     <div class="container">
-    <h2 style="text-align: center;">견 적 서</h2>
+        <h2 style="text-align: center;">견 적 서</h2>
 
         <table>
-        <tr>
-            <td>견적서 분류번호</td>
-            <td>est_id</td>
-        </tr>
-        <tr>
-            <td>상 호 일 자</td>
-            <td colspan="3">est_date</td>
-            <td>시 공 기 간</td>
-            <td>est_period</td>
-        </tr>
-        <tr>
-            <td style="height: 50px;">고객 정보</td>
-            <td colspan="3">
-                <p>이름: mem_name</p>
-                <p>연락처: mem_phone</p>
-                <p>주소: est_address</p>
-            </td>
-            <td>시공사 명</td>
-            <td>ent_name</td>
-        </tr>
-        <tr>
-            <td>수기사항</td>
-            <td colspan="5">
-                형태:
-                <label><input type="radio" name="type" value="단독"> 단독</label>
-                <label><input type="radio" name="type" value="주택"> 주택</label>
-                <label><input type="radio" name="type" value="아파트"> 아파트</label>
-                <label><input type="radio" name="type" value="단지"> 단지</label>
-                <label><input type="radio" name="type" value="기타"> 기타</label>
-                <br>
-                est_blueprint
-            </td>
-        </tr>
-    </table>
+            <tr>
+                <td>견적서 분류번호</td>
+                <td><input type="text" name="quoId" class="input-box" /></td>
+            </tr>
+            <tr>
+                <td>작성된 날짜</td>
+                <td><input type="date" name="quoDate" class="input-box" /></td>
+                <td>시공 시작 날짜</td>
+                <td><input type="date" name="quoStartdate" class="input-box" /></td>
+                <td>시공 종료 날짜</td>
+                <td><input type="date" name="quoEnddate" class="input-box" /></td>
+            </tr>
+            <tr>
+                <td style="height: 50px;">고객 정보</td>
+                <td colspan="3">
+                    <p>이름: <input type="text" name="memName" /></p>
+                    <p>연락처: <input type="text" name="memPhone" /></p>
+                    <p>주소: <input type="text" name="estAddress" /></p>
+                </td>
+                <td>시공사 명</td>
+                <td colspan="2"><input type="text" name="entName" /></td>
+            </tr>
+            <tr>
+                <td>수기사항</td>
+                <td colspan="6">
+                    형태:
+                    <label><input type="radio" name="type" value="단독"> 단독</label>
+                    <label><input type="radio" name="type" value="주택"> 주택</label>
+                    <label><input type="radio" name="type" value="아파트"> 아파트</label>
+                    <label><input type="radio" name="type" value="단지"> 단지</label>
+                    <label><input type="radio" name="type" value="기타"> 기타</label>
+                    <br>
+                    <input type="text" name="quoBlueprint" placeholder="도면(BLOB)" />
+                </td>
+            </tr>
+        </table>
 
-    <h3>공종별 항목</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>품목</th>
-                <th>구분</th>
-                <th>단위</th>
-                <th>수량</th>
-                <th>단가</th>
-                <th>금액</th>
-                <th>비고</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td rowspan="2">예시) 전구</td>
-                <td>자재 종류</td>
-                <td>1</td>
-                <td>12</td>
-                <td>10,000</td>
-                <td> <input type="number" placeholder="0"> (원)</td>
-                <td></td>
-            </tr>
-            
-            <!-- 추가 항목들 -->
-        </tbody>
+        <h3>공종별 항목</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>품목</th>
+                    <th>구분</th>
+                    <th>단위</th>
+                    <th>수량</th>
+                    <th>단가</th>
+                    <th>금액</th>
+                    <th>비고</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" name="itemName" placeholder="예시) 전구" /></td>
+                    <td><input type="text" name="itemType" /></td>
+                    <td><input type="text" name="unit" /></td>
+                    <td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" /></td>
+                    <td><input type="number" name="itemPrice" placeholder="0" oninput="calculateTotal()" /></td>
+                    <td><input type="number" name="totalPrice" placeholder="0" readonly /></td>
+                    <td><input type="text" name="remarks" /></td>
+                </tr>
+                <!-- 추가 품목 입력 필드 -->
+            </tbody>
+            <tbody>
+                <tr>
+                    <td><input type="text" name="itemName" placeholder="예시) 전구" /></td>
+                    <td><input type="text" name="itemType" /></td>
+                    <td><input type="text" name="unit" /></td>
+                    <td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" /></td>
+                    <td><input type="number" name="itemPrice" placeholder="0" oninput="calculateTotal()" /></td>
+                    <td><input type="number" name="totalPrice" placeholder="0" readonly /></td>
+                    <td><input type="text" name="remarks" /></td>
+                </tr>
+                <!-- 추가 품목 입력 필드 -->
+            </tbody>
+            <tbody>
+                <tr>
+                    <td><input type="text" name="itemName" placeholder="예시) 전구" /></td>
+                    <td><input type="text" name="itemType" /></td>
+                    <td><input type="text" name="unit" /></td>
+                    <td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" /></td>
+                    <td><input type="number" name="itemPrice" placeholder="0" oninput="calculateTotal()" /></td>
+                    <td><input type="number" name="totalPrice" placeholder="0" readonly /></td>
+                    <td><input type="text" name="remarks" /></td>
+                </tr>
+                <!-- 추가 품목 입력 필드 -->
+            </tbody>
+            <tbody>
+                <tr>
+                    <td><input type="text" name="itemName" placeholder="예시) 전구" /></td>
+                    <td><input type="text" name="itemType" /></td>
+                    <td><input type="text" name="unit" /></td>
+                    <td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" /></td>
+                    <td><input type="number" name="itemPrice" placeholder="0" oninput="calculateTotal()" /></td>
+                    <td><input type="number" name="totalPrice" placeholder="0" readonly /></td>
+                    <td><input type="text" name="remarks" /></td>
+                </tr>
+                <!-- 추가 품목 입력 필드 -->
+            </tbody>
+            <tbody>
+                <tr>
+                    <td><input type="text" name="itemName" placeholder="예시) 전구" /></td>
+                    <td><input type="text" name="itemType" /></td>
+                    <td><input type="text" name="unit" /></td>
+                    <td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" /></td>
+                    <td><input type="number" name="itemPrice" placeholder="0" oninput="calculateTotal()" /></td>
+                    <td><input type="number" name="totalPrice" placeholder="0" readonly /></td>
+                    <td><input type="text" name="remarks" /></td>
+                </tr>
+                <!-- 추가 품목 입력 필드 -->
+            </tbody>
+            <tbody>
+                <tr>
+                    <td><input type="text" name="itemName" placeholder="예시) 전구" /></td>
+                    <td><input type="text" name="itemType" /></td>
+                    <td><input type="text" name="unit" /></td>
+                    <td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" /></td>
+                    <td><input type="number" name="itemPrice" placeholder="0" oninput="calculateTotal()" /></td>
+                    <td><input type="number" name="totalPrice" placeholder="0" readonly /></td>
+                    <td><input type="text" name="remarks" /></td>
+                </tr>
+                <!-- 추가 품목 입력 필드 -->
+            </tbody>
+            <tbody>
+                <tr>
+                    <td><input type="text" name="itemName" placeholder="예시) 전구" /></td>
+                    <td><input type="text" name="itemType" /></td>
+                    <td><input type="text" name="unit" /></td>
+                    <td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" /></td>
+                    <td><input type="number" name="itemPrice" placeholder="0" oninput="calculateTotal()" /></td>
+                    <td><input type="number" name="totalPrice" placeholder="0" readonly /></td>
+                    <td><input type="text" name="remarks" /></td>
+                </tr>
+                <!-- 추가 품목 입력 필드 -->
+            </tbody>
+            <tbody>
+                <tr>
+                    <td><input type="text" name="itemName" placeholder="예시) 전구" /></td>
+                    <td><input type="text" name="itemType" /></td>
+                    <td><input type="text" name="unit" /></td>
+                    <td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" /></td>
+                    <td><input type="number" name="itemPrice" placeholder="0" oninput="calculateTotal()" /></td>
+                    <td><input type="number" name="totalPrice" placeholder="0" readonly /></td>
+                    <td><input type="text" name="remarks" /></td>
+                </tr>
+                <!-- 추가 품목 입력 필드 -->
+            </tbody>
+            <tbody>
+                <tr>
+                    <td><input type="text" name="itemName" placeholder="예시) 전구" /></td>
+                    <td><input type="text" name="itemType" /></td>
+                    <td><input type="text" name="unit" /></td>
+                    <td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" /></td>
+                    <td><input type="number" name="itemPrice" placeholder="0" oninput="calculateTotal()" /></td>
+                    <td><input type="number" name="totalPrice" placeholder="0" readonly /></td>
+                    <td><input type="text" name="remarks" /></td>
+                </tr>
+                <!-- 추가 품목 입력 필드 -->
+            </tbody>
+            <tbody>
+                <tr>
+                    <td><input type="text" name="itemName" placeholder="예시) 전구" /></td>
+                    <td><input type="text" name="itemType" /></td>
+                    <td><input type="text" name="unit" /></td>
+                    <td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" /></td>
+                    <td><input type="number" name="itemPrice" placeholder="0" oninput="calculateTotal()" /></td>
+                    <td><input type="number" name="totalPrice" placeholder="0" readonly /></td>
+                    <td><input type="text" name="remarks" /></td>
+                </tr>
+                <!-- 추가 품목 입력 필드 -->
+            </tbody>
+            <tbody>
+                <tr>
+                    <td colspan="2">합 계</td>
+                    <td colspan="5"><input type="text" name="totalSum" id="total_sum" placeholder="0" readonly /> (원)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button class="btn-submit" type="button" onclick="submitForm()">제안서 임시저장</button>
+        <button class="btn-submit" type="submit">제안서 보내기</button>
+    </div>
+</form>
+<button class="btn-submit" onclick="${pageContext.request.contextPath}/estimateDetailView">취 소</button>
         
-        <tbody>
-            <tr>
-                <td rowspan="2">item_name</td>
-                <td>item_type</td>
-                <td></td>
-                <td>수량 나중에 불러오기</td>
-                <td>item_price</td>
-                <td> <input type="number" placeholder="0"> (원)</td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> (원)</td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td colspan="2">합 계</td>
-                <td colspan="5">0 (원)</td>
-            </tr>
-        </tbody>
-        
-    </table>
+<script>
+    function calculateTotal() {
+        let quantities = document.getElementsByName('quantity');
+        let itemPrices = document.getElementsByName('itemPrice');
+        let totalPrices = document.getElementsByName('totalPrice');
 
-    <button class="btn-submit" onclick="submitForm()">제안서 임시저장</button>
-    <button class="btn-submit" onclick="submitForm()">견적서 보내기</button>
-
-</div>
-
-    <script>
-        function submitForm() {
-            alert("임시로 대충 만들어둔거니 제대로된 기능은 아직 생각 ㄴㄴ");
-            // 여기에 제출 로직을 추가할 수 있습니다 (예: 서버로 데이터 전송)
+        for (let i = 0; i < quantities.length; i++) {
+            let quantity = quantities[i].value || 0;
+            let itemPrice = itemPrices[i].value || 0;
+            const totalPrice = itemPrice * quantity;
+            totalPrices[i].value = totalPrice;
         }
-    </script>
+        calculateTotalSum();
+    }
+
+    function calculateTotalSum() {
+        let totalPrices = document.getElementsByName('totalPrice');
+        let totalSum = 0;
+
+        for (let i = 0; i < totalPrices.length; i++) {
+            totalSum += parseFloat(totalPrices[i].value) || 0;
+        }
+
+        document.getElementsByName('totalSum')[0].value = totalSum;
+    }
+</script>
 </body>
 </html>

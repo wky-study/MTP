@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.ecobuilders.ENT_member.dao.ENT_IMemberDAO">
+	
+	<select id="ent_loginMember" parameterType="ENT_MemberDTO" resultType="ENT_MemberDTO">
+		SELECT 
+		      ent_br
+		    , ent_password
+		    , ent_name
+		    , ent_ceo
+		    , ent_phone
+			, ent_address
+		    , ent_email
+		FROM
+			ent_members
+		WHERE 1=1
+		  AND ent_br = #{entBr}
+	</select>
+	
+	<insert id="ent_insertMember" parameterType="com.team.ecobuilders.ENT_member.dto.ENT_MemberDTO">
+		INSERT INTO ent_members (
+		      ent_br
+		    , ent_password
+		    , ent_name
+		    , ent_ceo
+		    , ent_phone
+			, ent_address
+		    , ent_email
+		) VALUES (
+		      #{entBr}    
+		    , #{entPassword}
+		    , #{entName}
+		    , #{entCeo}
+		    , #{entPhone}
+		    , #{entAddress}
+		    , #{entEmail}
+		)
+	</insert>
+	
+	<update id="ent_updateMember" parameterType="ENT_MemberDTO">
+		UPDATE ent_members
+		SET 
+			ent_name = #{memName}
+		  , ent_phone = #{memPhone}
+		  , ent_email = #{memEmail}
+		<if test="entPassword.isEmpty() == false">
+		  , ent_password = #{entPassword}
+		</if>
+		WHERE ent_br = #{entBr}
+	</update>
+	
+	<select id="ent_getMember" parameterType="String" resultType="ENT_MemberDTO">
+		SELECT 
+		      ent_br
+		    , ent_password
+		    , ent_name
+		    , ent_ceo
+		    , ent_phone
+			, ent_address
+		    , ent_email
+		FROM 
+			ent_members
+		WHERE 1=1
+		  AND ent_br = #{entBr}
+	</select>
+	
+	<delete id="ent_deleteMember" parameterType="String">
+		DELETE FROM ent_members
+		WHERE ent_br = #{entBr}
+	</delete>
+	
+</mapper>
