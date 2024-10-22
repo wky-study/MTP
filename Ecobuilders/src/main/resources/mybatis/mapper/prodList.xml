@@ -9,6 +9,7 @@
 	    	<choose>
 	    		<when test="searchOption == 'title'">AND item_name LIKE '%' || #{searchWord} || '%'</when>
 	    		<when test="searchOption == 'name'">AND ent_name LIKE '%' || #{searchWord} || '%'</when>
+	    		<when test="searchOption == 'category'">AND item_type LIKE '%' || #{searchWord} || '%'</when>
 	    	</choose>
 	    </if>
 	</sql>
