@@ -75,12 +75,13 @@
 		, mem_phone = #{memPhone}
 		, mem_address = #{memAddress}
 		, mem_email = #{memEmail}
-		, mem_date = #{memDate}
-		, mem_admin = #{memAdmin}
+		, mem_date = SYSDATE
+		, mem_admin = '1'
 		<if test="memPassword.isEmpty() == false">
 			, mem_password = #{memPassword}
 		</if>
 		WHERE mem_id = #{memId}
+			
 	</update>
 
 

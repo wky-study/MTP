@@ -112,8 +112,7 @@
 		</div>
 	</section>
 
-	<!-- footer 부분 -->
-
+	<!-- 모달창 메세지 -->
 	<script type="text/javascript">
 		// input 태그 내 value값에 대한 validation 체크하는 경우
 		

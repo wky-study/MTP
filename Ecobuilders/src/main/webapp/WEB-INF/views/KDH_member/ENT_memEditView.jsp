@@ -36,11 +36,11 @@
 
 	<!-- Contact Section-->
 	<section class="page-section" id="contact">
-		<!-- 부트스트랩으로 padding-top 을 좀 주고자 한다. -->
+
 		<div class="container pt-5">
 			<!-- Contact Section Heading-->
 			<h2
-				class="page-section-heading text-center text-uppercase text-secondary mb-0">회원수정</h2>
+				class="page-section-heading text-center text-uppercase text-secondary mb-0">기업회원수정</h2>
 			<!-- Icon Divider-->
 			<div class="row justify-content-center">
 				<div class="col-lg-8 col-xl-7">
@@ -48,8 +48,8 @@
 					<!-- 회원가입 요청시 서버에서 이를 받아줘야 함 -->
 					<!-- /registDo 주소로 요청시 서버에서 회원가입 진행 -->
 					<!-- 회원가입은 GET 방식으로 하면 문제가 있을 수 있으니 POST 방식 사용 -->
-					<form id="memEditForm"
-						action="${pageContext.request.contextPath }/memEditDo"
+					<form id="ENT_memEditForm"
+						action="${pageContext.request.contextPath }/ENT_memEditDo"
 						method="POST">
 
 						<!-- 사업자번호 input-->
@@ -96,20 +96,26 @@
 						<!-- 이메일 input -->
 						<div class="form-floating mb-3">
 							<input class="form-control" id="inputEmail" type="email"
-								name="memEmail" value="${sessionScope.login.entEmail }" /> <label
+								name="entEmail" value="${sessionScope.login.entEmail }" /> <label
 								for="inputEmail">이메일</label>
 						</div>
 
 					</form>
 
+				<!--
 					<form id="ent_memDelForm"
-						action="${pageContext.request.contextPath }/memDelDo"
+						action="${pageContext.request.contextPath }/ENT_memDelDo"
 						method="POST"></form>
-
+				-->
+				
 					<div class="d-flex justify-content-center">
 						<button class="btn btn-primary me-2" id="ent_memEditBtn"
 							type="button">기업회원수정</button>
+							
+					<!--	  
 						<button class="btn btn-danger" id="ent_memDelBtn" type="button">기업회원탈퇴</button>
+					-->
+					
 					</div>
 
 				</div>
@@ -117,33 +123,34 @@
 		</div>
 	</section>
 
-	<!-- footer 부분 -->
-
+	
+	<!-- 모달창 메세지 -->
 	<script type="text/javascript">
 		// input 태그 내 value값에 대한 validation 체크하는 경우
-		
-		let v_memId = '${sessionScope.login.entBr}';
-		
+/*
+		let v_entBr = '${sessionScope.login.entBr}';
+
 		document.getElementById("ent_memDelBtn").addEventListener("click", ()=>{
 			
-			let v_input = prompt('정말로 삭제하시겠습니까? 삭제를 원하시면 아이디를 입력해주세요.');
+			let v_input = prompt('정말로 삭제하시겠습니까? 삭제를 원하시면 사업자번호를 입력해주세요.');
 			
 			console.log(v_input);
 			
-			// 입력받은 아이디가 로그인 중인 아이디와 일치하는지 확인
-			if(v_input == v_memId){
-				// action=/memDelDo 인 form 태그의 submit 실행 
+
+			if(v_input == v_entBr){
+
 				document.getElementById('ent_memDelForm').submit();
 			}
 			
 		});
-		
+*/
 		document.getElementById("ent_memEditBtn").addEventListener("click", ()=>{
 			
-			// action=/memEditDo 인 form 태그의 submit 실행 
-			document.getElementById('ent_memEditForm').submit();
+			// action=/ENT_memEditDo 인 form 태그의 submit 실행 
+			document.getElementById('ENT_memEditForm').submit();
 			
 		});
+
 	</script>
 	</body>
 </html>

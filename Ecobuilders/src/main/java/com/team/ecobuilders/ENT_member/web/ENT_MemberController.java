@@ -26,7 +26,7 @@ public class ENT_MemberController {
 	@Autowired
 	ENT_MemberService memberService;
 
-	@RequestMapping("/home/ENT_registView")
+	@RequestMapping("/ENT_registView")
 	public String ENT_registView() {
 
 		System.out.println("ENT_registView 실행");
@@ -36,7 +36,7 @@ public class ENT_MemberController {
 
 	}
 
-	@PostMapping("/home/ENT_registDo") // POST 방식 요청만 받음 (위와 같음)
+	@PostMapping("/ENT_registDo") // POST 방식 요청만 받음 (위와 같음)
 	public String ENT_registDo(HttpServletRequest request) {
 
 		System.out.println(request.getParameter("br"));
@@ -69,17 +69,10 @@ public class ENT_MemberController {
 		// DB에 해당 회원정보를 저장 -> mybatis 사용
 		memberService.ent_insertMember(ent_member);
 
-		return "redirect:/home/ENT_loginView";
-	}
-
-	// 화면
-	@RequestMapping("/home")
-	public String ent() {
-		return "/home";
+		return "redirect:/ENT_loginView";
 	}
 	
-
-	@RequestMapping("/home/ENT_loginView")
+	@RequestMapping("/ENT_loginView")
 	public String ENT_loginView(HttpServletRequest request, Model model) {
 
 		// 어느 페이지에서 /ENT_loginView 요청을 했는지 확인
@@ -91,20 +84,16 @@ public class ENT_MemberController {
 		return "KDH_member/ENT_loginView";
 	}
 
-	@PostMapping("/home/ENT_loginDo")
+	@PostMapping("/ENT_loginDo")
 	public String ENT_loginDo(ENT_MemberDTO ent_member, Model model, HttpServletResponse response, String from,
 			HttpSession session, boolean rememberBr, RedirectAttributes attr) { 
 
-		// memBr와 memPassword 값이 채워져 있음
 		System.out.println("로그인 요청");
 		System.out.println(ent_member);
 		// checkbox 값을 String으로 받으면 on 또는 null 임
 		// boolean으로 받으면 true / false 임
 		System.out.println(rememberBr);
 
-		// DB에 ent_member 전달 후 id가 일치하는 데이터 가져옴 (1개)
-		// ent_members 테이블의 회원 데이터의 각 컬럼 값이
-		// KDH_MemberDTO 객체의 각 필드변수에 대입되어 채워짐
 		ENT_MemberDTO login = memberService.ent_loginMember(ent_member);
 		System.out.println(login); // 로그인 실패시 null 값이 리턴됨
 
@@ -129,7 +118,7 @@ public class ENT_MemberController {
 				response.addCookie(cookie);
 			} else {
 				// 아이디 기억하기 체크안함
-				// rememberId 키값으로 만들어서 보낸 쿠키를 제거해주기
+				// rememberBr 키값으로 만들어서 보낸 쿠키를 제거해주기
 
 				// 쿠키 생성 (값을 뭘 넣어도 상관없으므로 empty)
 				Cookie cookie = new Cookie("rememberBr", "");
@@ -154,16 +143,16 @@ public class ENT_MemberController {
 			// redirect:/ENT_loginView 를 하면 model의 내용이 사라짐
 			// forward:/ENT_loginView 를 하면 현재 메소드의 model, request 값 등이 전달됨
 			// redirect 할 때 데이터 보내는 경우 RedirectAttributes 객체 이용
-			return "redirect:/home/ENT_loginView";
+			return "redirect:/ENT_loginView";
 		}
 
 		// 로그인 후 홈화면 이동 -> 홈화면("/") 으로 리다이렉트
 		// 로그인 후 이전 화면으로 이동 -> from 으로 리다이렉트
-		return "redirect:" + "/home";
+		return "redirect:" + "/";
 	}
 
 	// 로그아웃시 실행
-	@RequestMapping("/home/ENT_logoutDo")
+	@RequestMapping("/ENT_logoutDo")
 	public String ENT_logoutDo(HttpSession session, HttpServletRequest request) {
 
 		// /ENT_logoutDo 요청을 한 사람의 세션을 제거
@@ -177,13 +166,13 @@ public class ENT_MemberController {
 	}
 
 	// 회원수정 페이지 요청
-	@RequestMapping("/home/ENT_memEditView")
+	@RequestMapping("/ENT_memEditView")
 	public String ENT_memEditView() {
 		return "KDH_member/ENT_memEditView";
 	}
 
 	// 회원수정 기능 요청
-	@PostMapping("/home/ENT_memEditDo")
+	@PostMapping("/ENT_memEditDo")
 	public String ENT_memEditDo(ENT_MemberDTO ent_member, HttpSession session) {
 
 		System.out.println(ent_member);
@@ -196,12 +185,12 @@ public class ENT_MemberController {
 		ENT_MemberDTO login = memberService.ent_getMember(ent_member.getEntBr());
 		session.setAttribute("login", login);
 
-		return "redirect:/home/ENT_memEditView";
+		return "redirect:/ENT_memEditView";
 
 	}
-
-	// 회원삭제 기능 요청
-	@PostMapping("/home/ENT_memDelDo")
+/*
+	// 기업회원삭제 기능 요청
+	@PostMapping("/ENT_memDelDo")
 	public String ENT_memDelDo(HttpSession session) {
 
 		// 세션에 담긴 로그인 정보를 꺼낸다.
@@ -213,7 +202,7 @@ public class ENT_MemberController {
 		// 로그인 정보를 담고 있는 세션 객체 제거(= 로그아웃)
 		session.invalidate();
 
-		return "redirect:/home";
+		return "redirect:/";
 	}
-
+*/
 }
