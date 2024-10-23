@@ -6,7 +6,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>그린리모델링 견적서 입력 페이지</title>
+    <title>그린리모델링 견적서 보기 페이지</title>
+    <!-- 좀 더 꾸미기 필요함 -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -50,6 +51,7 @@
     </style>
 </head>
 <body>
+	<!-- 꾸미기 더 필요함 -->
     <div class="container">
     <h2 style="text-align: center;">견 적 서</h2>
 

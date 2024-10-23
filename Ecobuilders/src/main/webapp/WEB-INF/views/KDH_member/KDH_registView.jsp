@@ -13,23 +13,21 @@
 </head>
 
 <title>일반회원가입</title>
+</head>
 <body id="page-top">
 
-	<!-- Contact Section-->
-	<section class="page-section" id="contact">
-		<!-- 부트스트랩으로 padding-top 을 좀 주고자 한다. -->
-		<div class="container pt-5">
-			<!-- Contact Section Heading-->
-			<h2
-				class="page-section-heading text-center text-uppercase text-secondary mb-0">일반회원가입</h2>
-			<!-- Contact Section Form-->
-			<div class="row justify-content-center">
-				<div class="col-lg-8 col-xl-7">
-					<form id="contactForm"
-						action="${pageContext.request.contextPath }/registDo"
-						method="POST">
-
-						<!-- 아이디 input-->
+    <!-- Contact Section-->
+    <section class="page-section" id="contact">
+    	<!-- 부트스트랩으로 padding-top 을 좀 주고자 한다. -->
+        <div class="container pt-5">
+            <!-- Contact Section Heading-->
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">일반회원가입</h2>
+            <!-- Contact Section Form-->
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-xl-7">          	
+                    <form id="contactForm" action="${pageContext.request.contextPath }/registDo" method="POST">
+                        
+        						<!-- 아이디 input-->
 						<div class="form-floating mb-3">
 							<input class="form-control" id="inputId" type="text" name="id" />
 							<label for="inputId">아이디</label>
@@ -78,6 +76,7 @@
 
 	<script type="text/javascript">
 		
+
 	</script>
 </body>
 

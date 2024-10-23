@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.ecobuilders.quo.dao.IQuoDAO">
+
+	<insert id="insertQuo" parameterType="com.team.ecobuilders.quo.dto.QuoDTO">
+	<!-- insert문 작성 -->
+		 INSERT INTO quo (
+            quo_id, 
+            quo_date, 
+            quo_startdate, 
+            quo_enddate, 
+            quo_items, 
+            quo_price, 
+            quo_open, 
+            quo_blueprint, 
+            est_id, 
+            ent_br, 
+            remarks
+        ) VALUES (
+            #{quoId}, 
+            SYSDATE, 
+            #{quoStartdate}, 
+            #{quoEnddate}, 
+            #{quoItems}, 
+            #{quoPrice}, 
+            #{quoOpen}, 
+            #{quoBlueprint}, 
+            #{estId}, 
+            #{entBr}, 
+            #{remarks}
+        )
+	</insert>
+	
+
+
+</mapper>
