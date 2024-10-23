@@ -75,10 +75,10 @@
 				<div class="mb-3">
 					<input class="form-control" id="inputId" type="text" name="reviewTitle" placeholder="제목을 입력해주세요."/>
 				</div>
-
+				
 				<div class="mb-3">
 					<textarea id="smartEditor" class="form-control"  rows="10" name="reviewContent"></textarea>
-				</div>					
+				</div>		
 				
 				<div class="d-flex justify-content-end">
 					<a class="btn btn-secondary me-2" href="${pageContext.request.contextPath }/reviewView">취소</a>
@@ -91,8 +91,7 @@
 				
 			</form>
 			
-			
-			
+
 		</div>
 	</section>
 	
@@ -167,21 +166,36 @@
 				data: v_formData,
 				success: function(resp){
 					// 이미지 태그 생성
-					let imgTag = '<img style="width: 800px; display: block; margin-left: auto; margin-right: auto;" src="';
+					let imgTag = '<img onclick="window.parent.parent.f_sizeCtrl(this)" style="width: 800px; display: block; margin-left: auto; margin-right: auto;" src="';
 						imgTag += '${pageContext.request.contextPath}/displayImage?fileName=' + resp;
 						imgTag += '">'; 
+						
 					// 지금 시점에 resp 를 쏘기
 					// 816c1e3e-a785-42da-97ba-462b058edf47
 					console.log(resp);
 					// 이미지 파일 이름을 숨겨진 input에 저장
 					document.getElementById('imageFileName').value = resp; 
 					
-						
 					// 에디터 내부에 이미지 태그 넣기
 					oEditors.getById['smartEditor'].exec("PASTE_HTML", [imgTag]);
 				}
 			});
 		}
+		
+		let v_targetImg = null;
+		
+		function f_sizeCtrl(p_this){
+			console.log(p_this);
+			/* document.getElementById('sizeCtrlBox').classList.remove('d-none'); */ 
+			v_targetImg = p_this;
+			
+			const v_if = document.querySelector('#reviewWriteForm > div:nth-child(2) > iframe');
+			console.log(v_if);
+			v_if = v_if.querySelector('#smart_editor2_content > div:nth-child(2) > iframe');
+			console.log(v_if);
+		}
+		
+
 		
 	</script>
 	

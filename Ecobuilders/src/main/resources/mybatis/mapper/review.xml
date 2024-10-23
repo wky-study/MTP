@@ -121,6 +121,15 @@
 			AND review_no = #{reviewNo}
 	</update>
 
+	<!-- 리뷰게시판 아이디 null로 -->
+	<update id="noMemIdReview" parameterType="String">
+		UPDATE review
+		SET	mem_id = null
+		WHERE 1=1
+			AND mem_id = #{memId}
+	</update>	
+	
+
 
 
 </mapper>

@@ -65,5 +65,11 @@ public class ReviewService {
 		return result;
 	};
 	
+	// 탈퇴 회원 아이디 null 값 변경
+	public int noMemIdReview(String memId) {
+		int result = dao.noMemIdReview(memId);
+		return result;
+	};
+	
 	
 }

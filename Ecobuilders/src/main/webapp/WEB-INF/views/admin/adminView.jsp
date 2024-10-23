@@ -39,8 +39,15 @@
 	
 	.my-content {
 		width: 49%;
+		height: 100%;
+	}
+	
+	.my-table{
+		height: 85%;
 		overflow-y: auto;
 	}
+	
+	
 </style>
 </head>
 <body>
@@ -58,54 +65,86 @@
 				<div class="d-flex justify-content-center border-bottom">
 					<h4>회원관리</h4>
 				</div>
-				<table class="table table-hover">
-					<thead>
-						<tr>
-							<th scope="col">#</th>
-							<th scope="col">아이디</th>
-							<th scope="col">이름</th>
-							<th scope="col">핸드폰</th>
-							<th scope="col">이메일</th>
-							<th scope="col">등급</th>
-							<th scope="col">계정삭제</th>
-						</tr>
-					</thead>
-
-					<tbody>
-						<c:forEach items="${keyMemList}" var="memberDTO" varStatus="status">
+				
+				<div class="my-table">
+					<table class="table table-hover">
+						<thead>
 							<tr>
-								<td scope="row">${status.index + 1}</td>
-								<td>${memberDTO.memId }</td>
-								<td>${memberDTO.memName }</td>
-								<td>${memberDTO.memPhone }</td>
-								<td>${memberDTO.memEmail }</td>
-
-								<c:if test="${memberDTO.memAdmin == '1' }">
-									<td>일반</td>
-								</c:if>
-								<c:if test="${memberDTO.memAdmin == '0' }">
-									<td>관리자</td>
-								</c:if>
-
-								<c:if test="${memberDTO.memAdmin == '1' }">
-									<td><button class="btn btn-danger" onclick="f_delete('${memberDTO.memId }')" type="button">삭제</button></td>
-								</c:if>
-								<c:if test="${memberDTO.memAdmin == '0' }">
-									<td>관리자</td>
-								</c:if>
+								<th scope="col">#</th>
+								<th scope="col">아이디</th>
+								<th scope="col">이름</th>
+								<th scope="col">핸드폰</th>
+								<th scope="col">이메일</th>
+								<th scope="col">등급</th>
+								<th scope="col">계정삭제</th>
 							</tr>
-						</c:forEach>
-
-					</tbody>
-				</table>
+						</thead>
+	
+						<tbody>
+							<c:forEach items="${keyMemList}" var="memberDTO" varStatus="status">
+								<c:if test="${memberDTO.memAdmin != '0' }">
+									<tr>
+										<td scope="row">${status.index + 1}</td>
+										<td>${memberDTO.memId }</td>
+										<td>${memberDTO.memName }</td>
+										<td>${memberDTO.memPhone }</td>
+										<td>${memberDTO.memEmail }</td>
+		
+										<c:if test="${memberDTO.memAdmin == '1' }">
+											<td>일반</td>
+										</c:if>
+										<c:if test="${memberDTO.memAdmin == '0' }">
+											<td>관리자</td>
+										</c:if>
+		
+										<c:if test="${memberDTO.memAdmin == '1' }">
+											<td><button class="btn btn-danger" onclick="f_delete('${memberDTO.memId }')" type="button">삭제</button></td>
+										</c:if>
+										<c:if test="${memberDTO.memAdmin == '0' }">
+											<td>관리자</td>
+										</c:if>
+									</tr>
+								</c:if>
+							</c:forEach>
+	
+						</tbody>
+					</table>
+				</div>
 			</div>
 
-			<!--  -->
+			<!-- 제고 관리? -->
 			<div class="my-content">
 				<div class="d-flex justify-content-center border-bottom">
-					<h4>무언가</h4>
-				</div>		
-						
+					<h4>제품?제고?</h4>
+				</div>
+				<div class="my-table">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">type</th>
+								<th scope="col">name</th>
+								<th scope="col">LV</th>
+								<th scope="col">EFI</th>
+								<th scope="col">제거</th>
+							</tr>
+						</thead>
+	
+						<tbody>
+							<c:forEach items="${keyProdList}" var="prodListDTO" varStatus="status">
+									<tr onclick="f_click('${prodListDTO.itemId }')" >
+										<td scope="row">${status.index + 1}</td>
+										<td>${prodListDTO.itemType }</td>
+										<td>${prodListDTO.itemName }</td>
+										<td>${prodListDTO.itemLv }</td>
+										<td>${prodListDTO.itemEfi }</td>
+										<!-- 클릭했을때 기능 넣어야함 -->
+										<td><button class="btn btn-danger" onclick="" type="button">제거</button></td>
+									</tr>
+							</c:forEach>
+						</tbody>
+					</table>					
+				</div>
 			</div>
 		</div>
 
@@ -141,10 +180,8 @@
 							</c:if>
 						</c:forEach>
 					</tbody>
-				</table>				
-				
-				
-					
+				</table>	
+							
 			</div>
 
 			<!-- 견적서 검색 기능? -->
@@ -152,6 +189,7 @@
 				<div class="d-flex justify-content-center border-bottom">
 					<h4>견적서</h4>
 				</div>				
+				<!-- 밑에 내용 들어갈 예정 -->
 				
 			</div>
 		</div>
@@ -173,8 +211,10 @@
 			// 새 탭 열기
 	        window.open("${pageContext.request.contextPath}/reviewDetailView?no=" + reviewNo, '_blank'); // '_blank'는 새 탭에서 열도록 지정					
 		}
-	
-	
+		// 추가 할거 생각
+		function f_click(itemId){
+			console.log(itemId);
+		}
 	</script>
 
 	<!-- 회원 관리 -->
@@ -188,8 +228,8 @@
 				$.ajax({
 					type: 'POST',
 					url: v_url,
-					contentType : "application/json; charset:UTF-8",
-					data: memId,
+					contentType : "application/x-www-form-urlencoded; charset:UTF-8",
+					data: { memId: memId },
 					success: function(resp){
 						alert("삭제 완료");
 						location.reload();
@@ -207,8 +247,8 @@
 				$.ajax({
 					type: 'POST',
 					url: v_url,
-					contentType : "application/json; charset:UTF-8",
-					data: memId,
+					contentType : "application/x-www-form-urlencoded; charset:UTF-8",
+					data: { memId: memId },
 					success: function(resp){
 						alert("추가 완료");
 						location.reload();
@@ -226,8 +266,8 @@
 				$.ajax({
 					type: 'POST',
 					url: v_url,
-					contentType : "application/json; charset:UTF-8",
-					data: memId,
+					contentType : "application/x-www-form-urlencoded; charset:UTF-8",
+					data: { memId: memId },
 					success: function(resp){
 						alert("제외 완료");
 						location.reload();
