@@ -25,5 +25,9 @@ public interface IReviewDAO {
 	// 리뷰 게시글 조회수 업데이트
 	int reviewCountUp(int no);
 	
+	// 리뷰 게시글 수정
+	int updateReview(ReviewDTO review);
 	
+	// 리뷰 게시글 삭제
+	int deleteReview(int reviewNo);
 }

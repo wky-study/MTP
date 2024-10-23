@@ -63,6 +63,8 @@
 		    line-height: 18px;
 		    color: #828C94;
 		    
+		    padding-right: 6px;
+		    
 		    cursor: pointer;
 		}
 		
@@ -73,7 +75,46 @@
 			height: 100px;
 		
 		}
-
+		
+		.my-page-up{
+			position: fixed;
+			right: 120px;
+			bottom: 50px;
+			
+			width: 38px;
+			
+			border-radius: 19px;
+			
+			
+			box-shadow : 0 0 0 1px #6c757d;
+		}
+		
+		.my-page-up:hover{
+			background-color: #6c757d;
+		}
+		
+		.my-page-up > img{
+			width: 100%;
+			cursor:pointer;
+		}		
+		
+		.my-profile-img{
+			height: 40px;
+			margin-right: 10px;
+			vertical-align: middle;
+		}
+		 .my-h4 {
+		    display: flex;
+		    align-items: center;
+		 }	
+	
+		.my-profile-img{
+			height: 30px;
+			width: auto;
+			border-radius: 50%;
+			overflow: hidden;
+		}	
+	
 	
 	</style>
 </head>
@@ -81,6 +122,11 @@
 
 <!-- Header -->
 <%@ include file= "/WEB-INF/inc/header.jsp" %>
+
+	<!-- 위로 가기 버튼 -->
+	<div class="d-flex justify-content-end my-page-up " >
+		<img onclick="window.scrollTo(0,0)" src="${pageContext.request.contextPath }/resources/images/upBtn.png">
+	</div>		
 
 
 	<div class="top-box mb-5">
@@ -92,9 +138,29 @@
 			
 			<!-- 바디 부분 -->
 			<div class="d-block">
-				<h1>${keyReview.reviewTitle }</h1>
-				<div class="d-flex justify-content-between mb-3 mt-3">
-					<h4>${keyReview.memName}</h4>
+				<div class="d-flex justify-content-between">
+					<h1>${keyReview.reviewTitle }</h1>
+					<span>${keyReview.reviewDate }</span>
+				</div>
+				<div class="d-flex justify-content-end">
+					<c:if test="${ sessionScope.login.memId == keyReview.memId && sessionScope.login.memId != null}">
+						<form action="${pageContext.request.contextPath }/reviewEditView" method="POST">
+							<input type="hidden" value="${keyReview.reviewNo}" name="no">
+							<button class="btn btn-warning" type="submit">수정</button>
+						</form>
+					</c:if>
+	
+					<c:if test="${ sessionScope.login.memId == keyReview.memId && sessionScope.login.memId != null}">  <!-- << 추가하기 || sessionScope.login.memLv == '0' -->
+						<form id="delForm" action="${pageContext.request.contextPath }/reviewDeleteDo" method="POST">
+							<input type="hidden" value="${keyReview.reviewNo}" name="no">
+							<button id="delBtn" class="btn btn-danger ms-2" type="button">삭제</button>
+						</form>
+						
+					</c:if>					
+				</div>
+				
+				<div class="d-flex justify-content-between align-items-center mb-3 mt-3">
+					<h4 class="my-h4"><img class="my-profile-img" src="${pageContext.request.contextPath }/resources/images/profileImg.jpg"> ${keyReview.memName}</h4>
 					<button type="button" class="btn btn-info">팔로우</button>
 				</div>
 				
@@ -121,37 +187,15 @@
 					
 					<!-- 팔로우 기능은 일단 보류 -->
 					<div class="d-flex justify-content-between align-items-center mb-5 mt-3 my-info">
-						<h4>${keyReview.memName}</h4>
+						<h4><img class="my-profile-img" src="${pageContext.request.contextPath }/resources/images/profileImg.jpg">${keyReview.memName}</h4>
 						<button type="button" class="btn btn-info">팔로우</button>
 					</div>
 				</div>
 				
 				<!-- 댓글 창 -->
 				<div>
-					
 					<div>
 						<h2>댓글 : ${keyReplyCount} </h2>
-					</div>
-				
-					<!-- 댓글 리스트 -->
-					<div id="replyBox" class="reply-box">
-						<!-- 밑에 참고 -->
-						<c:forEach items="${keyReplyList }" var="replyDTO">
-							<div class="row pt-2 pb-2">
-								<input type="hidden" value="${replyDTO.replyNo }">
-								<div class="col-2"><span> ${replyDTO.memName }</span></div>
-								<div class="col-7"><span>${replyDTO.replyContent }</span></div>
-								<div class="col-2"><span>${replyDTO.replyDate }</span></div>
-								<div class="col-1">
-								
-									<!-- 로그인 기능 나오면 변경 -->
-									<c:if test="${sessionScope.login.memId == replyDTO.memId && sessionScope.login.memId != null}">
-										<span class="my-span" onclick="f_delete()">삭제</span>
-									</c:if>
-									
-								</div>
-							</div>
-						</c:forEach>
 					</div>
 					
 					<!-- 댓글 작성하는곳 -->
@@ -164,7 +208,54 @@
 							</div>
 							<button id="replyBtn" class="btn btn-primary col-2" style="padding: 0px"  type="button">등록</button>
 						</form>
-					</div>
+					</div>					
+				
+				
+					<div id="replyBox" class="reply-box mb-5">
+						<!-- 밑에 참고 -->
+						<c:forEach items="${keyReplyList }" var="replyDTO">
+							<div class="row pt-2 pb-2">
+								<input type="hidden" value="${replyDTO.replyNo }">
+								<div class="col-1"><img class="my-profile-img" src="${pageContext.request.contextPath }/resources/images/profileImg.jpg"> </div>
+								<div class="col-9">
+									<div><h4>${replyDTO.memName }</h4></div>
+									<div><span>${replyDTO.replyContent }</span></div>
+									
+									<div class="d-flex ">
+										<div>
+											<span class="my-span">${replyDTO.replyDate }</span>
+											<span id="" class="my-span">답글달기</span>
+										</div>
+									</div>							
+								</div>
+								
+								<div class="col-1"></div>
+								
+								<c:if test="${sessionScope.login.memId == replyDTO.memId && sessionScope.login.memId != null}">
+									<div class="col-1">
+										<span class="my-span" onclick="f_delete()">삭제</span>
+									</div>
+								</c:if>
+							</div>
+							
+								<!-- 대댓글 기능 (추후) -->
+								<form class="d-none" id="replyForm" class="row" action="${pageContext.request.contextPath }/replyWriteDo" method="POST">
+									<div class="col-1"></div>
+									<img class="my-profile-img col-1" style="padding:0;" src="${pageContext.request.contextPath }/resources/images/profileImg.jpg">
+									<input type="hidden" name="memId" value="${sessionScope.login.memId }">
+									<input type="hidden" name="reviewNo" value="${keyReview.reviewNo }">
+									<div class="col-8">
+										<input id="replyInput" class="form-control" type="text" name="replyContent">
+									</div>
+									<button id="replyBtn" class="btn btn-primary col-1" style="padding: 0px"  type="button">등록</button>
+								</form>
+							
+						</c:forEach>
+					</div>				
+				
+				
+					
+
 				</div>				
 				
 			</div>
@@ -288,6 +379,21 @@
 		//event.target.parentElement.parentElement.remove();
 		
 	}	
+	
+	/* 게시글 삭제 경고 창 */
+	let v_delForm = document.getElementById("delForm");
+	
+	if(document.getElementById("delBtn")){
+		document.getElementById("delBtn").addEventListener("click", ()=>{
+			/*  삭제 확인 메시지를 띄움 */
+			if(confirm("정말로 삭제하시겠습니까?")){
+				v_delForm.submit();  // submit 버튼을 누른것과 동일
+			};
+		})
+	}
+	
+	
+	
 	
 	</script>
 	
