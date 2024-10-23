@@ -10,6 +10,8 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
+</head>
+
 <title>일반회원가입</title>
 <body id="page-top">
 
@@ -63,7 +65,7 @@
 							<input class="form-control" id="inputEmail" type="email"
 								name="email" /> <label for="inputEmail">이메일</label>
 						</div>
-						
+
 
 						<!-- Submit Button-->
 						<button class="btn btn-primary btn-xl" id="submitButton"

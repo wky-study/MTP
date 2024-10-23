@@ -39,10 +39,6 @@ public class KDH_MemberController {
 
 	@PostMapping("/registDo") // POST 방식 요청만 받음 (위와 같음)
 	public String registDo(HttpServletRequest request) {
-		
-		//	오늘 날짜 받아오기	->	교안, chatgpt써도되고
-		//	날짜 형식이 뭔지는 모르겠는데 -> TimeStamp타입으로 바꿔주기
-		//	문제생기면 바로 물어봐
 
 
 		System.out.println(request.getParameter("id"));
@@ -176,16 +172,19 @@ public class KDH_MemberController {
 	// 로그아웃시 실행
 	@RequestMapping("/logoutDo")
 	public String logoutDo(HttpSession session, HttpServletRequest request) {
-
+		System.out.println("/logoutDo");
 		// /logoutDo 요청을 한 사람의 세션을 제거
 		session.invalidate();
-
+		
 		// 어느 페이지에서 /logoutDo 를 요청했는지 확인
 		String from = request.getHeader("Referer");
-
+		
 		// 로그아웃을 요청했던 페이지로 리다이렉트
 		return "redirect:" + from;
+		
+		
 	}
+	
 
 	// 회원수정 페이지 요청
 	@RequestMapping("/memEditView")
@@ -229,5 +228,16 @@ public class KDH_MemberController {
 
 		return "redirect:/";
 	}
+	
+	// 마이페이지 요청
+	@RequestMapping("/mypageView")
+	public String mypageView() {
+
+		System.out.println("mypageView 실행");
+		
+		// 마이페이지 화면을 응답시킴
+		return "KDH_member/KDH_mypageView";
+	}
+
 
 }

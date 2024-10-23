@@ -23,6 +23,7 @@
 		AND mem_id = #{memId}
 	</select>
 
+	<!-- 회원 리스트 불러오기 -->
 	<select id="getMemList" resultType="KDH_MemberDTO">
 		SELECT
 		mem_id

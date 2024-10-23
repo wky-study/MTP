@@ -23,7 +23,7 @@
             <!-- Contact Section Form-->
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-xl-7">          	
-                    <form id="contactForm" action="${pageContext.request.contextPath }/ent/ENT_registDo" method="POST">
+                    <form id="contactForm" action="${pageContext.request.contextPath }/home/ENT_registDo" method="POST">
                         
                         <!-- 사업자번호 input-->
                         <div class="form-floating mb-3">
