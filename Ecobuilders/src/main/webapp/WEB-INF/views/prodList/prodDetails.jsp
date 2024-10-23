@@ -82,7 +82,7 @@
 				        <span aria-hidden="true">&laquo;</span>
 				      </a>
 			    	</c:if>
-			 </li>
+			    </li>
 			<!-- Page Number Links -->
 			<c:forEach begin="${keySearch.firstPage }" end="${keySearch.lastPage }" var="num">
 		    	<li class="page-item ${keySearch.pageNo == num ? 'active' : ''}">
@@ -98,28 +98,26 @@
 				<li class="page-item ${keySearch.pageNo == keySearch.finalPage ? 'disabled' : ''  }">
 			    	<a id="aTagBtn" class="page-link"  style="cursor: pointer;" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
 			    </li>
-   			    
+   			    </li>
 		</ul>
 	</div>
 	
 	<!-- 검색기능 -->
-	<form action="${pageContext.request.contextPath }/prodView" method="GET" id="searchForm" class="form-area" novalidate="novalidate" autocomplete="off">
-		<div class="search-box">
-			
-				<div class="select-box">
-					<select id="searchOption" name="searchOption">
-						<option value="title" selected>자재명</option>
-						<option value="name">시공사</option>
-					</select>
-				</div>
-				<div class="search-bar" >
-					<input type="text" name="searchWord" id="searchWord" autocomplete="off" data-placeholder-focus="false" required />
-				</div>
+	<div class="">
+		<form id="searchForm" class="d-flex" action="${pageContext.request.contextPath }/prodView" method="GET" >
+			<select id="searchOption" class="form-select me-1" name="searchOption">
+				<option value="title" selected>제품명</option>
+				<option value="name">시공사명</option>
+			</select>
 
-			
-			<button type="submit" class="button special" id="searchButton" style="margin-top: 15px;">검색</button>
-		</div>
-	</form>
+			<input id="searchWord" class="" type="text" name="searchWord">
+			<button id="searchButton" class="" type="submit">
+				<svg xmlns="http:www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+					<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12">
+				</svg>
+			</button>
+		</form>
+	</div>
 
 
 

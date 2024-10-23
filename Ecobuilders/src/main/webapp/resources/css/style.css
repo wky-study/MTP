@@ -1224,6 +1224,14 @@ body.landing #header nav a {
 	cursor: pointer;
 }
 
+.custum-footer{
+	width: 19%; 
+    margin: 0;
+    padding: 10px;
+    box-sizing: border-box; 
+
+}
+
 /* Grid Demo */
 
 .grid-demo {
@@ -1420,5 +1428,31 @@ body.landing #header nav a {
 
 .pd-list-top>.pd-img {
 	width: 80%;
+
+}
+
+/* Search Box */
+
+.search-box{
+    display: flex;
+    justify-content: center;
+	align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    width: 700px;
+    height: 30px;
+    flex-direction: row; 
+
+}
+.search-box >.select-box{
+	height: 100%;
+	width: 30%; 
+	
+
+}
+.search-box >.search-bar{
+	height: 100%;
+
+	width: 70%;
 
 }

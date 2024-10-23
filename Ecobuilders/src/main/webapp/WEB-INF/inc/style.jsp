@@ -7,8 +7,6 @@
 	<script src="${pageContext.request.contextPath}/js/skel-layers.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/init.js"></script>
 	
-	<noscript>
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/skel.css" />
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style-xlarge.css" />
-	</noscript>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/skel.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style-xlarge.css" />
