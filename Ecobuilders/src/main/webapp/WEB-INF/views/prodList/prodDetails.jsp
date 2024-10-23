@@ -38,29 +38,9 @@
 	</div>
 
 	<!-- Products List -->
-	<div class="products-list" style="padding-top: 0px;">
+	
+	
 
-		<c:forEach items= "${prodList}" var="prod">
-			<div class="pd-list">
-				<div class="pd-list-top">
-					<img class="pd-img" src="images/window_icon.jpg" alt="">
-				</div>
-				<div class="pd-list-bottom">
-					<div class="labels">
-						<span class="label-grd">${prod.itemLv}</span>
-						<span class="label-sts">${prod.itemEfi}</span>
-					</div>
-					<div class="product-title">
-						<a href="" style="font-size: 23px;">${prod.itemName}</a>
-						<span>후기 30건</span>
-					</div>
-					<div class="price-section">
-						<span class="price">${prod.itemPrice}원</span>
-						<button class="buy-btn">구매하기</button>
-					</div>
-				</div>
-			</div>
-		</c:forEach>
 
 
 
@@ -102,22 +82,7 @@
 		</ul>
 	</div>
 	
-	<!-- 검색기능 -->
-	<div class="">
-		<form id="searchForm" class="d-flex" action="${pageContext.request.contextPath }/prodView" method="GET" >
-			<select id="searchOption" class="form-select me-1" name="searchOption">
-				<option value="title" selected>제품명</option>
-				<option value="name">시공사명</option>
-			</select>
 
-			<input id="searchWord" class="" type="text" name="searchWord">
-			<button id="searchButton" class="" type="submit">
-				<svg xmlns="http:www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-					<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12">
-				</svg>
-			</button>
-		</form>
-	</div>
 
 
 

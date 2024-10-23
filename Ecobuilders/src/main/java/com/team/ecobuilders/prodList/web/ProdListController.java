@@ -31,5 +31,21 @@ public class ProdListController {
 		model.addAttribute("keySearch", search);
 		return "prodList/prodView";
 	}
+	
+	@RequestMapping("/prodDetails")
+	public String prodDetails(Model model, SearchVO search) {
+		
+		int prodCount = prodService.getProdCount(search);
+		
+		search.setReviewCount(prodCount);
+		search.prodSetting();
+		System.out.println(search);
+		
+		List<ProdListDTO> prodList = prodService.getProdList(search);
+		System.out.println(prodList);
+		model.addAttribute("prodList", prodList);
+		model.addAttribute("keySearch", search);
+		return "prodList/prodDetails";
+	}
 
 }
