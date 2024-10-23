@@ -22,7 +22,6 @@
 
 	<!-- Contact Section-->
 	<section class="page-section" id="contact">
-		<!-- 부트스트랩으로 padding-top 을 좀 주고자 한다. -->
 		<div class="container pt-5">
 			<!-- Contact Section Heading-->
 			<h2
@@ -35,20 +34,15 @@
 			<div class="col-lg-8 col-xl-7">
 				<!-- type=submit인 버튼 클릭시 form 태그의 action 링크가 실행됨 -->
 				<!-- 회원가입 요청시 서버에서 이를 받아줘야 함 -->
-				<!-- /registDo 주소로 요청시 서버에서 회원가입 진행 -->
+				<!-- /ENT_registDo 주소로 요청시 서버에서 회원가입 진행 -->
 				<!-- 회원가입은 GET 방식으로 하면 문제가 있을 수 있으니 POST 방식 사용 -->
 				<form id="contactForm"
-					action="${pageContext.request.contextPath }/ent/ENT_loginDo"
-					method="POST">
-					<!-- /loginDo 로 쏠때, /loginView 를 요청했었던 URL 주소를 같이 보냄 -->
+					action="${pageContext.request.contextPath }/ENT_loginDo" method="POST">
 					<input type="hidden" name="from" value="${keyFrom }">
 
 					<!-- 사업자번호 input-->
 					<div class="form-floating mb-3">
-						<!-- inputId의 값이 id=value 형태로 전송되어야 함 -->
-						<!-- 키값으로 사용될 id를 name 속성에 넣어주어야 함 -->
-						<!-- 쿠키에 rememberId가 있으면 값 넣음 -->
-						<input class="form-control" id="inputBr" type="text" name="Br"
+						<input class="form-control" id="inputBr" type="text" name="entBr"
 							value="${cookie.rememberBr.value }"
 							${cookie.rememberBr.value == null ? "autofocus" : "" } /> <label
 							for="inputBr">사업자번호(-없이작성)</label>
@@ -85,7 +79,7 @@
 						type="submit">기업회원 로그인</button>
 					<button class="btn btn-primary btn-xl" id="submitButton"
 						type="button"
-						onclick="location.href='http://localhost:9090/ecobuilders/home/ENT_registView';">
+						onclick="location.href='http://localhost:9090/ecobuilders/ENT_registView';">
 						기업회원가입</button>
 				</form>
 			</div>

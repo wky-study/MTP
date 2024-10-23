@@ -16,14 +16,14 @@
 
     <!-- Contact Section-->
     <section class="page-section" id="contact">
-    	<!-- 부트스트랩으로 padding-top 을 좀 주고자 한다. -->
+
         <div class="container pt-5">
             <!-- Contact Section Heading-->
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">기업회원가입</h2>
             <!-- Contact Section Form-->
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-xl-7">          	
-                    <form id="contactForm" action="${pageContext.request.contextPath }/home/ENT_registDo" method="POST">
+                    <form id="contactForm" action="${pageContext.request.contextPath }/ENT_registDo" method="POST">
                         
                         <!-- 사업자번호 input-->
                         <div class="form-floating mb-3">

@@ -72,12 +72,6 @@ public class KDH_MemberController {
         return "redirect:/loginView"; // redirect:/ 에서 redirect:/loginView 로 변경
     }
 
-	// 화면
-	@RequestMapping("/")
-	public String ecobuilders() {
-		return "/";
-	}
-
 	@RequestMapping("/loginView")
 	public String loginView(HttpServletRequest request, Model model) {
 

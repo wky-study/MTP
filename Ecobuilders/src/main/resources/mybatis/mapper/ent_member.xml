@@ -43,12 +43,12 @@
 	<update id="ent_updateMember" parameterType="ENT_MemberDTO">
 		UPDATE ent_members
 		SET 
-			ent_name = #{memName}
-		  , ent_ceo = #{memCeo}
-		  , ent_phone = #{memPhone}
-		  , ent_address = #{memAddress}
-		  , ent_email = #{memEmail}
-		  , ent_date = #{memDate}
+			ent_name = #{entName}
+		  , ent_ceo = #{entCeo}
+		  , ent_phone = #{entPhone}
+		  , ent_address = #{entAddress}
+		  , ent_email = #{entEmail}
+		  , ent_date = SYSDATE
 		<if test="entPassword.isEmpty() == false">
 		  , ent_password = #{entPassword}
 		</if>
