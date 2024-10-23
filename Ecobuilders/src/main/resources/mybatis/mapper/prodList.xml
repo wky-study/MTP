@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.team.ecobuilders.prodList.dao.IProdListDAO">
+
+	<sql id="prodSearch">
+	    <if test="searchWord != null">
+	    	<choose>
+	    		<when test="searchOption == 'title'">AND item_name LIKE '%' || #{searchWord} || '%'</when>
+	    		<when test="searchOption == 'name'">AND ent_name LIKE '%' || #{searchWord} || '%'</when>
+	    		<when test="searchOption == 'category'">AND item_type LIKE '%' || #{searchWord} || '%'</when>
+	    	</choose>
+	    </if>
+	</sql>
+
+	
+	<select id="getProdList" resultType="com.team.ecobuilders.prodList.dto.ProdListDTO" parameterType="com.team.ecobuilders.common.vo.SearchVO">
+	
+        SELECT * FROM (
+            SELECT 
+                ROW_NUMBER() OVER (ORDER BY ITEM_ID DESC) AS RNUM,   
+                ITEM_ID,
+                ITEM_NAME,
+                ITEM_TYPE,
+                ITEM_LV,
+                ITEM_EFI,
+                ITEM_PRICE
+                PROD_NO, 
+	            ENT_NAME, 
+	            PROD_DATE
+            FROM 
+                ITEMS
+                
+            WHERE 
+                1 = 1
+				<include refid="prodSearch"/>
+        )
+        WHERE RNUM BETWEEN #{start} AND #{end}
+
+	
+	</select>
+	
+	<select id="getProdCount" resultType="int" parameterType="com.team.ecobuilders.common.vo.SearchVO">
+		SELECT COUNT(*) AS totalCount
+			FROM 
+				ITEMS
+			WHERE 
+				PROD_DEL_YN = 'N'
+				<include refid="prodSearch"/>
+				
+			
+	</select>
+
+
+</mapper>
+
+

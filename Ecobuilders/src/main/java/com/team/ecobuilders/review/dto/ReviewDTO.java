@@ -10,12 +10,13 @@ public class ReviewDTO {
 	private String reviewDate;			/* 작성일 */
 	private String reviewPath;			/* 파일경로 */
 	private String delYn;				/* 삭제 여부 */
+	private int reviewCount;			/* 게시글 조회수 */
 	
 	public ReviewDTO() {
 	}
 
 	public ReviewDTO(int reviewNo, String memId, String memName, String reviewTitle, String reviewContent,
-			String reviewDate, String reviewPath, String delYn) {
+			String reviewDate, String reviewPath, String delYn, int reviewCount) {
 		this.reviewNo = reviewNo;
 		this.memId = memId;
 		this.memName = memName;
@@ -24,13 +25,14 @@ public class ReviewDTO {
 		this.reviewDate = reviewDate;
 		this.reviewPath = reviewPath;
 		this.delYn = delYn;
+		this.reviewCount = reviewCount;
 	}
 
 	@Override
 	public String toString() {
 		return "ReviewDTO [reviewNo=" + reviewNo + ", memId=" + memId + ", memName=" + memName + ", reviewTitle="
 				+ reviewTitle + ", reviewContent=" + reviewContent + ", reviewDate=" + reviewDate + ", reviewPath="
-				+ reviewPath + ", delYn=" + delYn + "]";
+				+ reviewPath + ", delYn=" + delYn + ", reviewCount=" + reviewCount + "]";
 	}
 
 	public int getReviewNo() {
@@ -95,6 +97,14 @@ public class ReviewDTO {
 
 	public void setDelYn(String delYn) {
 		this.delYn = delYn;
+	}
+
+	public int getReviewCount() {
+		return reviewCount;
+	}
+
+	public void setReviewCount(int reviewCount) {
+		this.reviewCount = reviewCount;
 	}
 
 	

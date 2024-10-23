@@ -15,7 +15,6 @@ public class ReplyService {
 	@Autowired
 	IReplyDAO dao;
 	
-	// ===================자유게시판===================
 	// 댓글 작성 
 	public int insertReply(ReplyDTO reply) {
 		int result = dao.insertReply(reply);
@@ -40,7 +39,11 @@ public class ReplyService {
 		return result;
 	}
 	
-	
+	// 해당 게시글 댓글 개수 가져오기
+	public int replyCount(int replyCount) {
+		int result = dao.replyCount(replyCount);
+		return result;
+	};
 	
 	
 	

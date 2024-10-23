@@ -1,6 +1,7 @@
 package com.team.ecobuilders.review.web;
 
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -13,11 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.team.ecobuilders.KDH_member.dto.KDH_MemberDTO;
 import com.team.ecobuilders.attach.dto.AttachDTO;
 import com.team.ecobuilders.attach.service.AttachService;
 import com.team.ecobuilders.common.exception.BizNotFoundException;
 import com.team.ecobuilders.common.util.FileUploadVO;
 import com.team.ecobuilders.common.vo.SearchVO;
+import com.team.ecobuilders.reply.dto.ReplyDTO;
+import com.team.ecobuilders.reply.service.ReplyService;
 import com.team.ecobuilders.review.dto.ReviewDTO;
 import com.team.ecobuilders.review.service.ReviewService;
 
@@ -34,12 +38,15 @@ public class ReviewController {
 	
 	@Autowired
 	AttachService attachService;
+	
+	@Autowired
+	ReplyService replyService;
 
 	// 리뷰목록 페이지
 	@RequestMapping("/reviewView")
 	public String reviewView(Model model, SearchVO search) {
 		
-		int reviewCount = reviewService.getReviewCount();
+		int reviewCount = reviewService.getReviewCount(search);
 		
 		System.out.println(reviewCount);
 		
@@ -72,48 +79,31 @@ public class ReviewController {
 		return review;
 	}
 	
-	// 리뷰 글 작성 페이지 (내용 로그인 기능 생기면 확인 해야함)
 	@RequestMapping("/reviewWriteView")
 	public String reviewWriteView(HttpSession session) {
 		
-//		System.out.println(session.getAttribute("login"));
+		System.out.println(session.getAttribute("login"));
 		
-//		if(session.getAttribute("login") == null) {
-//			return "redirect:/loginView";
-//		}
+		if(session.getAttribute("login") == null) {
+			return "redirect:/loginView";
+		}
 		
 		return "review/reviewWriteView";
 	}
 	
 	// 리뷰 글 작성 클릭
 	@PostMapping("/reviewWriteDo")
-	public String reviewWriteDo(ReviewDTO review, MultipartFile[] reviewFile) {
+	public String reviewWriteDo(ReviewDTO review, String imgFileName, HttpSession session) {
 		
+		KDH_MemberDTO login= (KDH_MemberDTO)session.getAttribute("login");
+		
+		review.setMemId(login.getMemId());
+		review.setMemName(login.getMemName());
+		review.setReviewPath(imgFileName);
 		System.out.println(review);
 		
-		// FileUploadVO 의 saveFile() 을 실행
-		// 1. 사용자가 파일을 첨부하지 않음 -> reviewFile == null
-		if(reviewFile != null) {
-			// 2. 사용자가 파일을 1개 첨부함 -> reviewFile.length == 1 -> saveFile() 한번 실행
-			// 3. 사용자가 파일을 3개 첨부함 -> reviewFile.length == 3 -> saveFile() 세번 실행
-			for(int i = 0; i < reviewFile.length; i++) {
-				// 각각의 첨부파일 객체 MultipartFile에 대해 saveFile() 실행
-				try {
-					// boardNo 가 비어있음
-					AttachDTO fileHistory = fileUpload.saveImg(reviewFile[i]);
-					System.out.println(fileHistory);
-					// fileHistory 를 DB에 저장
-					attachService.insertAttach(fileHistory);
-					
-				} catch (Exception e) {
-					e.printStackTrace();
-				} 
-				
-			}
-				
-		}
-		
 		reviewService.writeReview(review);
+
 		
 		return "redirect:reviewView";
 	}
@@ -125,11 +115,14 @@ public class ReviewController {
 		System.out.println("클릭한 게시글 번호" + no);
 		
 		// 조회수 기능 추가 할거
-//		reviewService.reviewCountUp(no);
+		reviewService.reviewCountUp(no);
+		
+		System.out.println("조회수 끝");
 		
 		ReviewDTO review = null;
 		try {
 			review = reviewService.getReview(no);
+			
 		} catch (BizNotFoundException e) {
 			e.printStackTrace();
 			// 에러 발생 시 넣은 에러코드와 에러메시지 확인
@@ -144,14 +137,59 @@ public class ReviewController {
 			
 		}
 		
+		System.out.println(review);
+		
 		model.addAttribute("keyReview", review);
+		
+		// 댓글 목록 가져오기
+		List<ReplyDTO> replyList = replyService.getReplyList(no);
+		model.addAttribute("keyReplyList",replyList);	
+		
+		
+		// 게시글 댓글 수 가져오기
+		int replyCount = replyService.replyCount(no);
+		model.addAttribute("keyReplyCount", replyCount);
+		
 		
 		return "review/reviewDetailView";
 	}
 	
+	// 리뷰게시판 글 수정 화면
+	@PostMapping("/reviewEditView")
+	public String reviewEditView(int no, Model model) {
+		
+		try {
+			ReviewDTO review = reviewService.getReview(no);
+			model.addAttribute("keyReview", review);
+		} catch (BizNotFoundException e) {
+			e.printStackTrace();
+			return "errPage";
+		}
+		
+		return "review/reviewEditView";
+	}
 	
+	// 자유게시판 글 수정 등록
+	@PostMapping("/reviewEditDo")
+	public String reviewEditDo(ReviewDTO review) {
+		
+		System.out.println(review);
+		
+		reviewService.updateReview(review);
+		
+		return "redirect:/reviewDetailView?no=" + review.getReviewNo();
+		
+	}
 	
-	
+	// 자유게시판 글 삭제
+	@PostMapping("/reviewDeleteDo")
+	public String reviewDeleteDo(int no) {
+		
+		reviewService.deleteReview(no);
+		
+		return "redirect:/reviewView";
+		
+	}
 	
 	
 	

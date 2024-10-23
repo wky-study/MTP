@@ -24,8 +24,8 @@ public class ReviewService {
 	}
 	
 	// 글 총 갯수 가져오기
-	public int getReviewCount() {
-		int result = dao.getReviewCount();
+	public int getReviewCount(SearchVO search) {
+		int result = dao.getReviewCount(search);
 		return result;
 	};
 	
@@ -43,6 +43,25 @@ public class ReviewService {
 	// 글 작성하기
 	public int writeReview(ReviewDTO review) {
 		int result = dao.writeReview(review);
+		return result;
+	};
+	
+	// 리뷰게시글 조회수 업데이트
+	public int reviewCountUp(int no) {
+		int result = dao.reviewCountUp(no);
+		return result;
+	};
+	
+	// 리뷰게시글 수정
+	public int updateReview(ReviewDTO review) {
+		int result = dao.updateReview(review);
+		return result;
+		
+	}
+	
+	// 리뷰 게시글 삭제
+	public int deleteReview(int reviewNo) {
+		int result = dao.deleteReview(reviewNo);
 		return result;
 	};
 	

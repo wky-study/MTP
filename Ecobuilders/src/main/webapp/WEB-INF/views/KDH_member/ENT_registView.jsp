@@ -23,10 +23,11 @@
             <!-- Contact Section Form-->
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-xl-7">          	
-                    <form id="contactForm" action="${pageContext.request.contextPath }/registDo" method="POST">
+                    <form id="contactForm" action="${pageContext.request.contextPath }/ent/ENT_registDo" method="POST">
+                        
                         <!-- 사업자번호 input-->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="inputBr" type="text" name="Br" />	
+                            <input class="form-control" id="inputBr" type="text" name="br" />	
                             <label for="inputBr">사업자번호(-없이입력)</label>
                         </div>
 
@@ -39,26 +40,26 @@
                         
                         <!-- 회사명 input-->
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="inputEnt" type="text" name="Ent" />	
-                            <label for="inputEnt">회사명</label>
+                            <input class="form-control" id="inputName" type="text" name="name" />	
+                            <label for="inputName">회사명</label>
                         </div>     
                         
                         <!-- 대표자명 input -->                                                   
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="inputCEO" type="text" name="CEO" />	
-                            <label for="inputCEO">대표자명</label>
+                            <input class="form-control" id="inputCeo" type="text" name="ceo" />	
+                            <label for="inputCeo">대표자명</label>
                         </div> 
                         
                         <!-- 전화번호 input -->                                                   
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="inputPhone" type="tel" name="Phone" />	
+                            <input class="form-control" id="inputPhone" type="tel" name="phone" />	
                             <label for="inputPhone">전화번호</label>
                         </div> 
                         
                         <!-- 회사주소 input -->
                         <div class="form-floating mb-3">
                             <input class="form-control" id="inputAddress" type="address" name="address" />	
-                            <label for="inputAddress">회사주소</label>
+                            <label for="inputENT_Address">회사주소</label>
                         </div> 
                             
                         <!-- 이메일 input -->
@@ -79,4 +80,5 @@
 	
 	</script>
 </body>
+
 </html>

@@ -1,5 +1,8 @@
-
 package com.team.ecobuilders.KDH_member.web;
+
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -7,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
@@ -26,18 +30,23 @@ public class KDH_MemberController {
 	public String registView() {
 
 		System.out.println("registView 실행");
+		
 
 		// 회원가입 화면을 응답시킴
 		return "KDH_member/KDH_registView";
 
-	}
+	}   
 
 	@PostMapping("/registDo") // POST 방식 요청만 받음 (위와 같음)
 	public String registDo(HttpServletRequest request) {
+		
+		//	오늘 날짜 받아오기	->	교안, chatgpt써도되고
+		//	날짜 형식이 뭔지는 모르겠는데 -> TimeStamp타입으로 바꿔주기
+		//	문제생기면 바로 물어봐
 
-		System.out.println(request.getParameter("email"));
+
+		System.out.println(request.getParameter("id"));
 		System.out.println(request.getParameter("pw"));
-		System.out.println(request.getParameter("name"));
 
 		// 사용자가 입력한 비밀번호
 		String pw = request.getParameter("pw");
@@ -45,25 +54,32 @@ public class KDH_MemberController {
 		KDH_MemberDTO member = new KDH_MemberDTO();
 		member.setMemId(request.getParameter("id"));
 		member.setMemPassword(request.getParameter("pw")); // 암호화된 비밀번호 반영
-		member.setMemName(request.getParameter("name"));
-		member.setMemPhone(request.getParameter("phone"));
-		member.setMemEmail(request.getParameter("email"));
+        member.setMemName(request.getParameter("name"));
+        member.setMemPhone(request.getParameter("phone"));
+        member.setMemAddress(request.getParameter("address"));
+        member.setMemEmail(request.getParameter("email"));
+        member.setMemAdmin("1");
 
-		System.out.println(member);
+        try {
+            // 문자열을 Date로 변환
+        	Timestamp date = new Timestamp(new Date().getTime());
+        	System.out.println(date);
+            member.setMemDate(date);
+        } catch (Exception e) {
+            e.printStackTrace();
+            // 예외 처리 로직 추가
+        }
 
-		// DB에 해당 회원정보를 저장 -> mybatis 사용
-		memberService.insertMember(member);
+        // DB에 해당 회원정보를 저장 -> mybatis 사용
+        memberService.insertMember(member);
 
-		return "redirect:/loginView"; // redirect:/ 에서 redirect:/loginView 로 변경
-	}
+        return "redirect:/loginView"; // redirect:/ 에서 redirect:/loginView 로 변경
+    }
 
-	@RequestMapping("/ENT_registView")
-	public String ENT_registView() {
-
-		System.out.println("ENT_registView 실행");
-
-		// 기업회원가입 화면을 응답시킴
-		return "KDH_member/ENT_registView";
+	// 화면
+	@RequestMapping("/")
+	public String ecobuilders() {
+		return "/";
 	}
 
 	@RequestMapping("/loginView")
@@ -99,7 +115,7 @@ public class KDH_MemberController {
 
 		// DB에 member 전달 후 id가 일치하는 데이터 가져옴 (1개)
 		// members 테이블의 회원 데이터의 각 컬럼 값이
-		// MemberDTO 객체의 각 필드변수에 대입되어 채워짐
+		// KDH_MemberDTO 객체의 각 필드변수에 대입되어 채워짐
 		KDH_MemberDTO login = memberService.loginMember(member);
 		System.out.println(login); // 로그인 실패시 null 값이 리턴됨
 
@@ -157,18 +173,6 @@ public class KDH_MemberController {
 		return "redirect:" + "/";
 	}
 
-	@RequestMapping("/ENT_loginView")
-	public String ENT_loginView(HttpServletRequest request, Model model) {
-
-		// 어느 페이지에서 /ENT_loginView 요청을 했는지 확인
-		String from = request.getHeader("Referer");
-		System.out.println(from + " 으로부터 요청이 옴");
-
-		model.addAttribute("keyFrom", from);
-
-		return "KDH_member/ENT_loginView";
-	}
-
 	// 로그아웃시 실행
 	@RequestMapping("/logoutDo")
 	public String logoutDo(HttpSession session, HttpServletRequest request) {
@@ -207,6 +211,23 @@ public class KDH_MemberController {
 		session.setAttribute("login", login);
 
 		return "redirect:/memEditView";
+
+	}
+
+	// 회원삭제 기능 요청
+	@PostMapping("/memDelDo")
+	public String memDelDo(HttpSession session) {
+
+		// 세션에 담긴 로그인 정보를 꺼낸다.
+		KDH_MemberDTO login = (KDH_MemberDTO) session.getAttribute("login");
+
+		// DB에 DELETE문 전송
+		memberService.deleteMember(login.getMemId());
+
+		// 로그인 정보를 담고 있는 세션 객체 제거(= 로그아웃)
+		session.invalidate();
+
+		return "redirect:/";
 	}
 
 }
