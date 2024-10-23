@@ -209,7 +209,7 @@
 			</select>
 
 			<input id="searchWord" class="form-control me-1" type="text" name="searchWord">
-			<button id="searchButton" class="btn btn-primary" type="button">
+			<button id="searchButton" class="btn btn-primary" style="background-color: #383b43; border: 0;" type="button">
 				<svg xmlns="http:www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
 					<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12">
 				</svg>
@@ -230,6 +230,7 @@
 	        window.history.replaceState({}, '', baseUrl);
 	    };	
 	</script>
+	
 	
 	<!-- 이전 페이지로 이동 -->
 	<script type="text/javascript">
@@ -325,6 +326,14 @@
 			
 		})
 		
+		let v_searchForm = document.getElementById("searchForm");
+			
+		/* 검색 버튼 클릭 */
+		v_searchButton.addEventListener("click", ()=>{
+			
+			v_searchForm.submit();
+			
+		})
 		
 	</script>
 

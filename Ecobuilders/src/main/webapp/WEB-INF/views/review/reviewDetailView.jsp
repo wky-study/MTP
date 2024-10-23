@@ -150,7 +150,7 @@
 						</form>
 					</c:if>
 	
-					<c:if test="${ sessionScope.login.memId == keyReview.memId && sessionScope.login.memId != null}">  <!-- << 추가하기 || sessionScope.login.memLv == '0' -->
+					<c:if test="${ sessionScope.login.memId == keyReview.memId && sessionScope.login.memId != null || sessionScope.login.memAdmin == '0'}">
 						<form id="delForm" action="${pageContext.request.contextPath }/reviewDeleteDo" method="POST">
 							<input type="hidden" value="${keyReview.reviewNo}" name="no">
 							<button id="delBtn" class="btn btn-danger ms-2" type="button">삭제</button>
