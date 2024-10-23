@@ -1,5 +1,7 @@
 package com.team.ecobuilders.ENT_member.dto;
 
+import java.sql.Timestamp;
+
 public class ENT_MemberDTO {
 	  
 		private String entBr;
@@ -9,12 +11,20 @@ public class ENT_MemberDTO {
 		private String entPhone;
 		private String entAddress;
 		private String entEmail;
+		private Timestamp entDate;
 	  
 		public ENT_MemberDTO() {
 		}
 
-		public ENT_MemberDTO(String entBr, String entPassword, String entName, String entCeo, String entPhone, String entAddress,
-				String entEmail) {
+		@Override
+		public String toString() {
+			return "ENT_MemberDTO [entBr=" + entBr + ", entPassword=" + entPassword + ", entName=" + entName
+					+ ", entCeo=" + entCeo + ", entPhone=" + entPhone + ", entAddress=" + entAddress + ", entEmail="
+					+ entEmail + "]";
+		}
+
+		public ENT_MemberDTO(String entBr, String entPassword, String entName, String entCeo, String entPhone,
+				String entAddress, String entEmail, Timestamp entDate) {
 			super();
 			this.entBr = entBr;
 			this.entPassword = entPassword;
@@ -23,12 +33,7 @@ public class ENT_MemberDTO {
 			this.entPhone = entPhone;
 			this.entAddress = entAddress;
 			this.entEmail = entEmail;
-			
-		}
-
-		public String toString() {
-			return "ENT_MemberDTO [entBr=" + entBr + ", entPassword=" + entPassword + ", entName=" + entName + ", entCeo="
-					+ entCeo + ", entPhone=" + entPhone + ", entAddress=" + entAddress + ", entEmail=" + entEmail + "]";
+			this.entDate = entDate;
 		}
 
 		public String getEntBr() {
@@ -58,11 +63,11 @@ public class ENT_MemberDTO {
 		public String getEntCeo() {
 			return entCeo;
 		}
-		
+
 		public void setEntCeo(String entCeo) {
 			this.entCeo = entCeo;
 		}
-		
+
 		public String getEntPhone() {
 			return entPhone;
 		}
@@ -85,6 +90,14 @@ public class ENT_MemberDTO {
 
 		public void setEntEmail(String entEmail) {
 			this.entEmail = entEmail;
+		}
+
+		public Timestamp getEntDate() {
+			return entDate;
+		}
+
+		public void setEntDate(Timestamp entDate) {
+			this.entDate = entDate;
 		}
 		
 	}

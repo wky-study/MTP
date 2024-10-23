@@ -1,5 +1,9 @@
 package com.team.ecobuilders.ENT_member.web;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,7 +26,7 @@ public class ENT_MemberController {
 	@Autowired
 	ENT_MemberService memberService;
 
-	@RequestMapping("/ent/ENT_registView")
+	@RequestMapping("/home/ENT_registView")
 	public String ENT_registView() {
 
 		System.out.println("ENT_registView 실행");
@@ -32,7 +36,7 @@ public class ENT_MemberController {
 
 	}
 
-	@PostMapping("/ent/ENT_registDo") // POST 방식 요청만 받음 (위와 같음)
+	@PostMapping("/home/ENT_registDo") // POST 방식 요청만 받음 (위와 같음)
 	public String ENT_registDo(HttpServletRequest request) {
 
 		System.out.println(request.getParameter("br"));
@@ -49,23 +53,33 @@ public class ENT_MemberController {
 		ent_member.setEntPhone(request.getParameter("phone"));
 		ent_member.setEntAddress(request.getParameter("address"));
 		ent_member.setEntEmail(request.getParameter("email"));
+		
+        try {
+            // 문자열을 Date로 변환
+        	Timestamp ent_date = new Timestamp(new Date().getTime());
+        	System.out.println(ent_date);
+            ent_member.setEntDate(ent_date);
+        } catch (Exception e) {
+            e.printStackTrace();
+            // 예외 처리 로직 추가
+        }
 
 		System.out.println(ent_member);
 
 		// DB에 해당 회원정보를 저장 -> mybatis 사용
 		memberService.ent_insertMember(ent_member);
 
-		return "redirect:/ent/ENT_loginView";
+		return "redirect:/home/ENT_loginView";
 	}
-
 
 	// 화면
-	@RequestMapping("/ent")
-	public String ecobuilders() {
-		return "/";
+	@RequestMapping("/home")
+	public String ent() {
+		return "/home";
 	}
+	
 
-	@RequestMapping("/ent/ENT_loginView")
+	@RequestMapping("/home/ENT_loginView")
 	public String ENT_loginView(HttpServletRequest request, Model model) {
 
 		// 어느 페이지에서 /ENT_loginView 요청을 했는지 확인
@@ -77,7 +91,7 @@ public class ENT_MemberController {
 		return "KDH_member/ENT_loginView";
 	}
 
-	@PostMapping("/ent/ENT_loginDo")
+	@PostMapping("/home/ENT_loginDo")
 	public String ENT_loginDo(ENT_MemberDTO ent_member, Model model, HttpServletResponse response, String from,
 			HttpSession session, boolean rememberBr, RedirectAttributes attr) { 
 
@@ -140,17 +154,16 @@ public class ENT_MemberController {
 			// redirect:/ENT_loginView 를 하면 model의 내용이 사라짐
 			// forward:/ENT_loginView 를 하면 현재 메소드의 model, request 값 등이 전달됨
 			// redirect 할 때 데이터 보내는 경우 RedirectAttributes 객체 이용
-			return "redirect:/ent/ENT_loginView";
+			return "redirect:/home/ENT_loginView";
 		}
 
 		// 로그인 후 홈화면 이동 -> 홈화면("/") 으로 리다이렉트
 		// 로그인 후 이전 화면으로 이동 -> from 으로 리다이렉트
-		// /log는 테스트화면
-		return "redirect:" + "/ent";
+		return "redirect:" + "/home";
 	}
 
 	// 로그아웃시 실행
-	@RequestMapping("/ent/ENT_logoutDo")
+	@RequestMapping("/home/ENT_logoutDo")
 	public String ENT_logoutDo(HttpSession session, HttpServletRequest request) {
 
 		// /ENT_logoutDo 요청을 한 사람의 세션을 제거
@@ -164,13 +177,13 @@ public class ENT_MemberController {
 	}
 
 	// 회원수정 페이지 요청
-	@RequestMapping("/ent/ENT_memEditView")
+	@RequestMapping("/home/ENT_memEditView")
 	public String ENT_memEditView() {
 		return "KDH_member/ENT_memEditView";
 	}
 
 	// 회원수정 기능 요청
-	@PostMapping("/ent/ENT_memEditDo")
+	@PostMapping("/home/ENT_memEditDo")
 	public String ENT_memEditDo(ENT_MemberDTO ent_member, HttpSession session) {
 
 		System.out.println(ent_member);
@@ -183,12 +196,12 @@ public class ENT_MemberController {
 		ENT_MemberDTO login = memberService.ent_getMember(ent_member.getEntBr());
 		session.setAttribute("login", login);
 
-		return "redirect:/ent/ENT_memEditView";
+		return "redirect:/home/ENT_memEditView";
 
 	}
 
 	// 회원삭제 기능 요청
-	@PostMapping("/ent/ENT_memDelDo")
+	@PostMapping("/home/ENT_memDelDo")
 	public String ENT_memDelDo(HttpSession session) {
 
 		// 세션에 담긴 로그인 정보를 꺼낸다.
@@ -200,7 +213,7 @@ public class ENT_MemberController {
 		// 로그인 정보를 담고 있는 세션 객체 제거(= 로그아웃)
 		session.invalidate();
 
-		return "redirect:/ent";
+		return "redirect:/home";
 	}
 
 }

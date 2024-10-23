@@ -11,6 +11,7 @@
 		    , ent_phone
 			, ent_address
 		    , ent_email
+		    , ent_date
 		FROM
 			ent_members
 		WHERE 1=1
@@ -26,6 +27,7 @@
 		    , ent_phone
 			, ent_address
 		    , ent_email
+		    , ent_date
 		) VALUES (
 		      #{entBr}    
 		    , #{entPassword}
@@ -34,6 +36,7 @@
 		    , #{entPhone}
 		    , #{entAddress}
 		    , #{entEmail}
+		    , #{entDate, jdbcType=TIMESTAMP}
 		)
 	</insert>
 	
@@ -41,8 +44,11 @@
 		UPDATE ent_members
 		SET 
 			ent_name = #{memName}
+		  , ent_ceo = #{memCeo}
 		  , ent_phone = #{memPhone}
+		  , ent_address = #{memAddress}
 		  , ent_email = #{memEmail}
+		  , ent_date = #{memDate}
 		<if test="entPassword.isEmpty() == false">
 		  , ent_password = #{entPassword}
 		</if>
@@ -58,6 +64,7 @@
 		    , ent_phone
 			, ent_address
 		    , ent_email
+		    , ent_date
 		FROM 
 			ent_members
 		WHERE 1=1

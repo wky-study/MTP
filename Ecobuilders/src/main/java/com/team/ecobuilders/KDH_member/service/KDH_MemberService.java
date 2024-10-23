@@ -67,6 +67,7 @@ public class KDH_MemberService {
 		return result;
 	}
 	
+	// 회원 리스트
 	public List<KDH_MemberDTO> getMemList(){
 		List<KDH_MemberDTO> result = dao.getMemList();
 		return result;

@@ -75,25 +75,18 @@
 								for="inputName">이름</label>
 						</div>
 
-						<!-- 생년월일 input -->
-						<div class="form-floating mb-3">
-							<input class="form-control" id="inputBirthdate" type="text"
-								name="memBirthdate" value="${sessionScope.login.memBirthdate }" /> <label
-								for="inputBirthdate">생년월일</label>
-						</div>
-						
 						<!-- 전화번호 input -->
 						<div class="form-floating mb-3">
 							<input class="form-control" id="inputPhone" type="tel"
 								name="memPhone" value="${sessionScope.login.memPhone }" /> <label
 								for="inputPhone">전화번호</label>
 						</div>
-						
+
 						<!-- 주소 input -->
 						<div class="form-floating mb-3">
 							<input class="form-control" id="inputAddress" type="text"
-								name="memAddress" value="${sessionScope.login.memAddress }" /> <label
-								for="inputAddress">주소</label>
+								name="memAddress" value="${sessionScope.login.memAddress }" />
+							<label for="inputAddress">주소</label>
 						</div>
 
 						<!-- 이메일 input -->
@@ -146,5 +139,7 @@
 			document.getElementById('memEditForm').submit();
 			
 		});
-</script>
+	</script>
 </body>
+
+</html>

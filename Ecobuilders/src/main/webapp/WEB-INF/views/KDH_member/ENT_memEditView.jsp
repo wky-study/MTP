@@ -71,7 +71,7 @@
 								name="entName" value="${sessionScope.login.entName }" /> <label
 								for="inputName">기업명</label>
 						</div>
-						
+
 						<!-- 대표자명 input-->
 						<div class="form-floating mb-3">
 							<input class="form-control" id="inputCeo" type="text"
@@ -82,10 +82,10 @@
 						<!-- 주소 input -->
 						<div class="form-floating mb-3">
 							<input class="form-control" id="inputAddress" type="text"
-								name="entAddress" value="${sessionScope.login.entAddress }" /> <label
-								for="inputAddress">주소</label>
+								name="entAddress" value="${sessionScope.login.entAddress }" />
+							<label for="inputAddress">주소</label>
 						</div>
-						
+
 						<!-- 전화번호 input -->
 						<div class="form-floating mb-3">
 							<input class="form-control" id="inputPhone" type="tel"
@@ -107,7 +107,8 @@
 						method="POST"></form>
 
 					<div class="d-flex justify-content-center">
-						<button class="btn btn-primary me-2" id="ent_memEditBtn" type="button">기업회원수정</button>
+						<button class="btn btn-primary me-2" id="ent_memEditBtn"
+							type="button">기업회원수정</button>
 						<button class="btn btn-danger" id="ent_memDelBtn" type="button">기업회원탈퇴</button>
 					</div>
 
@@ -143,5 +144,6 @@
 			document.getElementById('ent_memEditForm').submit();
 			
 		});
-</script>
-</body>
+	</script>
+	</body>
+</html>
