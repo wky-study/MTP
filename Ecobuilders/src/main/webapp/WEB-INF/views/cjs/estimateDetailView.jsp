@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>그린리모델링 견적서 보기 페이지</title>
-    <!-- 좀 더 꾸미기 필요함 -->
+    <%@ include file= "/WEB-INF/inc/style.jsp" %>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -43,317 +43,205 @@
             padding: 15px;
             border: 1px solid #000;
         }
-
-        .container{
-            width: 1000px;
+        .container {
+            width: 1300px;
             align-content: center;
+            margin: auto;
         }
     </style>
 </head>
 <body>
-	<!-- 꾸미기 더 필요함 -->
+	<%@ include file= "/WEB-INF/inc/header.jsp" %>
     <div class="container">
-    <h2 style="text-align: center;">견 적 서</h2>
+        <h2 style="text-align: center;">견 적 서</h2>
 
         <table>
-        <tr>
-            <td>견적서 분류번호</td>
-            <td> est_id</td>
-        </tr>
-        <tr>
-            <td>상 호 일 자</td>
-            <td colspan="3">est_date</td>
-            <td>시 공 기 간</td>
-            <td>est_period</td>
-        </tr>
-        <tr>
-            <td style="height: 50px;">고객 정보</td>
-            <td colspan="3">
-                <p>이름: mem_name</p>
-                <p>연락처: mem_phone</p>
-                <p>주소: est_address</p>
-            </td>
-            <td>시 공 사 명</td>
-            <td><input class="input-box" type="text"></td>
-        </tr>
-        <tr>
-            <td>수기사항</td>
-            <td colspan="5">
-                형태:
-                <label><input type="radio" name="type" value="단독"> 단독</label>
-                <label><input type="radio" name="type" value="주택"> 주택</label>
-                <label><input type="radio" name="type" value="아파트"> 아파트</label>
-                <label><input type="radio" name="type" value="단지"> 단지</label>
-                <label><input type="radio" name="type" value="기타"> 기타</label>
-                <br>
-                est_blueprint
-            </td>
-        </tr>
-    </table>
-
-    <h3>공종별 항목</h3>
-    <table>
-        <thead>
             <tr>
-                <th>품목</th>
-                <th>구분</th>
-                <th>단위</th>
-                <th>수량</th>
-                <th>단가</th>
-                <th>금액</th>
-                <th>비고</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td rowspan="2">전구</td>
-                <td>자재종류들어오면 될거같음</td>
-                <td>1</td>
-                <td>12</td>
-                <td>10,000</td>
-                <td> <input type="number" placeholder="0"> </td>
-                <td></td>
-            </tr>
-            
-            <!-- 추가 항목들 -->
-        </tbody>
-        
-        <tbody>
-            <tr>
-                <td rowspan="2">item_name</td>
-                <td>item_type</td>
-                <td>단위쪽 고민해봐야함</td>
-                <td>수량 나중에 불러온다했고</td>
-                <td>item_price</td>
-                <td> <input type="number" placeholder="0"> </td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> </td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> </td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> </td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> </td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> </td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> </td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> </td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> </td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> </td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> </td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> </td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> </td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> </td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> </td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> </td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> </td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> </td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td rowspan="2"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> <input type="number" placeholder="0"> </td>
-                <td></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td colspan="2">합 계</td>
-                <td colspan="5">0 (원)</td>
-            </tr>
-        </tbody>
-        
-    </table>
-
-    <!-- <div class="green-section">
-        <h3>그린 리모델링 효과</h3>
-        <table>
-            <tr>
-                <td>에너지 효율 상승</td>
-                <td><input placeholder="계산식 넣어야됨"></td>
+                <td>견적서 분류번호</td>
+                <td>est_id</td>
             </tr>
             <tr>
-                <td>탄소 배출 감소</td>
-                <td><input placeholder="계산식 넣어야됨"></td>
+                <td>상 호 일 자</td>
+                <td colspan="3">est_date</td>
+                <td>시 공 기 간</td>
+                <td>est_period</td>
+            </tr>
+            <tr>
+                <td style="height: 50px;">고객 정보</td>
+                <td colspan="3">
+                    <p>이름: mem_name</p>
+                    <p>연락처: mem_phone</p>
+                    <p>주소: est_address</p>
+                </td>
+                <td>시 공 사 명</td>
+                <td><input class="input-box" type="text"></td>
+            </tr>
+            <tr>
+                <td>수기사항</td>
+				<td colspan="5">형태:<input type="text" name="a" placeholder="예시) 주택" class="input-box" /></td>
             </tr>
         </table>
-    </div> -->
 
-    <button class="btn-submit" onclick="submitForm()">제안서 수락</button>
-    <a href="${pageContext.request.contextPath }/estimateMod"><button class="btn-submit">견적 수정 및 제안하기</button></a>
+        <h3>공종별 항목</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>품목</th>
+                    <th>구분</th>
+                    <th>단위</th>
+                    <th>수량</th>
+                    <th>단가</th>
+                    <th>금액</th>
+                    <th>비고</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>전구</td>
+                    <td>자재종류들어오면 될거같음</td>
+                    <td>1</td>
+                    <td>12</td>
+                    <td>10,000</td>
+                    <td><input type="number" placeholder="0" class="input-box"></td>
+                    <td></td>
+                </tr>
+            </tbody>
+            <tbody>
+					<tr>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+					</tr>
+			</tbody>
+			<tbody>
+					<tr>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+					</tr>
+			</tbody>
+			<tbody>
+					<tr>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+					</tr>
+			</tbody>
+			<tbody>
+					<tr>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+					</tr>
+			</tbody>
+			<tbody>
+					<tr>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+					</tr>
+			</tbody>
+			<tbody>
+					<tr>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+					</tr>
+			</tbody>
+			<tbody>
+					<tr>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+					</tr>
+			</tbody>
+			<tbody>
+					<tr>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+					</tr>
+			</tbody>
+			<tbody>
+					<tr>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+					</tr>
+			</tbody>
+			<tbody>
+					<tr>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+					</tr>
+			</tbody>
+			<tbody>
+					<tr>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+						<td class="inputbox"></td>
+					</tr>
+			</tbody>
+			<tbody>
+					<tr>
+						<td colspan="2">합 계</td>
+						<td colspan="5"><p><input type="text" name="quoPrice" placeholder="0" readonly /> (원)</p></td>
+					</tr>
+				</tbody>
+        </table>
 
-</div>
+        <button class="btn-submit" onclick="submitForm()">제안서 수락</button>
+        <a href="${pageContext.request.contextPath }/estimateMod">
+            <button class="btn-submit">견적 수정 및 제안하기</button>
+        </a>
+    </div>
+    
+    <%@ include file= "/WEB-INF/inc/footer.jsp" %>
 
     <script>
         function submitForm() {

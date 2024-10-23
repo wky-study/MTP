@@ -12,7 +12,6 @@
             quo_items, 
             quo_price, 
             quo_open, 
-            quo_blueprint, 
             est_id, 
             ent_br, 
             remarks
@@ -24,7 +23,6 @@
             #{quoItems}, 
             #{quoPrice}, 
             #{quoOpen}, 
-            #{quoBlueprint}, 
             #{estId}, 
             #{entBr}, 
             #{remarks}
