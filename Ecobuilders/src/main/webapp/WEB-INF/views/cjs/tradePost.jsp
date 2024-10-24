@@ -5,9 +5,9 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>거래소 게시판</title>
+    <title>견적서 목록</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%@ include file= "/WEB-INF/inc/style.jsp" %>
+    <%@ include file="/WEB-INF/inc/style.jsp" %>
     <style>
         /* 전체 페이지 스타일 */
         body {
@@ -18,7 +18,7 @@
 
         /* 카드 스타일 */
         .card {
-            width: calc(25% - 20px); /* 4개 카드 배치 시 */
+            width: calc(25% - 20px);
             padding: 15px;
             border: 1px solid #ddd;
             border-radius: 10px;
@@ -81,27 +81,27 @@
     </style>
 </head>
 <body>
-	<%@ include file= "/WEB-INF/inc/header.jsp" %>
+    <%@ include file="/WEB-INF/inc/header.jsp" %>
     <header class="header">
-        <h2>거래소 게시판</h2>
-        <p>일반 고객이 올린 견적서를 보고 시공사에서 볼 수 있는 게시판</p>
+        <h2>견적서 목록</h2>
+        <p>고객이 올린 견적서를 확인할 수 있는 페이지입니다.</p>
     </header>
     
     <div class="card-container">
-        <!-- 게시글 카드 -->
-        <c items="${keyReview}" var="cjs">
+        <!-- 견적서 카드 -->
+        <c:if test="${empty estimateList}">
+            <p>견적서 목록이 없습니다.</p>
+        </c:if>
+        
+        <c:forEach items="${estimateList}" var="estimateDTO">
             <section class="card">
-                <a href="${pageContext.request.contextPath}/estimateDetailView?no=${cjs.post_no}" style="text-decoration: none; color: inherit;">
-                    <div class="thumbnail">
-                        <!-- 썸네일 이미지 -->
-                        <img src="${pageContext.request.contextPath}/displayImage?fileName=${cjs.thumbnailPath}" alt="썸네일 이미지">
-                    </div>
-                    <div class="title">${cjs.post_title}</div>
-                    <div class="author">작성자: ${cjs.post_author}</div>
+                <a href="${pageContext.request.contextPath}/estimateDetailView/${estimateDTO.estId}" style="text-decoration: none; color: inherit;">
+                    <div class="title">${estimateDTO.memName}의 견적서</div>
+                    <div class="author">작성자: ${estimateDTO.memName}</div>
                 </a>
             </section>
-        </c>
+        </c:forEach>
     </div>
-    <%@ include file= "/WEB-INF/inc/footer.jsp" %>
+    <%@ include file="/WEB-INF/inc/footer.jsp" %>
 </body>
 </html>
