@@ -51,7 +51,7 @@
 						<span class="label-sts">${prod.itemEfi}</span>
 					</div>
 					<div class="product-title">
-						<a href="" style="font-size: 23px;">${prod.itemName}</a>
+						<a href="<c:url value="/prodDetails?itemId=${prod.itemId}"/>" style="font-size: 18px;">${prod.itemName}</a>
 						<span>후기 30건</span>
 					</div>
 					<div class="price-section">

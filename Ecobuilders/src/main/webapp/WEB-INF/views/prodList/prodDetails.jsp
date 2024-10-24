@@ -37,14 +37,24 @@
 		</form>
 	</div>
 
-	<!-- Products List -->
-	
-	
-
-
-
-
+	<!-- Product-->
+	<div class="prod-dt-box">
+		<div class="prod-dt-img">
+			<img src="images/window_icon.jpg" alt="">
+		</div>
+		<div class="prod-dt-des">
+			<h2>${prodList.itemName}</h2>
+			<h3>${prodList.itemType}</h3>
+			<h4>${prodList.entName}</h4>
+			<h4>${prodList.itemPrice}원</h4>
+		</div>
 	</div>
+	
+	
+
+
+
+
 
 	<!-- Pagination -->
 
@@ -78,7 +88,6 @@
 				<li class="page-item ${keySearch.pageNo == keySearch.finalPage ? 'disabled' : ''  }">
 			    	<a id="aTagBtn" class="page-link"  style="cursor: pointer;" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
 			    </li>
-   			    </li>
 		</ul>
 	</div>
 	

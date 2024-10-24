@@ -23,5 +23,10 @@ public class ProdListService {
 		int result = dao.getProdCount(search);
 		return result;
 	}
+	
+	public ProdListDTO getProd(int itemId) {
+		ProdListDTO result = dao.getProd(itemId);
+		return result;
+	}
 
 }

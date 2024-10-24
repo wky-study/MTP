@@ -7,7 +7,7 @@
 		<section class="links">
 			<div class="row">
 				<section class="custum-footer" style="width: 19%;">
-					<h3>MEMBER A</h3>
+					<h3>김동희</h3>
 					<ul class="unstyled">
 						<li><a href="#">Lorem ipsum dolor sit</a></li>
 						<li><a href="#">Nesciunt itaque, alias possimus</a></li>
@@ -17,7 +17,7 @@
 					</ul>
 				</section>
 				<section class="custum-footer" style="width: 19%;">
-					<h3>MEMBER B</h3>
+					<h3>김태권</h3>
 					<ul class="unstyled">
 						<li><a href="#">Lorem ipsum dolor sit</a></li>
 						<li><a href="#">Reiciendis dicta laboriosam enim</a></li>
@@ -27,7 +27,7 @@
 					</ul>
 				</section>
 				<section class="custum-footer" style="width: 19%;">
-					<h3>MEMBER C</h3>
+					<h3>배재현</h3>
 					<ul class="unstyled">
 						<li><a href="#">Lorem ipsum dolor sit</a></li>
 						<li><a href="#">Distinctio, inventore quidem nesciunt</a></li>
@@ -37,7 +37,7 @@
 					</ul>
 				</section>
 				<section class="custum-footer" style="width: 19%;">
-					<h3>MEMBER D</h3>
+					<h3>전상욱</h3>
 					<ul class="unstyled">
 						<li><a href="#">Lorem ipsum dolor sit</a></li>
 						<li><a href="#">Recusandae, culpa necessita nam</a></li>
@@ -47,7 +47,7 @@
 					</ul>
 				</section>
 				<section class="custum-footer" style="width: 19%;">
-					<h3>MEMBER E</h3>
+					<h3>최준식</h3>
 					<ul class="unstyled">
 						<li><a href="#">Lorem ipsum dolor sit</a></li>
 						<li><a href="#">Recusandae, culpa necessita nam</a></li>
