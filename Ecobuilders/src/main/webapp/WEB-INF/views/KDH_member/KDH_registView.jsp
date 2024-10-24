@@ -4,17 +4,21 @@
 
 <!DOCTYPE html>
 <html lang="ko">
+<title>일반회원가입</title>
 <head>
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
+
+<!-- Style -->
+		<%@ include file= "/WEB-INF/inc/style.jsp" %>
 </head>
 
-<title>일반회원가입</title>
-</head>
 <body id="page-top">
+<!-- Header -->
+		<%@ include file= "/WEB-INF/inc/header.jsp" %>
 
     <!-- Contact Section-->
     <section class="page-section" id="contact">
@@ -78,6 +82,8 @@
 		
 
 	</script>
+		<!-- Footer -->
+		<%@ include file= "/WEB-INF/inc/footer.jsp" %>
 </body>
 
 </html>

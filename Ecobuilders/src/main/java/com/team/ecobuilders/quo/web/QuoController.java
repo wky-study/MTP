@@ -28,10 +28,10 @@ public class QuoController {
             , @RequestParam("quoDate") String quoDate // 단일 값
             , @RequestParam("quoStartdate") String quoStartdateStr // 단일 값
             , @RequestParam("quoEnddate") String quoEnddateStr // 단일 값
-            , @RequestParam("itemName") List<String> itemNameList
-            , @RequestParam("itemType") List<String> itemTypeList
-            , @RequestParam("quantity") List<String> quantityList
-            , @RequestParam("itemPrice") List<String> itemPriceList
+            , @RequestParam("itemName") List<String> itemNameList	// json파일로 변환
+            , @RequestParam("itemType") List<String> itemTypeList	// json파일로 변환
+            , @RequestParam("quantity") List<String> quantityList	// json파일로 변환
+            , @RequestParam("itemPrice") List<String> itemPriceList	// json파일로 변환
             , @RequestParam("quoPrice") String quoPrice // 단일 값
             , @RequestParam("quoOpen") String quoOpen // 단일 값
 //            , @RequestParam("estId") String estId // 단일 값

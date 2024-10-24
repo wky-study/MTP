@@ -139,7 +139,7 @@
 										<td>${prodListDTO.itemLv }</td>
 										<td>${prodListDTO.itemEfi }</td>
 										<!-- 클릭했을때 기능 넣어야함 -->
-										<td><button class="btn btn-danger" onclick="" type="button">제거</button></td>
+										<td><button class="btn btn-danger" onclick="" type="button">제거?</button></td>
 									</tr>
 							</c:forEach>
 						</tbody>
