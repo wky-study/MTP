@@ -32,8 +32,7 @@
 	<section class="page-section" id="contact">
 		<div class="container pt-5">
 			<!-- Contact Section Heading-->
-			<h2class ="page-section-heading text-center text-uppercase
-				text-secondarymb-0">로그인
+			<h2class ="page-section-heading text-center text-uppercasetext-secondarymb-0">로그인
 			</h2>
 			<div class="divider-custom-line"></div>
 		</div>
@@ -86,22 +85,31 @@
 						<span class="error-msg">${failMsg }</span>
 					</div>
 
-					<!-- Submit Button-->
+					<!--Button-->
 					<button class="btn btn-primary btn-xl" id="submitButton"
 						type="submit">로그인</button>
-					<button class="btn btn-primary btn-xl" id="submitButton"
-						type="button"
-						onclick="location.href='http://localhost:9090/ecobuilders/registView';">
-						회원가입</button>
+					<button id="registBtn" type="button">회원가입</button>
 				</form>
+
 			</div>
 		</div>
 
 
 
 	</section>
+
+	<script type="text/javascript">
+		document.getElementById("registBtn").addEventListener("click", ()=>{
+			
+			window.location.href = "${pageContext.request.contextPath }/registView";
+		})
+	
+	</script>
+
+
 		<!-- Footer -->
 		<%@ include file= "/WEB-INF/inc/footer.jsp" %>
+
 </body>
 
 </html>
