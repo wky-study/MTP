@@ -11,7 +11,7 @@
 
 <style>
 body {
-    font-family: Arial, sans-serif;
+    /* font-family: Arial, sans-serif; */
 }
 
 table {
@@ -30,11 +30,12 @@ th {
 }
 
 .input-box {
-    width: 90%; /* 가로 넓이를 90%로 변경 */
+    /*width: 90%; /* 가로 넓이를 90%로 변경 */
     text-align: center;
     border: none;
     background-color: white;
     transition: background-color 0.3s;
+    font-family: Arial, sans-serif; /* 폰트 설정 */
 }
 
 .input-box.filled {
@@ -61,6 +62,10 @@ th {
     width: 1300px;
     align-content: center;
 }
+
+.wid-class{
+	
+} 
 </style>
 </head>
 <body>
@@ -96,8 +101,8 @@ th {
 							주소: <input type="text" name="estAddress" class="input-box" />
 						</p>
 					</td>
-					<td>시공사 명</td>
-					<td colspan="2" class="input-box" >${sessionScope.login.entName}</td>
+					<td colspan="2">시공사 명</td>
+					<td class="input-box" ><!-- ${sessionScope.login.entName} --></td>
 				</tr>
 				<tr>
 					<td>수기사항</td>
@@ -267,7 +272,7 @@ th {
 				<tbody>
 					<tr>
 						<td colspan="2">합 계</td>
-						<td colspan="5"><p><input type="text" name="quoPrice" placeholder="0" readonly /> (원)</p></td>
+						<td colspan="5" style="font-family: Arial, sans-serif;"><input type="text" name="quoPrice" placeholder="0" readonly /> (원)</td>
 					</tr>
 				</tbody>
 			</table>
@@ -276,7 +281,7 @@ th {
 			<button class="btn-submit" type="button" onclick="submitForm('Y')">제안서 임시저장</button>
 			<button class="btn-submit" type="button" onclick="submitForm('N')">제안서 보내기</button>
 	</form>
-		<button class="btn-submit" onclick="location.href='${pageContext.request.contextPath}/estimateDetailView'">취 소</button>
+		<button class="btn-submit" type="button" onclick="location.href='${pageContext.request.contextPath}/estimateDetailView/${estimateDTO.estId }'">취 소</button>
 		</div>
 	
 	<%@ include file= "/WEB-INF/inc/footer.jsp" %>
