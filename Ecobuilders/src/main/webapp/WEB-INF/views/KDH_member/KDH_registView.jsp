@@ -27,7 +27,7 @@
                 <div class="col-lg-8 col-xl-7">          	
                     <form id="contactForm" action="${pageContext.request.contextPath }/registDo" method="POST">
                         
-        						<!-- 아이디 input-->
+        				<!-- 아이디 input-->
 						<div class="form-floating mb-3">
 							<input class="form-control" id="inputId" type="text" name="id" />
 							<label for="inputId">아이디</label>
