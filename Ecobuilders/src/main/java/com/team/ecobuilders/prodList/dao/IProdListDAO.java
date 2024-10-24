@@ -12,5 +12,7 @@ public interface IProdListDAO {
 	
 	//제품 목록 총 개수 가져오기
 	int getProdCount(SearchVO search);
+	
+	ProdListDTO getProd(int itemId);
 
 }

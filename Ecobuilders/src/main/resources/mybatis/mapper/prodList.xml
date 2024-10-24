@@ -51,6 +51,25 @@
 				
 			
 	</select>
+	
+	<select id="getProd" resultType="com.team.ecobuilders.prodList.dto.ProdListDTO" parameterType="int">
+		SELECT
+			    ITEM_ID,
+                ITEM_NAME,
+                ITEM_TYPE,
+                ITEM_LV,
+                ITEM_EFI,
+                ITEM_PRICE
+                PROD_NO, 
+	            ENT_NAME, 
+	            PROD_DATE,
+	            PROD_DEL_YN,
+	            ITEM_STD
+	    FROM ITEMS
+	    	WHERE ITEM_ID = #{itemId}
+			
+	
+	</select>
 
 
 </mapper>
