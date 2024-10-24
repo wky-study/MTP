@@ -72,11 +72,15 @@
 			<input type="file" id="inputImg" accept="image/*" hidden="true" onchange="f_sandImg()">
 			
 			<form id="reviewWriteForm" action="${pageContext.request.contextPath }/reviewWriteDo" method="POST" enctype="multipart/form-data">
+			
 				<div class="mb-3">
 					<input class="form-control" id="inputId" type="text" name="reviewTitle" placeholder="제목을 입력해주세요."/>
 				</div>
 				
 				<div class="mb-3">
+				
+					<button class="d-none" onclick="f_imgWidth(this)" id="imgBtn">입력</button>
+					
 					<textarea id="smartEditor" class="form-control"  rows="10" name="reviewContent"></textarea>
 				</div>		
 				
@@ -182,20 +186,23 @@
 			});
 		}
 		
+		
+		/* 사진 크기 조정 */
 		let v_targetImg = null;
+		let v_temp = null;
+		let v_imgIn = document.getElementById("imgInput");
 		
 		function f_sizeCtrl(p_this){
 			console.log(p_this);
-			/* document.getElementById('sizeCtrlBox').classList.remove('d-none'); */ 
 			v_targetImg = p_this;
 			
-			const v_if = document.querySelector('#reviewWriteForm > div:nth-child(2) > iframe');
-			console.log(v_if);
-			v_if = v_if.querySelector('#smart_editor2_content > div:nth-child(2) > iframe');
-			console.log(v_if);
-		}
-		
+			console.log(p_this.parentElement);
 
+			var test = prompt("사진 크기 입력(px)");
+			console.log(test);
+			
+			v_targetImg.style.width = test + "px";
+		}
 		
 	</script>
 	

@@ -204,7 +204,7 @@
 							<input type="hidden" name="memId" value="${sessionScope.login.memId }">
 							<input type="hidden" name="reviewNo" value="${keyReview.reviewNo }">
 							<div class="col-10">
-								<input id="replyInput" class="form-control" type="text" name="replyContent">
+								<input id="replyInput" class="form-control" type="text" name="replyContent" >
 							</div>
 							<button id="replyBtn" class="btn btn-primary col-2" style="padding: 0px"  type="button">등록</button>
 						</form>
@@ -280,10 +280,8 @@
     };
 	
 	let v_name = '${sessionScope.login.memName}';
-	
 	/* 댓글 입력 창 클릭 이벤트 */
 	document.getElementById("replyInput").addEventListener("click", ()=>{
-		
 		
 		if(!v_name){
 			location.href = "${pageContext.request.contextPath}/loginView";
@@ -292,11 +290,16 @@
 		
 	})
 	
-	let v_replyBox = document.getElementById("replyBox");			
-
+	let v_replyBox = document.getElementById("replyBox");
+	
 	/* 등록버튼 클릭 이벤트 */
 	document.getElementById("replyBtn").addEventListener("click", ()=>{
+		
 	let v_replyInput =  document.getElementById("replyInput").value;
+	
+	if(v_replyInput == "" || v_replyInput == null){
+		alert("내용을 입력해주세요");
+	} 
 
 	/* form 태그 가져오기 */
 	let v_formData = $('#replyForm').serialize(); // replyContent = asdsa
@@ -318,19 +321,35 @@
 			
 			// 댓글 한줄에 대한 html코드 생성
 			let v_reply = '<div class="row pt-2 pb-2">';
-			v_reply += '     <input type="hidden" value="' + resp['replyNo'] + '">';
-			v_reply += '     <div class="col-2">' + resp['memName'] + '</div>';
-			v_reply += '     <div class="col-7">' + resp['replyContent'] + '</div>';
-			v_reply += '     <div class="col-2">' + resp['replyDate'] + '</div>' ;
-			v_reply += '     <div class="col-1">';
-			v_reply += '       <span class="my-span" onclick="f_delete()">삭제</span>';
-			v_reply += '     </div>'; 
-			v_reply += '   </div>'; 
+			v_reply += '<input type="hidden" value="' + resp['replyNo'] + '">';
+			v_reply += '<div class="col-1"><img class="my-profile-img" src="${pageContext.request.contextPath }/resources/images/profileImg.jpg"> </div>';
+			v_reply += ' <div class="col-9">';
+			v_reply += " <div><h4> " + resp['memName'] + "</h4></div>" ;
+			v_reply += "<div><span>" + resp['replyContent'] + "</span></div>";
+			v_reply += '<div class="d-flex ">';
+			v_reply += ' <div>'; 
+			v_reply += '<span class="my-span">' + resp["replyDate"] + '</span>'; 
+			v_reply += '<span id="" class="my-span">답글달기</span>'; 
+			v_reply += '</div>'; 
+			v_reply += '</div>'; 
+			v_reply += '</div>'; 
+			v_reply += '<div class="col-1"></div>'; 
+			
+			console.log("${sessionScope.login.memId}");
+			
+			let v_memId = "${sessionScope.login.memId}";
+			
+			if(v_memId){
+				v_reply += '<div class="col-1">';
+				v_reply += '<span class="my-span" onclick="f_delete()">삭제</span>';
+				v_reply += '</div>';
+			}
+			
+			v_reply += '</div>';
 			
 			v_replyBox.innerHTML += v_reply; 
 		}
 	});
-	
 	
 	if(!v_replyInput){
 		return;
