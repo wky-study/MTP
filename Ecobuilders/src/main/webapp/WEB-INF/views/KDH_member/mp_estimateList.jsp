@@ -97,6 +97,52 @@ div {
 					</table>
 				</div>
 			</div>
+			
+			<!-- quo 확인 -->
+			<div class="my-content">
+				<div class="d-flex justify-content-center border-bottom">
+					<h4>quo</h4>
+				</div>
+				<div class="my-table">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">아이디</th>
+								<th scope="col">이름</th>
+								<th scope="col">날짜</th>
+								<th scope="col">공사기간</th>
+								<th scope="col">자재</th>
+								<th scope="col">가격</th>
+								<th scope="col">주소</th>
+								<th scope="col">자세히보기</th>
+							</tr>
+						</thead>
+						
+						<tbody>
+							<c:forEach items="${keyEstList}" var="estimateList"
+								varStatus="status">
+								<c:if test="${memberDTO.memAdmin != '0' }">
+									<tr>
+										<td scope="row">${status.index + 1}</td>
+										<td>${estimateList.memId }</td>
+										<td>${estimateList.memName }</td>
+										<td>${estimateList.memDate }</td>
+										<td>${estimateList.memPeriod }</td>
+										<td>${estimateList.memItems }</td>
+										<td>${estimateList.memPrice }</td>
+										<td>${estimateList.memAddress }</td>
+
+
+									</tr>
+								</c:if>
+							</c:forEach>
+							
+						</tbody>
+						
+					</table>
+				</div>
+			</div>
 		</div>
 	</div>
 
