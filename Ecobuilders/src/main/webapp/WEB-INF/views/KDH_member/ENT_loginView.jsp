@@ -17,8 +17,13 @@
 	color: red;
 }
 </style>
+<!-- Style -->
+		<%@ include file= "/WEB-INF/inc/style.jsp" %>
 </head>
 <body id="page-top">
+<!-- Header -->
+		<%@ include file= "/WEB-INF/inc/header.jsp" %>
+
 
 	<!-- Contact Section-->
 	<section class="page-section" id="contact">
@@ -86,6 +91,8 @@
 		</div>
 	</section>
 
+	<!-- Footer -->
+		<%@ include file= "/WEB-INF/inc/footer.jsp" %>
 
 </body>
 </html>

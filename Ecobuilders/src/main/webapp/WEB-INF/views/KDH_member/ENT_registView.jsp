@@ -10,9 +10,14 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>기업회원가입</title>
+    
+    <!-- Style -->
+		<%@ include file= "/WEB-INF/inc/style.jsp" %>
 
 </head>
 <body id="page-top">
+<!-- Header -->
+		<%@ include file= "/WEB-INF/inc/header.jsp" %>
 
     <!-- Contact Section-->
     <section class="page-section" id="contact">
@@ -79,6 +84,8 @@
 	<script type="text/javascript">		
 	
 	</script>
+		<!-- Footer -->
+		<%@ include file= "/WEB-INF/inc/footer.jsp" %>
 </body>
 
 </html>
