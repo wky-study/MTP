@@ -72,4 +72,14 @@ public class KDH_MemberService {
 		List<KDH_MemberDTO> result = dao.getMemList();
 		return result;
 	}
+	
+	public interface KDH_IMemberService {
+	    // 기존 메서드
+	    void insertMember(KDH_MemberDTO member);
+
+	    // 추가: ID 중복 체크 메서드
+	    boolean checkMemberIdExists(String memId);
+	}
+	
+	
 }
