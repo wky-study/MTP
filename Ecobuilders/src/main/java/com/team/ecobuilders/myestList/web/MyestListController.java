@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.team.ecobuilders.myestList.dto.MyestListDTO;
-/*
+import com.team.ecobuilders.myestList.service.MyestListService;
+
 @Controller
 @RequestMapping("/mp_estimateList")
 public class MyestListController {
 
     @Autowired
-    private MyestListController MyestListService;
+    private MyestListService myestListService;
 
     // 현재 로그인된 사용자의 견적서 리스트 가져오기
     @GetMapping("/mp_estimateList")
@@ -27,7 +28,7 @@ public class MyestListController {
         String estId = (String) session.getAttribute("estId");
 
         // 사용자의 estId와 일치하는 견적서 목록 조회
-        List<MyestListDTO> myestList = MyestListService.getEstListById(estId);
+        List<MyestListDTO> myestList = myestListService.getEstListById(estId);
 
         // 조회된 견적서 목록을 모델에 추가
         model.addAttribute("keyEstList", myestList);
@@ -36,4 +37,3 @@ public class MyestListController {
         return "KDH_member/mp_estimateList";
     }
 }
-*/

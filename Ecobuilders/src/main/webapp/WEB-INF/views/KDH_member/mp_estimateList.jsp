@@ -62,19 +62,16 @@ div {
 						<thead>
 							<tr>
 								<th scope="col">#</th>
-								<th scope="col">견적서분류번호</th>
+								<th class="d-flex justify-content-center scope="col">견적서분류번호</th>
 							</tr>
 						</thead>
-						
 						<tbody>
 							<c:forEach items="${keyEstList}" var="myestList"
 								varStatus="status">
-
 									<tr>
 										<td scope="row">${status.index + 1}</td>
-										<td>${myestList.memId }</td>
+										<td>${myestList.estId }</td>
 									</tr>
-
 							</c:forEach>
 							
 						</tbody>
@@ -85,24 +82,8 @@ div {
 		</div>
 	</div>
 	
-
 	<!-- Footer -->
 	<%@ include file="/WEB-INF/inc/footer.jsp"%>
-
-	<!-- 리뷰게시글 이동 -->
-	<script type="text/javascript">
-		function f_click(reviewNo) {
-			console.log(reviewNo);
-			// 새 탭 열기
-			window.open(
-					"${pageContext.request.contextPath}/reviewDetailView?no="
-							+ reviewNo, '_blank'); // '_blank'는 새 탭에서 열도록 지정					
-		}
-		// 추가 할거 생각
-		function f_click(itemId) {
-			console.log(itemId);
-		}
-	</script>
 
 </body>
 </html>
