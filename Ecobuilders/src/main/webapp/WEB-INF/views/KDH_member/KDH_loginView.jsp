@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -17,6 +16,11 @@
 <style type="text/css">
 .error-msg {
 	color: red;
+}
+
+.entlog {
+	width: 127px;
+	padding: 10px;
 }
 
 </style>
@@ -90,7 +94,7 @@
 						type="submit">로그인</button>
 					<button id="registBtn" type="button">회원가입</button>
 				</form>
-
+					<button class="entlog" id="entregistBtn" type="button">기업회원로그인</button>
 			</div>
 		</div>
 
@@ -102,6 +106,11 @@
 		document.getElementById("registBtn").addEventListener("click", ()=>{
 			
 			window.location.href = "${pageContext.request.contextPath }/registView";
+		})
+		
+		document.getElementById("entregistBtn").addEventListener("click", ()=>{
+			
+			window.location.href = "${pageContext.request.contextPath }/ENT_loginView";
 		})
 	
 	</script>
