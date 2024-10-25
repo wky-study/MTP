@@ -16,6 +16,7 @@
 			ent_members
 		WHERE 1=1
 		  AND ent_br = #{entBr}
+		  AND ent_password = #{entPassword}
 	</select>
 	
 	<insert id="ent_insertMember" parameterType="com.team.ecobuilders.ENT_member.dto.ENT_MemberDTO">

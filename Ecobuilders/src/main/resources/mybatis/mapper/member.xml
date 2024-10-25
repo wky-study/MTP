@@ -21,6 +21,7 @@
 		members
 		WHERE 1=1
 		AND mem_id = #{memId}
+		AND mem_password = #{memPassword}
 	</select>
 
 	<!-- 회원 리스트 불러오기 -->
