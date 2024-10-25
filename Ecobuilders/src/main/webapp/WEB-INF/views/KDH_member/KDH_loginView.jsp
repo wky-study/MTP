@@ -18,10 +18,7 @@
 	color: red;
 }
 
-.entlog {
-	width: 127px;
-	padding: 10px;
-}
+
 
 </style>
 
@@ -94,7 +91,6 @@
 						type="submit">로그인</button>
 					<button id="registBtn" type="button">회원가입</button>
 				</form>
-					<button class="entlog" id="entregistBtn" type="button">기업회원로그인</button>
 			</div>
 		</div>
 
