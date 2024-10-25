@@ -24,18 +24,17 @@
 		<%@ include file= "/WEB-INF/inc/header.jsp" %>
 	
 
-	<!-- Products Banner -->
+		<!-- Products Banner -->
 	<div class="products">
-		<form id="searchForm" class="d-flex" action="${pageContext.request.contextPath }/prodView" method="GET" >
+		<form id="searchForm" class="d-flex"
+			action="${pageContext.request.contextPath }/prodView" method="GET">
+			<div class="pd-banner" data-category="">전체</div>
 			<div class="pd-banner" data-category="창호">고효율 창호</div>
-			<div class="pd-banner" data-category="환기장치">환기 장치</div>
-			<div class="pd-banner" data-category="냉난방장치">냉난방 장치</div>
-			<div class="pd-banner" data-category="단열보강재">단열 보강재</div>
+			<div class="pd-banner" data-category="환기">환기 장치</div>
+			<div class="pd-banner" data-category="보일러,난방">냉난방 장치</div>
+			<div class="pd-banner" data-category="단열,마감">단열 보강재</div>
 			<div class="pd-banner" data-category="조명">조명</div>
-			<div class="pd-banner" data-category="태양광패널">태양광 패널</div>
-			<div class="pd-banner" data-category="차열도료">차열도료</div>
-			<div class="pd-banner" data-category="일사조절장치">일사조절장치</div>
-			<div class="pd-banner" data-category="기타">기타</div>
+			<div class="pd-banner" data-category="도료">차열도료</div>
 		</form>
 	</div>
 
@@ -58,40 +57,7 @@
 
 
 
-	<!-- Pagination -->
-
-	<div class="pagination-container">
-		<ul class="pagination">
-			<!-- Previous Page Link -->
-			<li class="page-item ${keySearch.firstPage == 1 ? 'disabled' : '' }">
-			    	<c:if test="${keySearch.searchWord != null}">
-				      <a class="page-link" href="${pageContext.request.contextPath }/reviewView?pageNo=${keySearch.firstPage - 1 }&rowSizePerPage=${keySearch.rowSizePerPage}&searchOption=${keySearch.searchOption}&searchWord=${keySearch.searchWord}" aria-label="Previous">
-				        <span aria-hidden="true">&laquo;</span>
-				      </a>
-			    	</c:if>
-			    	<c:if test="${keySearch.searchWord == null}">
-				      <a class="page-link" href="${pageContext.request.contextPath }/reviewView?pageNo=${keySearch.firstPage - 1 }&rowSizePerPage=${keySearch.rowSizePerPage}" aria-label="Previous">
-				        <span aria-hidden="true">&laquo;</span>
-				      </a>
-			    	</c:if>
-			    </li>
-			<!-- Page Number Links -->
-			<c:forEach begin="${keySearch.firstPage }" end="${keySearch.lastPage }" var="num">
-		    	<li class="page-item ${keySearch.pageNo == num ? 'active' : ''}">
-		    		<c:if test="${keySearch.searchWord == null }">
-			    		<a class="page-link" href="${pageContext.request.contextPath }/prodView?pageNo=${num }&rowSizePerPage=${keySearch.rowSizePerPage}">${num }</a>
-		    		</c:if>
-		    		<c:if test="${keySearch.searchWord != null }">
-			    		<a class="page-link" href="${pageContext.request.contextPath }/prodView?pageNo=${num }&rowSizePerPage=${keySearch.rowSizePerPage}&searchOption=${keySearch.searchOption}&searchWord=${keySearch.searchWord}">${num }</a>
-		    		</c:if>
-		    	</li>
-		    </c:forEach>
-			<!-- Next Page Link -->
-				<li class="page-item ${keySearch.pageNo == keySearch.finalPage ? 'disabled' : ''  }">
-			    	<a id="aTagBtn" class="page-link"  style="cursor: pointer;" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-			    </li>
-		</ul>
-	</div>
+	
 	
 
 

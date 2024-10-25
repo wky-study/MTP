@@ -98,9 +98,11 @@
 			<li>
 				<a href="${pageContext.request.contextPath}/estStep1" class="button big">리모델링 견적확인</a>
 			</li>
+			<c:if test="${sessionScope.type == '2'}">
 			<li>
 				<a href="${pageContext.request.contextPath }/tradePost" class="button big" style="background-color: #0faf24c9;">기업회원 바로가기</a>
 			</li>
+			</c:if>	
 		</ul>
 	</section>
 
@@ -117,44 +119,30 @@
 					<div class="product" data-category="창호">
 						<h3 style=" line-height: 150px; color: white;">창호 교체</h3>
 					</div>
-				
-				
-					<div class="product" data-category="환기장치">
+					<div class="product" data-category="환기">
 						<h3 style=" line-height: 150px; color: white;">환기 장치</h3>
 					</div>
-				
-				
-					<div class="product" data-category="냉난방장치">
+					<div class="product" data-category="보일러,난방">
 						<h3 style=" line-height: 150px; color: white;">냉난방 장치</h3>
 					</div>
 				
 				
-					<div class="product" data-category="단열보강재">
-						<h3 style=" line-height: 150px; color: white;">단열 보강</h3>
-					</div>
 				
 			</div>
 			<div class="container" style="padding-bottom: 100px;">
 				<div class="" style="justify-content: center; display: flex; text-align: center;">
 					
-						<div class="product" data-category="조명">
-							<h3 style=" line-height: 150px; color: white;">조명(LED)</h3>
-						</div>
+					<div class="product" data-category="조명">
+						<h3 style=" line-height: 150px; color: white;">조명(LED)</h3>
+					</div>
+					<div class="product" data-category="단열,마감">
+						<h3 style=" line-height: 150px; color: white;">단열 보강</h3>
+					</div>
+					<div class="product" data-category="도료">
+						<h3 style=" line-height: 150px; color: white;">차열 도료</h3>
+					</div>
 					
 					
-						<div class="product" data-category="태양광패널">
-							<h3 style=" line-height: 150px; color: white;">태양광 패널</h3>
-						</div>
-					
-					
-						<div class="product" data-category="차열도료">
-							<h3 style=" line-height: 150px; color: white;">차열 도료</h3>
-						</div>
-					
-					
-						<div class="product" data-category="일사조절장치">
-							<h3 style=" line-height: 150px; color: white;">일사조절장치</h3>
-						</div>
 					
 				</div>
 			</div>

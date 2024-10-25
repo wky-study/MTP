@@ -9,7 +9,11 @@
 	    	<choose>
 	    		<when test="searchOption == 'title'">AND item_name LIKE '%' || #{searchWord} || '%'</when>
 	    		<when test="searchOption == 'name'">AND ent_name LIKE '%' || #{searchWord} || '%'</when>
-	    		<when test="searchOption == 'category'">AND item_type LIKE '%' || #{searchWord} || '%'</when>
+	    		<when test="searchOption == 'category'">
+	    		<foreach item="word" collection='searchWord.split(",")' open="AND (" separator=" OR " close=")">
+	    		item_type3 LIKE '%' || #{word} || '%'
+	    		</foreach>
+	    		</when>
 	    	</choose>
 	    </if>
 	</sql>
@@ -28,7 +32,10 @@
                 ITEM_PRICE,
                 PROD_NO, 
 	            ENT_NAME, 
-	            PROD_DATE
+	            PROD_DATE,
+	            ITEM_TYPE3,
+	            ITEM_UNIT,
+	            ITEM_STD
             FROM 
                 ITEMS
                 
@@ -64,6 +71,8 @@
 	            ENT_NAME, 
 	            PROD_DATE,
 	            PROD_DEL_YN,
+	            ITEM_TYPE3,
+	            ITEM_UNIT,
 	            ITEM_STD
 	    FROM ITEMS
 	    	WHERE ITEM_ID = #{itemId}
