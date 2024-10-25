@@ -66,7 +66,7 @@
 				
 					<!-- 쿠키에 rememberId가 있으면 태그 내에 checked 문구 넣기 -->
 					<!-- ${cookie.rememberId.value != null ? "checked" : "" } -->
-					<input type="checkbox" name="rememberId" id="flexCheckDefault"${cookie.rememberId.value !=null ? "checked" : "" }> 
+					<input type="checkbox"  name="rememberId" id="flexCheckDefault"${cookie.rememberId.value !=null ? "checked" : "" }> 
 						<label style="font-size: 14px;" for="flexCheckDefault"> 아이디 기억하기		</label>
 				
 
