@@ -7,71 +7,73 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>시공사 측 견적서 수정</title>
-<%@ include file= "/WEB-INF/inc/style.jsp" %>
+<%@ include file="/WEB-INF/inc/style.jsp"%>
 
 <style>
 body {
-    /* font-family: Arial, sans-serif; */
+	/* font-family: Arial, sans-serif; */
+	
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
+	width: 100%;
+	border-collapse: collapse;
 }
 
 th, td {
-    border: 1px solid #000;
-    text-align: center;
-    padding: 8px;
+	border: 1px solid #000;
+	text-align: center;
+	padding: 8px;
 }
 
 th {
-    background-color: #f2f2f2;
+	background-color: #f2f2f2;
 }
 
 .input-box {
-    /*width: 90%; /* 가로 넓이를 90%로 변경 */
-    text-align: center;
-    border: none;
-    background-color: white;
-    transition: background-color 0.3s;
-    font-family: Arial, sans-serif; /* 폰트 설정 */
+	/*width: 90%; /* 가로 넓이를 90%로 변경 */
+	text-align: center;
+	border: none;
+	background-color: white;
+	transition: background-color 0.3s;
+	font-family: Arial, sans-serif; /* 폰트 설정 */
 }
 
 .input-box.filled {
-    background-color: #dff0d8; /* 입력 완료 색상 */
+	background-color: #dff0d8; /* 입력 완료 색상 */
 }
 
 .btn-submit {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
+	margin-top: 20px;
+	padding: 10px 20px;
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+	cursor: pointer;
 }
 
 .green-section {
-    margin-top: 30px;
-    background-color: #e0f7fa;
-    padding: 15px;
-    border: 1px solid #000;
+	margin-top: 30px;
+	background-color: #e0f7fa;
+	padding: 15px;
+	border: 1px solid #000;
 }
 
 .container {
-    width: 1300px;
-    align-content: center;
+	width: 1300px;
+	align-content: center;
 }
 
-.wid-class{
+.wid-class {
 	
-} 
+}
 </style>
 </head>
 <body>
-	<%@ include file= "/WEB-INF/inc/header.jsp" %>
-	
-	<form action="${pageContext.request.contextPath}/insertQuo" method="post">
+	<%@ include file="/WEB-INF/inc/header.jsp"%>
+
+	<form action="${pageContext.request.contextPath}/insertQuo"
+		method="post">
 		<div class="container">
 			<h2 style="text-align: center;">견 적 서</h2>
 
@@ -101,12 +103,14 @@ th {
 							주소: <input type="text" name="estAddress" class="input-box" />
 						</p>
 					</td>
-					<td colspan="2">시공사 명</td>
-					<td class="input-box" ><!-- ${sessionScope.login.entName} --></td>
+					<td colspan="2">시공사 명<input type = "text" name = "entName" value = "${sessionScope.login.entName}"></td>
+
+
 				</tr>
 				<tr>
 					<td>수기사항</td>
-					<td colspan="5">형태:<input type="text" name="a" placeholder="예시) 주택" class="input-box" />
+					<td colspan="5">형태:<input type="text" name="a"
+						placeholder="예시) 주택" class="input-box" />
 
 					</td>
 				</tr>
@@ -127,203 +131,256 @@ th {
 				</thead>
 				<tbody>
 					<tr>
-						<td><input type="text" name="itemName" placeholder="제품명)" class="input-box" /></td>
+						<td><input type="text" name="itemName" placeholder="제품명)"
+							class="input-box" /></td>
 						<td><input type="text" name="itemType" class="input-box" /></td>
 						<td><input type="text" name="unit" class="input-box" /></td>
-						<td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" class="input-box" /></td>
-						<td><input type="number" name="itemPrice" placeholder="0" oninput="calculateTotal()" class="input-box" /></td>
-						<td><input type="number" name="totalPrice" placeholder="0" readonly class="input-box" /></td>
+						<td><input type="number" name="quantity" placeholder="0"
+							oninput="calculateTotal()" class="input-box" /></td>
+						<td><input type="number" name="itemPrice" placeholder="0"
+							oninput="calculateTotal()" class="input-box" /></td>
+						<td><input type="number" name="totalPrice" placeholder="0"
+							readonly class="input-box" /></td>
 						<td><input type="text" name="remarks" class="input-box" /></td>
 					</tr>
 				</tbody>
-				
+
 				<tbody>
 					<tr>
-						<td><input type="text" name="itemName" placeholder="제품명)" class="input-box" /></td>
+						<td><input type="text" name="itemName" placeholder="제품명)"
+							class="input-box" /></td>
 						<td><input type="text" name="itemType" class="input-box" /></td>
 						<td><input type="text" name="unit" class="input-box" /></td>
-						<td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" class="input-box" /></td>
-						<td><input type="number" name="itemPrice" placeholder="0" oninput="calculateTotal()" class="input-box" /></td>
-						<td><input type="number" name="totalPrice" placeholder="0" readonly class="input-box" /></td>
+						<td><input type="number" name="quantity" placeholder="0"
+							oninput="calculateTotal()" class="input-box" /></td>
+						<td><input type="number" name="itemPrice" placeholder="0"
+							oninput="calculateTotal()" class="input-box" /></td>
+						<td><input type="number" name="totalPrice" placeholder="0"
+							readonly class="input-box" /></td>
 						<td><input type="text" name="remarks" class="input-box" /></td>
 					</tr>
 				</tbody>
-				
+
 				<tbody>
 					<tr>
-						<td><input type="text" name="itemName" placeholder="제품명)" class="input-box" /></td>
+						<td><input type="text" name="itemName" placeholder="제품명)"
+							class="input-box" /></td>
 						<td><input type="text" name="itemType" class="input-box" /></td>
 						<td><input type="text" name="unit" class="input-box" /></td>
-						<td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" class="input-box" /></td>
-						<td><input type="number" name="itemPrice" placeholder="0" oninput="calculateTotal()" class="input-box" /></td>
-						<td><input type="number" name="totalPrice" placeholder="0" readonly class="input-box" /></td>
+						<td><input type="number" name="quantity" placeholder="0"
+							oninput="calculateTotal()" class="input-box" /></td>
+						<td><input type="number" name="itemPrice" placeholder="0"
+							oninput="calculateTotal()" class="input-box" /></td>
+						<td><input type="number" name="totalPrice" placeholder="0"
+							readonly class="input-box" /></td>
 						<td><input type="text" name="remarks" class="input-box" /></td>
 					</tr>
 				</tbody>
-				
+
 				<tbody>
 					<tr>
-						<td><input type="text" name="itemName" placeholder="제품명)" class="input-box" /></td>
+						<td><input type="text" name="itemName" placeholder="제품명)"
+							class="input-box" /></td>
 						<td><input type="text" name="itemType" class="input-box" /></td>
 						<td><input type="text" name="unit" class="input-box" /></td>
-						<td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" class="input-box" /></td>
-						<td><input type="number" name="itemPrice" placeholder="0" oninput="calculateTotal()" class="input-box" /></td>
-						<td><input type="number" name="totalPrice" placeholder="0" readonly class="input-box" /></td>
+						<td><input type="number" name="quantity" placeholder="0"
+							oninput="calculateTotal()" class="input-box" /></td>
+						<td><input type="number" name="itemPrice" placeholder="0"
+							oninput="calculateTotal()" class="input-box" /></td>
+						<td><input type="number" name="totalPrice" placeholder="0"
+							readonly class="input-box" /></td>
 						<td><input type="text" name="remarks" class="input-box" /></td>
 					</tr>
 				</tbody>
-				
+
 				<tbody>
 					<tr>
-						<td><input type="text" name="itemName" placeholder="제품명)" class="input-box" /></td>
+						<td><input type="text" name="itemName" placeholder="제품명)"
+							class="input-box" /></td>
 						<td><input type="text" name="itemType" class="input-box" /></td>
 						<td><input type="text" name="unit" class="input-box" /></td>
-						<td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" class="input-box" /></td>
-						<td><input type="number" name="itemPrice" placeholder="0" oninput="calculateTotal()" class="input-box" /></td>
-						<td><input type="number" name="totalPrice" placeholder="0" readonly class="input-box" /></td>
+						<td><input type="number" name="quantity" placeholder="0"
+							oninput="calculateTotal()" class="input-box" /></td>
+						<td><input type="number" name="itemPrice" placeholder="0"
+							oninput="calculateTotal()" class="input-box" /></td>
+						<td><input type="number" name="totalPrice" placeholder="0"
+							readonly class="input-box" /></td>
 						<td><input type="text" name="remarks" class="input-box" /></td>
 					</tr>
 				</tbody>
-				
+
 				<tbody>
 					<tr>
-						<td><input type="text" name="itemName" placeholder="제품명)" class="input-box" /></td>
+						<td><input type="text" name="itemName" placeholder="제품명)"
+							class="input-box" /></td>
 						<td><input type="text" name="itemType" class="input-box" /></td>
 						<td><input type="text" name="unit" class="input-box" /></td>
-						<td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" class="input-box" /></td>
-						<td><input type="number" name="itemPrice" placeholder="0" oninput="calculateTotal()" class="input-box" /></td>
-						<td><input type="number" name="totalPrice" placeholder="0" readonly class="input-box" /></td>
+						<td><input type="number" name="quantity" placeholder="0"
+							oninput="calculateTotal()" class="input-box" /></td>
+						<td><input type="number" name="itemPrice" placeholder="0"
+							oninput="calculateTotal()" class="input-box" /></td>
+						<td><input type="number" name="totalPrice" placeholder="0"
+							readonly class="input-box" /></td>
 						<td><input type="text" name="remarks" class="input-box" /></td>
 					</tr>
 				</tbody>
-				
+
 				<tbody>
 					<tr>
-						<td><input type="text" name="itemName" placeholder="제품명)" class="input-box" /></td>
+						<td><input type="text" name="itemName" placeholder="제품명)"
+							class="input-box" /></td>
 						<td><input type="text" name="itemType" class="input-box" /></td>
 						<td><input type="text" name="unit" class="input-box" /></td>
-						<td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" class="input-box" /></td>
-						<td><input type="number" name="itemPrice" placeholder="0" oninput="calculateTotal()" class="input-box" /></td>
-						<td><input type="number" name="totalPrice" placeholder="0" readonly class="input-box" /></td>
+						<td><input type="number" name="quantity" placeholder="0"
+							oninput="calculateTotal()" class="input-box" /></td>
+						<td><input type="number" name="itemPrice" placeholder="0"
+							oninput="calculateTotal()" class="input-box" /></td>
+						<td><input type="number" name="totalPrice" placeholder="0"
+							readonly class="input-box" /></td>
 						<td><input type="text" name="remarks" class="input-box" /></td>
 					</tr>
 				</tbody>
-				
+
 				<tbody>
 					<tr>
-						<td><input type="text" name="itemName" placeholder="제품명)" class="input-box" /></td>
+						<td><input type="text" name="itemName" placeholder="제품명)"
+							class="input-box" /></td>
 						<td><input type="text" name="itemType" class="input-box" /></td>
 						<td><input type="text" name="unit" class="input-box" /></td>
-						<td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" class="input-box" /></td>
-						<td><input type="number" name="itemPrice" placeholder="0" oninput="calculateTotal()" class="input-box" /></td>
-						<td><input type="number" name="totalPrice" placeholder="0" readonly class="input-box" /></td>
+						<td><input type="number" name="quantity" placeholder="0"
+							oninput="calculateTotal()" class="input-box" /></td>
+						<td><input type="number" name="itemPrice" placeholder="0"
+							oninput="calculateTotal()" class="input-box" /></td>
+						<td><input type="number" name="totalPrice" placeholder="0"
+							readonly class="input-box" /></td>
 						<td><input type="text" name="remarks" class="input-box" /></td>
 					</tr>
 				</tbody>
-				
+
 				<tbody>
 					<tr>
-						<td><input type="text" name="itemName" placeholder="제품명)" class="input-box" /></td>
+						<td><input type="text" name="itemName" placeholder="제품명)"
+							class="input-box" /></td>
 						<td><input type="text" name="itemType" class="input-box" /></td>
 						<td><input type="text" name="unit" class="input-box" /></td>
-						<td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" class="input-box" /></td>
-						<td><input type="number" name="itemPrice" placeholder="0" oninput="calculateTotal()" class="input-box" /></td>
-						<td><input type="number" name="totalPrice" placeholder="0" readonly class="input-box" /></td>
+						<td><input type="number" name="quantity" placeholder="0"
+							oninput="calculateTotal()" class="input-box" /></td>
+						<td><input type="number" name="itemPrice" placeholder="0"
+							oninput="calculateTotal()" class="input-box" /></td>
+						<td><input type="number" name="totalPrice" placeholder="0"
+							readonly class="input-box" /></td>
 						<td><input type="text" name="remarks" class="input-box" /></td>
 					</tr>
 				</tbody>
-				
+
 				<tbody>
 					<tr>
-						<td><input type="text" name="itemName" placeholder="제품명)" class="input-box" /></td>
+						<td><input type="text" name="itemName" placeholder="제품명)"
+							class="input-box" /></td>
 						<td><input type="text" name="itemType" class="input-box" /></td>
 						<td><input type="text" name="unit" class="input-box" /></td>
-						<td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" class="input-box" /></td>
-						<td><input type="number" name="itemPrice" placeholder="0" oninput="calculateTotal()" class="input-box" /></td>
-						<td><input type="number" name="totalPrice" placeholder="0" readonly class="input-box" /></td>
+						<td><input type="number" name="quantity" placeholder="0"
+							oninput="calculateTotal()" class="input-box" /></td>
+						<td><input type="number" name="itemPrice" placeholder="0"
+							oninput="calculateTotal()" class="input-box" /></td>
+						<td><input type="number" name="totalPrice" placeholder="0"
+							readonly class="input-box" /></td>
 						<td><input type="text" name="remarks" class="input-box" /></td>
 					</tr>
 				</tbody>
-				
+
 				<tbody>
 					<tr>
-						<td><input type="text" name="itemName" placeholder="제품명)" class="input-box" /></td>
+						<td><input type="text" name="itemName" placeholder="제품명)"
+							class="input-box" /></td>
 						<td><input type="text" name="itemType" class="input-box" /></td>
 						<td><input type="text" name="unit" class="input-box" /></td>
-						<td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" class="input-box" /></td>
-						<td><input type="number" name="itemPrice" placeholder="0" oninput="calculateTotal()" class="input-box" /></td>
-						<td><input type="number" name="totalPrice" placeholder="0" readonly class="input-box" /></td>
+						<td><input type="number" name="quantity" placeholder="0"
+							oninput="calculateTotal()" class="input-box" /></td>
+						<td><input type="number" name="itemPrice" placeholder="0"
+							oninput="calculateTotal()" class="input-box" /></td>
+						<td><input type="number" name="totalPrice" placeholder="0"
+							readonly class="input-box" /></td>
 						<td><input type="text" name="remarks" class="input-box" /></td>
 					</tr>
 				</tbody>
-				
+
 				<tbody>
 					<tr>
-						<td><input type="text" name="itemName" placeholder="제품명)" class="input-box" /></td>
+						<td><input type="text" name="itemName" placeholder="제품명)"
+							class="input-box" /></td>
 						<td><input type="text" name="itemType" class="input-box" /></td>
 						<td><input type="text" name="unit" class="input-box" /></td>
-						<td><input type="number" name="quantity" placeholder="0" oninput="calculateTotal()" class="input-box" /></td>
-						<td><input type="number" name="itemPrice" placeholder="0" oninput="calculateTotal()" class="input-box" /></td>
-						<td><input type="number" name="totalPrice" placeholder="0" readonly class="input-box" /></td>
+						<td><input type="number" name="quantity" placeholder="0"
+							oninput="calculateTotal()" class="input-box" /></td>
+						<td><input type="number" name="itemPrice" placeholder="0"
+							oninput="calculateTotal()" class="input-box" /></td>
+						<td><input type="number" name="totalPrice" placeholder="0"
+							readonly class="input-box" /></td>
 						<td><input type="text" name="remarks" class="input-box" /></td>
 					</tr>
 				</tbody>
-				
+
 				<tbody>
 					<tr>
 						<td colspan="2">합 계</td>
-						<td colspan="5" style="font-family: Arial, sans-serif;"><input type="text" name="quoPrice" placeholder="0" readonly /> (원)</td>
+						<td colspan="5" style="font-family: Arial, sans-serif;"><input
+							type="text" name="quoPrice" placeholder="0" readonly /> (원)</td>
 					</tr>
 				</tbody>
 			</table>
 			<input type="hidden" name="quoOpen" id="quoOpen" />
 
-			<button class="btn-submit" type="button" onclick="submitForm('Y')">제안서 임시저장</button>
-			<button class="btn-submit" type="button" onclick="submitForm('N')">제안서 보내기</button>
+			<button class="btn-submit" type="button" onclick="submitForm('Y')">제안서
+				임시저장</button>
+			<button class="btn-submit" type="button" onclick="submitForm('N')">제안서
+				보내기</button>
 	</form>
-		<button class="btn-submit" type="button" onclick="location.href='${pageContext.request.contextPath}/estimateDetailView/${estimateDTO.estId }'">취 소</button>
-		</div>
-	
-	<%@ include file= "/WEB-INF/inc/footer.jsp" %>
+	<button class="btn-submit" type="button"
+		onclick="location.href='${pageContext.request.contextPath}/estimateDetailView/${estimateDTO.estId }'">취
+		소</button>
+	</div>
+
+	<%@ include file="/WEB-INF/inc/footer.jsp"%>
 	<script>
-	function submitForm(quoOpenValue) {
-	    document.getElementById("quoOpen").value = quoOpenValue; 
-	    document.forms[0].submit();
-	}
+		function submitForm(quoOpenValue) {
+			document.getElementById("quoOpen").value = quoOpenValue;
+			document.forms[0].submit();
+		}
 
-    function calculateTotal() {
-        let quantities = document.getElementsByName('quantity');
-        let itemPrices = document.getElementsByName('itemPrice');
-        let totalPrices = document.getElementsByName('totalPrice');
+		function calculateTotal() {
+			let quantities = document.getElementsByName('quantity');
+			let itemPrices = document.getElementsByName('itemPrice');
+			let totalPrices = document.getElementsByName('totalPrice');
 
-        for (let i = 0; i < quantities.length; i++) {
-            let quantity = quantities[i].value || 0;
-            let itemPrice = itemPrices[i].value || 0;
-            const totalPrice = itemPrice * quantity;
-            totalPrices[i].value = totalPrice;
+			for (let i = 0; i < quantities.length; i++) {
+				let quantity = quantities[i].value || 0;
+				let itemPrice = itemPrices[i].value || 0;
+				const totalPrice = itemPrice * quantity;
+				totalPrices[i].value = totalPrice;
 
-            // 배경색 변경
-            if (quantity > 0 || itemPrice > 0) {
-                quantities[i].classList.add('filled');
-                itemPrices[i].classList.add('filled');
-            } else {
-                quantities[i].classList.remove('filled');
-                itemPrices[i].classList.remove('filled');
-            }
-        }
-        calculateTotalSum();
-    }
+				// 배경색 변경
+				if (quantity > 0 || itemPrice > 0) {
+					quantities[i].classList.add('filled');
+					itemPrices[i].classList.add('filled');
+				} else {
+					quantities[i].classList.remove('filled');
+					itemPrices[i].classList.remove('filled');
+				}
+			}
+			calculateTotalSum();
+		}
 
-    function calculateTotalSum() {
-        let totalPrices = document.getElementsByName('totalPrice');
-        let quoPrice = 0;
+		function calculateTotalSum() {
+			let totalPrices = document.getElementsByName('totalPrice');
+			let quoPrice = 0;
 
-        for (let i = 0; i < totalPrices.length; i++) {
-        	quoPrice += parseFloat(totalPrices[i].value) || 0;
-        }
+			for (let i = 0; i < totalPrices.length; i++) {
+				quoPrice += parseFloat(totalPrices[i].value) || 0;
+			}
 
-        document.getElementsByName('quoPrice')[0].value = quoPrice; // 총 합계 값을 입력
-    }
-</script>
+			document.getElementsByName('quoPrice')[0].value = quoPrice; // 총 합계 값을 입력
+		}
+	</script>
 </body>
 </html>
