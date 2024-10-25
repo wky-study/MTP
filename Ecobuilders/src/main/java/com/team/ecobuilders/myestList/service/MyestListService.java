@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.team.ecobuilders.myestList.dto.MyestListDTO;
-/*
+
 @Service
 public class MyestListService {
 
@@ -15,7 +15,6 @@ public class MyestListService {
 
     // 특정 사용자(estId)의 견적서 조회
     public List<MyestListDTO> getEstListById(String estId) {
-        return myestListRepository.findByMemId(estId);
+        return myestListRepository.getEstListById(estId);
     }
 }
-*/
