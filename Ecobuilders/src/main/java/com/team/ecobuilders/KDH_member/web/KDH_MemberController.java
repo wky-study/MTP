@@ -223,6 +223,16 @@ public class KDH_MemberController {
 		return "redirect:/";
 	}
 	
+	//일반+기업 로그인 화면
+	@RequestMapping("/SIM_loginView")
+	public String SIM_loginView() {
+		
+		System.out.println("SIM_loginView 실행");
+
+		return "KDH_member/SIM_loginView";
+
+	}
+	
 
 
 
