@@ -31,5 +31,6 @@ public interface KDH_IMemberDAO {
 	
 	// 회원 리스트
 	List<KDH_MemberDTO> getMemList();
-	
+
 }
+
