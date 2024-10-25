@@ -14,22 +14,17 @@ public class ProdListDTO {
 	private String prodDate;
 	private String prodDelyn;
 	private String itemStd;
-	
+	private String itemType2;
+	private String itemType3;
+	private String itemUnit;
+	private String itemReason;
 
 	public ProdListDTO() {
 	}
-	
-
-	@Override
-	public String toString() {
-		return "ProdListDTO [itemId=" + itemId + ", itemType=" + itemType + ", itemName=" + itemName + ", itemLv="
-				+ itemLv + ", itemEfi=" + itemEfi + ", itemPrice=" + itemPrice + ", entName=" + entName + ", prodNo="
-				+ prodNo + ", prodDate=" + prodDate + ", prodDelyn=" + prodDelyn + ", itemStd=" + itemStd + "]";
-	}
-
 
 	public ProdListDTO(int itemId, String itemType, String itemName, String itemLv, String itemEfi, int itemPrice,
-			String entName, String prodNo, String prodDate, String prodDelyn, String itemStd) {
+			String entName, String prodNo, String prodDate, String prodDelyn, String itemStd, String itemType2,
+			String itemType3, String itemUnit, String itemReason) {
 		super();
 		this.itemId = itemId;
 		this.itemType = itemType;
@@ -42,117 +37,140 @@ public class ProdListDTO {
 		this.prodDate = prodDate;
 		this.prodDelyn = prodDelyn;
 		this.itemStd = itemStd;
+		this.itemType2 = itemType2;
+		this.itemType3 = itemType3;
+		this.itemUnit = itemUnit;
+		this.itemReason = itemReason;
 	}
 
+	@Override
+	public String toString() {
+		return "ProdListDTO [itemId=" + itemId + ", itemType=" + itemType + ", itemName=" + itemName + ", itemLv="
+				+ itemLv + ", itemEfi=" + itemEfi + ", itemPrice=" + itemPrice + ", entName=" + entName + ", prodNo="
+				+ prodNo + ", prodDate=" + prodDate + ", prodDelyn=" + prodDelyn + ", itemStd=" + itemStd
+				+ ", itemType2=" + itemType2 + ", itemType3=" + itemType3 + ", itemUnit=" + itemUnit + ", itemReason="
+				+ itemReason + "]";
+	}
 
 	public int getItemId() {
 		return itemId;
 	}
 
-
 	public void setItemId(int itemId) {
 		this.itemId = itemId;
 	}
-
 
 	public String getItemType() {
 		return itemType;
 	}
 
-
 	public void setItemType(String itemType) {
 		this.itemType = itemType;
 	}
-
 
 	public String getItemName() {
 		return itemName;
 	}
 
-
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
 	}
-
 
 	public String getItemLv() {
 		return itemLv;
 	}
 
-
 	public void setItemLv(String itemLv) {
 		this.itemLv = itemLv;
 	}
-
 
 	public String getItemEfi() {
 		return itemEfi;
 	}
 
-
 	public void setItemEfi(String itemEfi) {
 		this.itemEfi = itemEfi;
 	}
-
 
 	public int getItemPrice() {
 		return itemPrice;
 	}
 
-
 	public void setItemPrice(int itemPrice) {
 		this.itemPrice = itemPrice;
 	}
-
 
 	public String getEntName() {
 		return entName;
 	}
 
-
 	public void setEntName(String entName) {
 		this.entName = entName;
 	}
-
 
 	public String getProdNo() {
 		return prodNo;
 	}
 
-
 	public void setProdNo(String prodNo) {
 		this.prodNo = prodNo;
 	}
-
 
 	public String getProdDate() {
 		return prodDate;
 	}
 
-
 	public void setProdDate(String prodDate) {
 		this.prodDate = prodDate;
 	}
-
 
 	public String getProdDelyn() {
 		return prodDelyn;
 	}
 
-
 	public void setProdDelyn(String prodDelyn) {
 		this.prodDelyn = prodDelyn;
 	}
-
 
 	public String getItemStd() {
 		return itemStd;
 	}
 
-
 	public void setItemStd(String itemStd) {
 		this.itemStd = itemStd;
 	}
 
+	public String getItemType2() {
+		return itemType2;
+	}
+
+	public void setItemType2(String itemType2) {
+		this.itemType2 = itemType2;
+	}
+
+	public String getItemType3() {
+		return itemType3;
+	}
+
+	public void setItemType3(String itemType3) {
+		this.itemType3 = itemType3;
+	}
+
+	public String getItemUnit() {
+		return itemUnit;
+	}
+
+	public void setItemUnit(String itemUnit) {
+		this.itemUnit = itemUnit;
+	}
+
+	public String getItemReason() {
+		return itemReason;
+	}
+
+	public void setItemReason(String itemReason) {
+		this.itemReason = itemReason;
+	}
+	
 
 }
