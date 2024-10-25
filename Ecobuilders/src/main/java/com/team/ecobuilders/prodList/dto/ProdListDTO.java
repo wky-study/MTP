@@ -10,13 +10,38 @@ public class ProdListDTO {
 	private String itemEfi;
 	private int itemPrice;
 	private String entName;
-	private int prodNo;
+	private String prodNo;
 	private String prodDate;
 	private String prodDelyn;
 	private String itemStd;
 	
 
 	public ProdListDTO() {
+	}
+	
+
+	@Override
+	public String toString() {
+		return "ProdListDTO [itemId=" + itemId + ", itemType=" + itemType + ", itemName=" + itemName + ", itemLv="
+				+ itemLv + ", itemEfi=" + itemEfi + ", itemPrice=" + itemPrice + ", entName=" + entName + ", prodNo="
+				+ prodNo + ", prodDate=" + prodDate + ", prodDelyn=" + prodDelyn + ", itemStd=" + itemStd + "]";
+	}
+
+
+	public ProdListDTO(int itemId, String itemType, String itemName, String itemLv, String itemEfi, int itemPrice,
+			String entName, String prodNo, String prodDate, String prodDelyn, String itemStd) {
+		super();
+		this.itemId = itemId;
+		this.itemType = itemType;
+		this.itemName = itemName;
+		this.itemLv = itemLv;
+		this.itemEfi = itemEfi;
+		this.itemPrice = itemPrice;
+		this.entName = entName;
+		this.prodNo = prodNo;
+		this.prodDate = prodDate;
+		this.prodDelyn = prodDelyn;
+		this.itemStd = itemStd;
 	}
 
 
@@ -90,12 +115,12 @@ public class ProdListDTO {
 	}
 
 
-	public int getProdNo() {
+	public String getProdNo() {
 		return prodNo;
 	}
 
 
-	public void setProdNo(int prodNo) {
+	public void setProdNo(String prodNo) {
 		this.prodNo = prodNo;
 	}
 
@@ -129,29 +154,5 @@ public class ProdListDTO {
 		this.itemStd = itemStd;
 	}
 
-
-	public ProdListDTO(int itemId, String itemType, String itemName, String itemLv, String itemEfi, int itemPrice,
-			String entName, int prodNo, String prodDate, String prodDelyn, String itemStd) {
-		super();
-		this.itemId = itemId;
-		this.itemType = itemType;
-		this.itemName = itemName;
-		this.itemLv = itemLv;
-		this.itemEfi = itemEfi;
-		this.itemPrice = itemPrice;
-		this.entName = entName;
-		this.prodNo = prodNo;
-		this.prodDate = prodDate;
-		this.prodDelyn = prodDelyn;
-		this.itemStd = itemStd;
-	}
-
-
-	@Override
-	public String toString() {
-		return "ProdListDTO [itemId=" + itemId + ", itemType=" + itemType + ", itemName=" + itemName + ", itemLv="
-				+ itemLv + ", itemEfi=" + itemEfi + ", itemPrice=" + itemPrice + ", entName=" + entName + ", prodNo="
-				+ prodNo + ", prodDate=" + prodDate + ", prodDelyn=" + prodDelyn + ", itemStd=" + itemStd + "]";
-	}
 
 }
