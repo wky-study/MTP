@@ -115,6 +115,7 @@ public class KDH_MemberController {
 			// 로그인 성공시 세션 객체에 로그인 정보 저장
 			// 키값: login, 들어가는 value값: KDH_MemberDTO 객체
 			session.setAttribute("login", login);
+			session.setAttribute("type",1);
 
 			// 아이디 기억하기가 체크되어 있으면
 			// 아이디 정보를 클라이언트(브라우저)에 쿠키로 만들어서 전송

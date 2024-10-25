@@ -103,11 +103,6 @@
 			
 			window.location.href = "${pageContext.request.contextPath }/registView";
 		})
-		
-		document.getElementById("entregistBtn").addEventListener("click", ()=>{
-			
-			window.location.href = "${pageContext.request.contextPath }/ENT_loginView";
-		})
 	
 	</script>
 

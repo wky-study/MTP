@@ -67,12 +67,12 @@ div {
 						</thead>
 						
 						<tbody>
-							<c:forEach items="${keyEstList}" var="estimateList"
+							<c:forEach items="${keyEstList}" var="myestList"
 								varStatus="status">
 
 									<tr>
 										<td scope="row">${status.index + 1}</td>
-										<td>${estimateList.memId }</td>
+										<td>${myestList.memId }</td>
 									</tr>
 
 							</c:forEach>
