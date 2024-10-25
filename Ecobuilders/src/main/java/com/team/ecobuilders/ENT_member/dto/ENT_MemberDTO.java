@@ -12,7 +12,19 @@ public class ENT_MemberDTO {
 		private String entAddress;
 		private String entEmail;
 		private Timestamp entDate;
-	  
+		
+		private String memId;
+		private String memName;
+		private String memAdmin = "1";
+		
+		public String getMemAdmin() {
+			return memAdmin;
+		}
+
+		public void setMemAdmin(String memAdmin) {
+			this.memAdmin = memAdmin;
+		}
+
 		public ENT_MemberDTO() {
 		}
 
@@ -20,11 +32,11 @@ public class ENT_MemberDTO {
 		public String toString() {
 			return "ENT_MemberDTO [entBr=" + entBr + ", entPassword=" + entPassword + ", entName=" + entName
 					+ ", entCeo=" + entCeo + ", entPhone=" + entPhone + ", entAddress=" + entAddress + ", entEmail="
-					+ entEmail + "]";
+					+ entEmail + ", entDate=" + entDate + ", memId=" + memId + ", memName=" + memName + "]";
 		}
 
 		public ENT_MemberDTO(String entBr, String entPassword, String entName, String entCeo, String entPhone,
-				String entAddress, String entEmail, Timestamp entDate) {
+				String entAddress, String entEmail, Timestamp entDate, String memId, String memName) {
 			super();
 			this.entBr = entBr;
 			this.entPassword = entPassword;
@@ -34,6 +46,8 @@ public class ENT_MemberDTO {
 			this.entAddress = entAddress;
 			this.entEmail = entEmail;
 			this.entDate = entDate;
+			this.memId = memId;
+			this.memName = memName;
 		}
 
 		public String getEntBr() {
@@ -99,5 +113,23 @@ public class ENT_MemberDTO {
 		public void setEntDate(Timestamp entDate) {
 			this.entDate = entDate;
 		}
+
+		public String getMemId() {
+			return memId;
+		}
+
+		public void setMemId(String memId) {
+			this.memId = memId;
+		}
+
+		public String getMemName() {
+			return memName;
+		}
+
+		public void setMemName(String memName) {
+			this.memName = memName;
+		}
+	  
+		
 		
 	}

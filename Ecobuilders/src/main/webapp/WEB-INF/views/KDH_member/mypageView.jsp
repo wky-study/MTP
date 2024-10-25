@@ -82,10 +82,12 @@
 	<section>
 		<h2 class="my">마이페이지</h2>
 		<ul class="actions-m">
+		<c:if test="${sessionScope.type == '1' }">
 			<li>
 				<a href="${pageContext.request.contextPath }/memEditView" class="button-m" style="background-color: #0faf24c9;">회원정보 및 수정</a>
 				<a href="${pageContext.request.contextPath }/mp_estimateList" class="button-m" style="background-color: #0faf24c9;">나의견적서</a>
 			</li>
+		</c:if>
 		</ul>
 	</section>
 

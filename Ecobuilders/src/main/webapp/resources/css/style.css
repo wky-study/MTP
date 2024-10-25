@@ -237,7 +237,7 @@ label {
 	display: block;
 	font-size: 0.9em;
 	font-weight: 700;
-	margin: 0 0 1em 0;
+	margin: 0.5em 0 1em 0;
 }
 
 input[type="text"],
@@ -1475,4 +1475,36 @@ body.landing #header nav a {
 
 .prod-dt-box > .prod-dt-des{
 	width: 50%;
+}
+
+/* Login Section */
+.login-section{
+	display: flex;
+	margin: 0 auto;
+	justify-content: center;
+	align-items: center;
+	height: 400px;
+	width: 500px;
+	margin-bottom: 100px;
+}
+
+.login-section > .login-section-form{
+	width: 100%;
+
+}
+.login-section-form{
+	padding: 22px;
+	box-shadow: 12px 12px 2px 1px #0b063a59;
+	border-radius: 10px;
+	border: solid 2px #383b43;
+}
+.login-section-button{
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	gap: 15px;
+}
+
+.input-form{
+	background-color: #4447512f !important;
 }

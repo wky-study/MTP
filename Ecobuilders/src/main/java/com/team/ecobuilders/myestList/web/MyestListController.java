@@ -17,17 +17,17 @@ import com.team.ecobuilders.myestList.dto.MyestListDTO;
 public class MyestListController {
 
     @Autowired
-    private MyestListController estimateService;
+    private MyestListController MyestListService;
 
     // 현재 로그인된 사용자의 견적서 리스트 가져오기
     @GetMapping("/mp_estimateList")
-    public String getEstimatesByUser(Model model, HttpSession session) {
+    public String mp_estimateList(Model model, HttpSession session) {
         
-    	// 세션에서 현재 로그인된 사용자의 memId 가져오기
-        String memId = (String) session.getAttribute("memId");
+    	// 세션에서 현재 로그인된 사용자의 estId 가져오기
+        String estId = (String) session.getAttribute("estId");
 
         // 사용자의 estId와 일치하는 견적서 목록 조회
-        List<MyestListDTO> myestList = estimateService.getEstListById(estId);
+        List<MyestListDTO> myestList = MyestListService.getEstListById(estId);
 
         // 조회된 견적서 목록을 모델에 추가
         model.addAttribute("keyEstList", myestList);

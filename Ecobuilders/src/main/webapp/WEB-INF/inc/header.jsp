@@ -13,10 +13,16 @@
 				<li><a href="${pageContext.request.contextPath}/SIM_loginView" class="button special">Login</a></li>
 				</c:if>
 				<c:if test="${sessionScope.login != null}">
+				
+				<c:if test="${sessionScope.type == '1'}">
 				<li><a href="${pageContext.request.contextPath}/mypageView">${sessionScope.login.memName} 님</a></li>
 				<c:if test="${sessionScope.login.memAdmin == '0'}">
 				<li><a href="${pageContext.request.contextPath}/adminView">관리자 페이지</a></li>
-				</c:if>				
+				</c:if>
+				</c:if>
+				<c:if test="${sessionScope.type == '2'}">
+				<li><a href="${pageContext.request.contextPath}/mypageView">${sessionScope.login.entName} 님</a></li>
+				</c:if>					
 				<li><a href="<c:url value="/logoutDo" />" class="button special">Logout</a></li>
 				</c:if>
 			</ul>
