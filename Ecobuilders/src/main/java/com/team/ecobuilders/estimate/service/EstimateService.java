@@ -22,7 +22,7 @@ public class EstimateService {
     }
 
     // 견적서 저장
-    public void saveEstimate(EstimateDTO estimate) {
+    public void insertEstimate(EstimateDTO estimate) {
         dao.insertEstimate(estimate); 
     }
 
@@ -30,4 +30,8 @@ public class EstimateService {
     public EstimateDTO getEstimateById(String estId) {
         return dao.getEstimateById(estId); 
     }
+    
+   public String getValueByMemName(String memName) {
+        return dao.getValueByMemName(memName);
+    } 
 }

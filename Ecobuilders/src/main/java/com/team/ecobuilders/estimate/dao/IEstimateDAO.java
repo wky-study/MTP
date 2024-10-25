@@ -9,4 +9,5 @@ public interface IEstimateDAO {
     List<EstimateDTO> getEstimateList(); // 견적서 목록 조회
     void insertEstimate(EstimateDTO estimate); // 견적서 저장
     EstimateDTO getEstimateById(String estId); // 견적서 ID로 조회
+    String getValueByMemName(String memName);
 }

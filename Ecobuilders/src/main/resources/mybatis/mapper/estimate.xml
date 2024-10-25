@@ -15,6 +15,13 @@
             EST_OPEN 
         FROM est
     </select>
+    
+    <select id="getValueByMemName" resultType="String" parameterType="String" >
+    SELECT
+    	mem_phone
+    FROM members
+    	WHERE mem_name = #{memName}
+    </select>
 
     <!-- 견적서 ID로 조회 -->
     <select id="getEstimateById" parameterType="String" resultType="com.team.ecobuilders.estimate.dto.EstimateDTO">

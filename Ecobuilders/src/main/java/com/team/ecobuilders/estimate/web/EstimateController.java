@@ -27,11 +27,21 @@ public class EstimateController {
         return "cjs/tradePost"; // 견적서 목록 페이지
     }
 
-    // 견적서 상세 조회 - 견적서분류번호로 상세 페이지 연결해둔 상태라 분류번호 없이 작업하고 
+    // 견적서 상세 조회  
      @RequestMapping("/estimateDetailView/{estId}")
     public String estimateDetailView(@PathVariable String estId, Model model) {
         EstimateDTO estimate = estimateService.getEstimateById(estId); // 견적서 ID로 조회
+        String estItemsJson = estimate.getEstItems();	// json객체(est_items) 가져오기
+        
         model.addAttribute("estimate", estimate);
+        model.addAttribute("estItemsJson", estItemsJson);
+        
+        // 회원 이름에 따른 추가 정보 가져오기
+        String estNamePhone = estimateService.getValueByMemName(estimate.getMemName());
+        model.addAttribute("estNamePhone", estNamePhone);
+        
+        System.out.println(estItemsJson);
+        
         return "cjs/estimateDetailView"; // 견적서 상세 페이지
     }
 
@@ -39,14 +49,22 @@ public class EstimateController {
      @RequestMapping("/estimateMod/{estId}")
     public String estimateMod(String estId, Model model) {
         EstimateDTO estimate = estimateService.getEstimateById(estId); // 견적서 ID로 조회
+        String estItemsJson = estimate.getEstItems();
+        
         model.addAttribute("estimate", estimate);
+        model.addAttribute("estItemsJson", estItemsJson);
+        
+        // 회원 이름과 맞는 추가 정보 가져오기
+        String estNamePhone = estimateService.getValueByMemName(estimate.getMemName());
+        model.addAttribute("estNamePhone", estNamePhone);
+        
         return "cjs/estimateMod"; // 견적서 수정 페이지
     }
 
     // 견적서 저장
-    @PostMapping("/saveEstimate")
-    public String saveEstimate(@ModelAttribute EstimateDTO estimateDTO) {
-        estimateService.saveEstimate(estimateDTO); // 견적서 저장
+    @PostMapping("/insertEstimate")
+    public String insertEstimate(@ModelAttribute EstimateDTO estimateDTO) {
+        estimateService.insertEstimate(estimateDTO); // 견적서 저장
         
         return "redirect:/";  // 성공 시 메인페이지로
     }
