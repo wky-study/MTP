@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+    
 <!DOCTYPE html>
+
 
 <html lang="ko">
 
@@ -55,7 +58,7 @@
 						<span>후기 30건</span>
 					</div>
 					<div class="price-section">
-						<span class="price">${prod.itemPrice}원</span>
+						<span class="price"><fmt:formatNumber value="${prod.itemPrice}" type="number" pattern="#,###"/>원</span>
 						<button class="buy-btn">구매하기</button>
 					</div>
 				</div>

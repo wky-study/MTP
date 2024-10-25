@@ -25,7 +25,7 @@
                 ITEM_TYPE,
                 ITEM_LV,
                 ITEM_EFI,
-                ITEM_PRICE
+                ITEM_PRICE,
                 PROD_NO, 
 	            ENT_NAME, 
 	            PROD_DATE
@@ -59,7 +59,7 @@
                 ITEM_TYPE,
                 ITEM_LV,
                 ITEM_EFI,
-                ITEM_PRICE
+                ITEM_PRICE,
                 PROD_NO, 
 	            ENT_NAME, 
 	            PROD_DATE,
