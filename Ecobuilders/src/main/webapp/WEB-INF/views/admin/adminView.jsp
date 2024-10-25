@@ -115,7 +115,7 @@
 			<!-- 제고 관리? -->
 			<div class="my-content">
 				<div class="d-flex justify-content-center border-bottom">
-					<h4>제품?제고?</h4>
+					<h4>제품목록</h4>
 				</div>
 				<div class="my-table">
 					<table class="table table-hover">
@@ -126,7 +126,6 @@
 								<th scope="col">name</th>
 								<th scope="col">LV</th>
 								<th scope="col">EFI</th>
-								<th scope="col">제거</th>
 							</tr>
 						</thead>
 	
@@ -134,12 +133,10 @@
 							<c:forEach items="${keyProdList}" var="prodListDTO" varStatus="status">
 									<tr onclick="f_click('${prodListDTO.itemId }')" >
 										<td scope="row">${status.index + 1}</td>
-										<td>${prodListDTO.itemType }</td>
+										<td style="width: 110px;">${prodListDTO.itemType }</td>
 										<td>${prodListDTO.itemName }</td>
 										<td>${prodListDTO.itemLv }</td>
 										<td>${prodListDTO.itemEfi }</td>
-										<!-- 클릭했을때 기능 넣어야함 -->
-										<td><button class="btn btn-danger" onclick="" type="button">제거?</button></td>
 									</tr>
 							</c:forEach>
 						</tbody>

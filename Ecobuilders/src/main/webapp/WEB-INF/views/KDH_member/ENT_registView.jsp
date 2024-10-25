@@ -12,80 +12,67 @@
     <title>기업회원가입</title>
     
     <!-- Style -->
-		<%@ include file= "/WEB-INF/inc/style.jsp" %>
+	<%@ include file= "/WEB-INF/inc/style.jsp" %>
 
 </head>
 <body id="page-top">
-<!-- Header -->
-		<%@ include file= "/WEB-INF/inc/header.jsp" %>
+	<!-- Header -->
+	<%@ include file= "/WEB-INF/inc/header.jsp" %>
 
-    <!-- Contact Section-->
-    <section class="page-section" id="contact">
 
-        <div class="container pt-5">
-            <!-- Contact Section Heading-->
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">기업회원가입</h2>
-            <!-- Contact Section Form-->
-            <div class="row justify-content-center">
-                <div class="col-lg-8 col-xl-7">          	
-                    <form id="contactForm" action="${pageContext.request.contextPath }/ENT_registDo" method="POST">
-                        
-                        <!-- 사업자번호 input-->
-                        <div class="form-floating mb-3">
-                            <input class="form-control" id="inputBr" type="text" name="br" />	
-                            <label for="inputBr">사업자번호(-없이입력)</label>
-                        </div>
+	<!-- Contact Section-->
+	<section id="contact">
 
-                        <!-- 비밀번호 input-->
-                        <div class="form-floating mb-3">
-                        	<!-- inputPw의 값이 pw=value 형태로 전송되어야 함. pw를 name속성에 넣어주기 -->
-                            <input class="form-control" id="inputPw" type="password" name="pw" />
-                            <label for="inputPw">비밀번호</label>
-                        </div>
-                        
-                        <!-- 회사명 input-->
-                        <div class="form-floating mb-3">
-                            <input class="form-control" id="inputName" type="text" name="name" />	
-                            <label for="inputName">회사명</label>
-                        </div>     
-                        
-                        <!-- 대표자명 input -->                                                   
-                        <div class="form-floating mb-3">
-                            <input class="form-control" id="inputCeo" type="text" name="ceo" />	
-                            <label for="inputCeo">대표자명</label>
-                        </div> 
-                        
-                        <!-- 전화번호 input -->                                                   
-                        <div class="form-floating mb-3">
-                            <input class="form-control" id="inputPhone" type="tel" name="phone" />	
-                            <label for="inputPhone">전화번호</label>
-                        </div> 
-                        
-                        <!-- 회사주소 input -->
-                        <div class="form-floating mb-3">
-                            <input class="form-control" id="inputAddress" type="address" name="address" />	
-                            <label for="inputENT_Address">회사주소</label>
-                        </div> 
-                            
-                        <!-- 이메일 input -->
-                        <div class="form-floating mb-3">
-                            <input class="form-control" id="inputEmail" type="email" name="email" />	
-                            <label for="inputEmail">이메일</label>
-                        </div>     
-                        
-                        <!-- Submit Button-->
-                        <button class="btn btn-primary btn-xl" id="submitButton" type="submit">기업회원가입</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+		<!-- Contact Section Heading-->
+		<header class="major">
+			<h2 style="padding-top: 100px;">기업회원가입</h2>
+		</header>
+		<!-- Contact Section Form-->
+		<div class="login-section">
+			<form class="login-section-form" id="contactForm" action="${pageContext.request.contextPath }/ENT_registDo"
+				method="POST">
+				<!-- 사업자번호 input-->
+				<label for="inputBr">사업자번호(-없이입력)</label>
+				<input class="input-form" id="inputBr" type="text" name="br" />
+
+				<!-- 비밀번호 input-->
+				<!-- inputPw의 값이 pw=value 형태로 전송되어야 함. pw를 name속성에 넣어주기 -->
+				<label for="inputPw">비밀번호</label>
+				<input class="input-form" id="inputPw" type="password" name="pw" />
+
+				<!-- 회사명 input-->
+				<label for="inputName">회사명</label>
+				<input class="input-form" id="inputName" type="text" name="name" />
+
+				<!-- 대표자명 input -->
+				<label for="inputCeo">대표자명</label>
+				<input class="input-form" id="inputCeo" type="text" name="ceo" />
+
+				<!-- 전화번호 input -->
+				<label for="inputPhone">전화번호</label>
+				<input class="input-form" id="inputPhone" type="text" name="phone" />
+
+				<!-- 회사주소 input -->
+				<label for="inputENT_Address">회사주소</label>
+				<input class="input-form" id="inputAddress" type="text" name="address" />
+
+				<!-- 이메일 input -->
+				<label for="inputEmail">이메일</label>
+				<input class="input-form" id="inputEmail" type="email" name="email" />
+
+				<!-- Submit Button-->
+				<div class="login-section-button">
+					<button class="button special" id="submitButton" type="submit">기업회원가입</button>
+				</div>
+			</form>
+		</div>
+	</section>
     
 	<script type="text/javascript">		
 	
 	</script>
-		<!-- Footer -->
-		<%@ include file= "/WEB-INF/inc/footer.jsp" %>
+	<!-- Footer -->
+	<%@ include file= "/WEB-INF/inc/footer.jsp" %>
 </body>
 
 </html>

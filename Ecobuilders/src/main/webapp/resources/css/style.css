@@ -1483,7 +1483,6 @@ body.landing #header nav a {
 	margin: 0 auto;
 	justify-content: center;
 	align-items: center;
-	height: 400px;
 	width: 500px;
 	margin-bottom: 100px;
 }
@@ -1503,6 +1502,8 @@ body.landing #header nav a {
 	align-items: center;
 	display: flex;
 	gap: 15px;
+	padding-top: 15px;
+	
 }
 
 .input-form{

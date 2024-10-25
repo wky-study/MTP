@@ -38,97 +38,52 @@
 <!-- Header -->
 		<%@ include file= "/WEB-INF/inc/header.jsp" %>
 
-	<!-- Contact Section-->
-	<section class="page-section" id="contact">
+<!-- Contact Section-->
+<section id="contact">
 
-		<div class="container pt-5">
-			<!-- Contact Section Heading-->
-			<h2
-				class="page-section-heading text-center text-uppercase text-secondary mb-0">기업회원수정</h2>
-			<!-- Icon Divider-->
-			<div class="row justify-content-center">
-				<div class="col-lg-8 col-xl-7">
-					<!-- type=submit인 버튼 클릭시 form 태그의 action 링크가 실행됨 -->
-					<!-- 회원가입 요청시 서버에서 이를 받아줘야 함 -->
-					<!-- /registDo 주소로 요청시 서버에서 회원가입 진행 -->
-					<!-- 회원가입은 GET 방식으로 하면 문제가 있을 수 있으니 POST 방식 사용 -->
-					<form id="ENT_memEditForm"
-						action="${pageContext.request.contextPath }/ENT_memEditDo"
-						method="POST">
+	<!-- Contact Section Heading-->
+	<header class="major">
+		<h2 style="padding-top: 100px;">기업회원수정</h2>
+	</header>
+	<!-- Icon Divider-->
+	<div class="login-section">
+		<form class="login-section-form" id="ENT_memEditForm"
+			action="${pageContext.request.contextPath }/ENT_memEditDo" method="POST">
+			<!-- 사업자번호 input-->
+			<label for="inputBr">사업자번호</label>
+			<input class="input-form" id="inputBr" type="text" name="entBr" value="${sessionScope.login.entBr }" readonly />
 
-						<!-- 사업자번호 input-->
-						<div class="form-floating mb-3">
-							<input class="form-control" id="inputBr" type="text" name="entBr"
-								value="${sessionScope.login.entBr }" readonly /> <label
-								for="inputBr">사업자번호</label>
-						</div>
+			<!-- 비밀번호 input-->
+			<label for="inputPw">비밀번호</label>
+			<input class="input-form" id="inputPw" type="password" name="entPassword" />
 
-						<!-- 비밀번호 input-->
-						<div class="form-floating mb-3">
-							<input class="form-control" id="inputPw" type="password"
-								name="entPassword" /> <label for="inputPw">비밀번호</label>
-						</div>
+			<!-- 기업명 input-->
+			<label for="inputName">기업명</label>
+			<input class="input-form" id="inputName" type="text" name="entName" value="${sessionScope.login.entName }" /> 
 
-						<!-- 기업명 input-->
-						<div class="form-floating mb-3">
-							<input class="form-control" id="inputName" type="text"
-								name="entName" value="${sessionScope.login.entName }" /> <label
-								for="inputName">기업명</label>
-						</div>
+			<!-- 대표자명 input-->
+			<label for="inputCeo">대표자명</label>
+			<input class="input-form" id="inputCeo" type="text" name="entCeo" value="${sessionScope.login.entCeo }" />
 
-						<!-- 대표자명 input-->
-						<div class="form-floating mb-3">
-							<input class="form-control" id="inputCeo" type="text"
-								name="entCeo" value="${sessionScope.login.entCeo }" /> <label
-								for="inputCeo">대표자명</label>
-						</div>
+			<!-- 주소 input -->
+			<label for="inputAddress">주소</label>
+			<input class="input-form" id="inputAddress" type="text" name="entAddress" value="${sessionScope.login.entAddress }" />
+			<!-- 전화번호 input -->
+			<label for="inputPhone">전화번호</label>
+			<input class="input-form" id="inputPhone" type="text" name="entPhone" value="${sessionScope.login.entPhone }" /> 
 
-						<!-- 주소 input -->
-						<div class="form-floating mb-3">
-							<input class="form-control" id="inputAddress" type="text"
-								name="entAddress" value="${sessionScope.login.entAddress }" />
-							<label for="inputAddress">주소</label>
-						</div>
-
-						<!-- 전화번호 input -->
-						<div class="form-floating mb-3">
-							<input class="form-control" id="inputPhone" type="tel"
-								name="entPhone" value="${sessionScope.login.entPhone }" /> <label
-								for="inputPhone">전화번호</label>
-						</div>
-
-						<!-- 이메일 input -->
-						<div class="form-floating mb-3">
-							<input class="form-control" id="inputEmail" type="email"
-								name="entEmail" value="${sessionScope.login.entEmail }" /> <label
-								for="inputEmail">이메일</label>
-						</div>
-
-					</form>
-
-				<!--
-					<form id="ent_memDelForm"
-						action="${pageContext.request.contextPath }/ENT_memDelDo"
-						method="POST"></form>
-				-->
-				
-					<div class="d-flex justify-content-center">
-						<button class="btn btn-primary me-2" id="ent_memEditBtn"
-							type="button">기업회원수정</button>
-							
-					<!--	  
-						<button class="btn btn-danger" id="ent_memDelBtn" type="button">기업회원탈퇴</button>
-					-->
-					
-					</div>
-
-				</div>
+			<!-- 이메일 input -->
+			<label for="inputEmail">이메일</label>
+			<input class="input-form" id="inputEmail" type="email" name="entEmail"	value="${sessionScope.login.entEmail }" /> 
+			<div class="login-section-button">
+				<button  class="button special" id="ent_memEditBtn" type="button">기업회원수정</button>
 			</div>
-		</div>
-	</section>
+		</form>
+	</div>
+</section>
 	
-		<!-- Footer -->
-		<%@ include file= "/WEB-INF/inc/footer.jsp" %>
+<!-- Footer -->
+<%@ include file= "/WEB-INF/inc/footer.jsp" %>
 
 	
 	<!-- 모달창 메세지 -->
@@ -159,5 +114,5 @@
 		});
 
 	</script>
-	</body>
+</body>
 </html>

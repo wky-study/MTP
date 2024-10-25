@@ -43,14 +43,14 @@
 
 				<!-- 사업자번호 input-->
 				<label for="inputBr">사업자번호(-없이작성)</label>
-				<input class="form-control" id="inputBr" type="text" name="entBr" value="${cookie.rememberBr.value }"
+				<input class="input-form" id="inputBr" type="text" name="entBr" value="${cookie.rememberBr.value }"
 					${cookie.rememberBr.value==null ? "autofocus" : "" } />
 
 
 				<!-- 비밀번호 input-->
 				<!-- inputPw의 값이 pw=value 형태로 전송되어야 함. pw를 name속성에 넣어주기 -->
 				<label for="inputPw">비밀번호</label>
-				<input class="form-control" id="inputPw" type="password" name="entPassword" ${cookie.rememberBr.value
+				<input class="input-form" id="inputPw" type="password" name="entPassword" ${cookie.rememberBr.value
 					!=null ? "autofocus" : "" } />
 
 				<!-- 사업자번호 기억하기 체크박스 -->

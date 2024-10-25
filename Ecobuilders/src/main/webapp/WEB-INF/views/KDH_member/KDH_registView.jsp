@@ -20,62 +20,42 @@
 <!-- Header -->
 		<%@ include file= "/WEB-INF/inc/header.jsp" %>
 
-    <!-- Contact Section-->
-    <section class="page-section" id="contact">
-    	<!-- 부트스트랩으로 padding-top 을 좀 주고자 한다. -->
-        <div class="container pt-5">
-            <!-- Contact Section Heading-->
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">일반회원가입</h2>
-            <!-- Contact Section Form-->
-            <div class="row justify-content-center">
-                <div class="col-lg-8 col-xl-7">          	
-                    <form id="contactForm" action="${pageContext.request.contextPath }/registDo" method="POST">
-                        
-        				<!-- 아이디 input-->
-						<div class="form-floating mb-3">
-							<input class="form-control" id="inputId" type="text" name="id" />
-							<label for="inputId">아이디</label>
-						</div>
+	<!-- Contact Section-->
+	<section id="contact">
+		<header class="major">
+			<h2 style="padding-top: 100px;">일반회원가입</h2>
+		</header>
+		<!-- Contact Section Form-->
+		<div class="login-section">
+			<form class="login-section-form" id="contactForm" action="${pageContext.request.contextPath }/registDo"	method="POST">
+				<!-- 아이디 input-->
+				<label for="inputId">아이디</label>
+				<input class="input-form" id="inputId" type="text" name="id" />
+				<!-- 비밀번호 input-->
+				<!-- inputPw의 값이 pw=value 형태로 전송되어야 함. pw를 name속성에 넣어주기 -->
+				<label for="inputPw">비밀번호</label>
+				<input class="input-form" id="inputPw" type="password" name="pw" /> 
+				<!-- 이름 input-->
+				<label for="inputName">이름</label>
+				<input class="input-form" id="inputName" type="text" name="name" /> 
 
-						<!-- 비밀번호 input-->
-						<div class="form-floating mb-3">
-							<!-- inputPw의 값이 pw=value 형태로 전송되어야 함. pw를 name속성에 넣어주기 -->
-							<input class="form-control" id="inputPw" type="password"
-								name="pw" /> <label for="inputPw">비밀번호</label>
-						</div>
+				<!-- 전화번호 input -->
+				<label for="inputPhone">전화번호</label>
+				<input class="input-form" id="inputPhone" type="text" name="phone" /> 
 
-						<!-- 이름 input-->
-						<div class="form-floating mb-3">
-							<input class="form-control" id="inputName" type="text"
-								name="name" /> <label for="inputName">이름</label>
-						</div>
+				<!-- 주소 input -->
+				<label for="inputAddress">주소</label>
+				<input class="input-form" id="inputAddress" type="text" name="address" /> 
 
-						<!-- 전화번호 input -->
-						<div class="form-floating mb-3">
-							<input class="form-control" id="inputPhone" type="tel"
-								name="phone" /> <label for="inputPhone">전화번호</label>
-						</div>
+				<!-- 이메일 input-->
+				<label for="inputEmail">이메일</label>
+				<input class="input-form" id="inputEmail" type="email" name="email" /> 
 
-						<!-- 주소 input -->
-						<div class="form-floating mb-3">
-							<input class="form-control" id="inputAddress" type="address"
-								name="address" /> <label for="inputAddress">주소</label>
-						</div>
-
-						<!-- 이메일 input-->
-						<div class="form-floating mb-3">
-							<input class="form-control" id="inputEmail" type="email"
-								name="email" /> <label for="inputEmail">이메일</label>
-						</div>
-
-
-						<!-- Submit Button-->
-						<button class="btn btn-primary btn-xl" id="submitButton"
-							type="submit">일반회원가입</button>
-					</form>
+				<!-- Submit Button-->
+				<div class="login-section-button">
+					<button class="button special" id="submitButton" type="submit">일반회원가입</button>
 				</div>
-			</div>
-		</div>
+			</form>
 	</section>
 
 	<script type="text/javascript">
