@@ -273,8 +273,7 @@ public class KDH_MemberController {
 	            e.printStackTrace();
 	            return "회원가입 실패"; // 삽입 실패
 	        }
-	    }
-	    
-	    
+	    }  
 	}
+
 }
