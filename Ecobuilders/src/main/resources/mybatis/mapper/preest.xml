@@ -1,3 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mybatis.mapper.preest"></mapper>
+<mapper	namespace="com.team.ecobuilders.preest.dao.IpreestDAO">
+
+<select id="getItemList" resultType="com.team.ecobuilders.prodList.dto.ProdListDTO" parameterType="com.team.ecobuilders.prodList.dto.ProdListDTO">
+		SELECT DISTINCT 
+		ITEM_TYPE
+		FROM
+		ITEMS
+	</select>
+
+
+</mapper>

@@ -28,13 +28,16 @@
 		<!-- Contact Section Form-->
 		<div class="login-section">
 			<form class="login-section-form" id="contactForm" action="${pageContext.request.contextPath }/registDo"	method="POST">
+				
 				<!-- 아이디 input-->
 				<label for="inputId">아이디</label>
 				<input class="input-form" id="inputId" type="text" name="id" />
+				
 				<!-- 비밀번호 input-->
 				<!-- inputPw의 값이 pw=value 형태로 전송되어야 함. pw를 name속성에 넣어주기 -->
 				<label for="inputPw">비밀번호</label>
 				<input class="input-form" id="inputPw" type="password" name="pw" /> 
+				
 				<!-- 이름 input-->
 				<label for="inputName">이름</label>
 				<input class="input-form" id="inputName" type="text" name="name" /> 
@@ -60,7 +63,6 @@
 
 	<script type="text/javascript">
 		
-
 	</script>
 		<!-- Footer -->
 		<%@ include file= "/WEB-INF/inc/footer.jsp" %>

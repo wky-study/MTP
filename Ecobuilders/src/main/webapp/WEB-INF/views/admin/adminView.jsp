@@ -152,32 +152,34 @@
 			<div class="my-content">
 				<div class="d-flex justify-content-center border-bottom">
 					<h4>ToDay Review</h4>
-				</div>				
-				<table class="table table-hover">
-					<thead>
-						<tr>
-							<th scope="col">#</th>
-							<th scope="col">No</th>
-							<th scope="col">title</th>
-							<th scope="col">neme</th>
-							<th scope="col">date</th>
-						</tr>
-					</thead>
-
-					<tbody>
-						<c:forEach items="${keyReviewList}" var="reviewDTO" varStatus="status">
-							<c:if test="${fn:substring(reviewDTO.reviewDate, 0, 10) == keyToDay}">
-								<tr onclick="f_click('${reviewDTO.reviewNo }')" class="reviewRow" id="reviewLink">
-									<td scope="row">${status.index + 1}</td>
-									<td>${reviewDTO.reviewNo }</td>
-									<td>${reviewDTO.reviewTitle }</td>
-									<td>${reviewDTO.memName }</td>
-									<td>${reviewDTO.reviewDate }</td>
-								</tr>
-							</c:if>
-						</c:forEach>
-					</tbody>
-				</table>	
+				</div>	
+				<div class="my-table">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">No</th>
+								<th scope="col">title</th>
+								<th scope="col">neme</th>
+								<th scope="col">date</th>
+							</tr>
+						</thead>
+	
+						<tbody>
+							<c:forEach items="${keyReviewList}" var="reviewDTO" varStatus="status">
+								<c:if test="${fn:substring(reviewDTO.reviewDate, 0, 10) == keyToDay}">
+									<tr onclick="f_click('${reviewDTO.reviewNo }')" class="reviewRow" id="reviewLink">
+										<td scope="row">${status.index + 1}</td>
+										<td>${reviewDTO.reviewNo }</td>
+										<td>${reviewDTO.reviewTitle }</td>
+										<td>${reviewDTO.memName }</td>
+										<td>${reviewDTO.reviewDate }</td>
+									</tr>
+								</c:if>
+							</c:forEach>
+						</tbody>
+					</table>	
+				</div>			
 							
 			</div>
 

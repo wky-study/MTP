@@ -20,6 +20,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.team.ecobuilders.KDH_member.dto.KDH_MemberDTO;
 import com.team.ecobuilders.KDH_member.service.KDH_MemberService;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 @Controller // 클래스 상단에 어노테이션추가
 public class KDH_MemberController {
 
@@ -30,16 +35,14 @@ public class KDH_MemberController {
 	public String registView() {
 
 		System.out.println("registView 실행");
-		
 
 		// 회원가입 화면을 응답시킴
 		return "KDH_member/KDH_registView";
 
-	}   
+	}
 
 	@PostMapping("/registDo") // POST 방식 요청만 받음 (위와 같음)
 	public String registDo(HttpServletRequest request) {
-
 
 		System.out.println(request.getParameter("id"));
 		System.out.println(request.getParameter("pw"));
@@ -50,27 +53,31 @@ public class KDH_MemberController {
 		KDH_MemberDTO member = new KDH_MemberDTO();
 		member.setMemId(request.getParameter("id"));
 		member.setMemPassword(request.getParameter("pw")); // 암호화된 비밀번호 반영
-        member.setMemName(request.getParameter("name"));
-        member.setMemPhone(request.getParameter("phone"));
-        member.setMemAddress(request.getParameter("address"));
-        member.setMemEmail(request.getParameter("email"));
-        member.setMemAdmin("1");
+		member.setMemName(request.getParameter("name"));
+		member.setMemPhone(request.getParameter("phone"));
+		member.setMemAddress(request.getParameter("address"));
+		member.setMemEmail(request.getParameter("email"));
+		member.setMemAdmin("1");
 
-        try {
-            // 문자열을 Date로 변환
-        	Timestamp date = new Timestamp(new Date().getTime());
-        	System.out.println(date);
-            member.setMemDate(date);
-        } catch (Exception e) {
-            e.printStackTrace();
-            // 예외 처리 로직 추가
-        }
+		try {
+			// 문자열을 Date로 변환
+			Timestamp date = new Timestamp(new Date().getTime());
+			System.out.println(date);
+			member.setMemDate(date);
+		} catch (Exception e) {
+			e.printStackTrace();
+			// 예외 처리 로직 추가
+		}
 
-        // DB에 해당 회원정보를 저장 -> mybatis 사용
-        memberService.insertMember(member);
+		// DB에 해당 회원정보를 저장 -> mybatis 사용
+		
+		// DB에서 입력받은 ID가 있는지 확인
+	   
 
-        return "redirect:/loginView"; // redirect:/ 에서 redirect:/loginView 로 변경
-    }
+		memberService.insertMember(member);
+
+		return "redirect:/loginView"; // redirect:/ 에서 redirect:/loginView 로 변경
+	}
 
 	@RequestMapping("/loginView")
 	public String loginView(HttpServletRequest request, Model model) {
@@ -115,7 +122,7 @@ public class KDH_MemberController {
 			// 로그인 성공시 세션 객체에 로그인 정보 저장
 			// 키값: login, 들어가는 value값: KDH_MemberDTO 객체
 			session.setAttribute("login", login);
-			session.setAttribute("type",1);
+			session.setAttribute("type", 1);
 
 			// 아이디 기억하기가 체크되어 있으면
 			// 아이디 정보를 클라이언트(브라우저)에 쿠키로 만들어서 전송
@@ -170,16 +177,14 @@ public class KDH_MemberController {
 		System.out.println("/logoutDo");
 		// /logoutDo 요청을 한 사람의 세션을 제거
 		session.invalidate();
-		
+
 		// 어느 페이지에서 /logoutDo 를 요청했는지 확인
 		String from = request.getHeader("Referer");
-		
+
 		// 로그아웃을 요청했던 페이지로 리다이렉트
 		return "redirect:" + from;
-		
-		
+
 	}
-	
 
 	// 회원수정 페이지 요청
 	@RequestMapping("/memEditView")
@@ -223,18 +228,52 @@ public class KDH_MemberController {
 
 		return "redirect:/";
 	}
-	
-	//일반+기업 로그인 화면
+
+	// 일반+기업 로그인 화면
 	@RequestMapping("/SIM_loginView")
 	public String SIM_loginView() {
-		
+
 		System.out.println("SIM_loginView 실행");
 
 		return "KDH_member/SIM_loginView";
 
 	}
-	
 
+	public class KDH_IMemberDAO {
+	    private static final String URL = "jdbc:oracle:thin:@192.168.0.136:1521";
+	    private static final String USERNAME = "admin";
+	    private static final String PASSWORD = "admin";
 
+	    public String insertMember(String memId, String memPassword, String memName, String memPhone, String memAddress, String memEmail) {
+	        try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD)) {
+	            // 중복 아이디 체크 쿼리
+	            String checkQuery = "SELECT COUNT(*) FROM members WHERE mem_id = ?";
+	            try (PreparedStatement checkStmt = connection.prepareStatement(checkQuery)) {
+	                checkStmt.setString(1, memId);
+	                ResultSet rs = checkStmt.executeQuery();
+	                if (rs.next() && rs.getInt(1) > 0) {
+	                    // 이미 존재하는 아이디
+	                    return "아이디가 중복입니다."; // 중복 아이디
+	                }
+	            }
+
+	            // 삽입 쿼리
+	            String insertQuery = "INSERT INTO members (mem_id, mem_password, mem_name, mem_phone, mem_address, mem_email) VALUES (?, ?, ?, ?, ?, ?)";
+	            try (PreparedStatement insertStmt = connection.prepareStatement(insertQuery)) {
+	                insertStmt.setString(1, memId);
+	                insertStmt.setString(2, memPassword);
+	                insertStmt.setString(3, memName);
+	                insertStmt.setString(4, memPhone);
+	                insertStmt.setString(5, memAddress);
+	                insertStmt.setString(6, memEmail);
+	                insertStmt.executeUpdate();
+	            }
+	            return "회원가입 성공"; // 삽입 성공
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            return "회원가입 실패"; // 삽입 실패
+	        }
+	    }  
+	}
 
 }
