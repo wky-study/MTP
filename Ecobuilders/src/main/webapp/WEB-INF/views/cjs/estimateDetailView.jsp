@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -62,9 +63,8 @@
             </tr>
             <tr>
                 <td>상 호 일 자</td>
-                <td colspan="3">${estimate.estDate}</td>
-                <td>시 공 기 간</td>
-                <td></td>
+				<td colspan="3"><fmt:formatDate value="${estimate.estDate}" pattern="yy-MM-dd" /></td>
+                <td colspan="2">시 공 기 간</td>
             </tr>
             <tr>
                 <td style="height: 50px;">고객 정보</td>
@@ -74,7 +74,6 @@
                     <p>주소: ${estimate.estAddress}</p>
                 </td>
                 <td colspan="2">시 공 사 명</td>
-                <td></td>
             </tr>
             <tr>
                 <td>수기사항</td>
@@ -141,7 +140,7 @@
 	    const items = JSON.parse(estItemsJson); // JSON 문자열을 객체로 변환
 
 	    items.forEach(item => {
-        console.log(item); // 각 item 객체를 콘솔에 출력
+        console.log(item.PROD_NO); // 각 item 객체를 콘솔에 출력
         // 추가 처리 (예: HTML 테이블에 항목 추가)
     	});
         

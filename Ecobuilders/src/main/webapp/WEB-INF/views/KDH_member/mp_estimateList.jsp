@@ -66,8 +66,7 @@ div {
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${keyEstList}" var="myestList"
-								varStatus="status">
+							<c:forEach items="${myestList}" var="myestList" varStatus="status">
 									<tr>
 										<td scope="row">${status.index + 1}</td>
 										<td>${myestList.estId }</td>

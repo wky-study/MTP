@@ -31,7 +31,7 @@ public class MyestListController {
         List<MyestListDTO> myestList = myestListService.getEstListById(estId);
 
         // 조회된 견적서 목록을 모델에 추가
-        model.addAttribute("keyEstList", myestList);
+        model.addAttribute("myestList", myestList);
 
         // JSP로 이동
         return "KDH_member/mp_estimateList";

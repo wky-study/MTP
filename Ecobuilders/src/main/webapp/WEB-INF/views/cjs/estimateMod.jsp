@@ -72,19 +72,18 @@ th {
 <body>
 	<%@ include file="/WEB-INF/inc/header.jsp"%>
 
-	<form action="${pageContext.request.contextPath}/insertQuo"
-		method="post">
+	<form action="${pageContext.request.contextPath}/insertQuo" method="post">
 		<div class="container">
 			<h2 style="text-align: center;">견 적 서</h2>
 
 			<table>
 				<tr>
 					<td>견적서 분류번호</td>
-					<td><input type="text" name="quoId" class="input-box" /></td>
+					<td><input name="quoId" class="input-box" value="${estimate.estId }" /></td>
 				</tr>
 				<tr>
-					<td>작성된 날짜</td>
-					<td><input type="date" name="quoDate" class="input-box" /></td>
+					<td>작성 날짜</td>
+					<td><input name="quoDate" class="input-box" value="<%= new java.text.SimpleDateFormat("yy-MM-dd").format(new java.util.Date()) %>" /></td>
 					<td>시공 시작 날짜</td>
 					<td><input type="date" name="quoStartdate" class="input-box" /></td>
 					<td>시공 종료 날짜</td>
@@ -94,13 +93,13 @@ th {
 					<td style="height: 50px;">고객 정보</td>
 					<td colspan="3">
 						<p>
-							이름: <input type="text" name="memName" class="input-box" />
+							이름: ${estimate.memName}
 						</p>
 						<p>
-							연락처: <input type="text" name="memPhone" class="input-box" />
+							연락처: ${estNamePhone} 
 						</p>
 						<p>
-							주소: <input type="text" name="estAddress" class="input-box" />
+							주소: ${estimate.estAddress} 
 						</p>
 					</td>
 					<td colspan="2">시공사 명<input type = "text" name = "entName" value = "${sessionScope.login.entName}"></td>
@@ -225,7 +224,7 @@ th {
 					</tr>
 				</tbody>
 
-				<tbody>
+<!-- 				<tbody>
 					<tr>
 						<td><input type="text" name="itemName" placeholder="제품명)"
 							class="input-box" /></td>
@@ -319,7 +318,7 @@ th {
 							readonly class="input-box" /></td>
 						<td><input type="text" name="remarks" class="input-box" /></td>
 					</tr>
-				</tbody>
+				</tbody> -->
 
 				<tbody>
 					<tr>
@@ -337,8 +336,7 @@ th {
 				보내기</button>
 	</form>
 	<button class="btn-submit" type="button"
-		onclick="location.href='${pageContext.request.contextPath}/estimateDetailView/${estimateDTO.estId }'">취
-		소</button>
+		onclick="location.href='${pageContext.request.contextPath}/estimateDetailView/${estimateDTO.estId }'">취 소</button>
 	</div>
 
 	<%@ include file="/WEB-INF/inc/footer.jsp"%>
@@ -381,6 +379,10 @@ th {
 
 			document.getElementsByName('quoPrice')[0].value = quoPrice; // 총 합계 값을 입력
 		}
+		
+		
+		
+		
 	</script>
 </body>
 </html>
