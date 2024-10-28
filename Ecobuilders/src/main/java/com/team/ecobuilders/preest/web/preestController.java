@@ -20,4 +20,14 @@ public class preestController {
 	public String estStep2() {
 		return "estimate/estStep2";
 	}
+	@RequestMapping("/estStep3")
+	public String estStep3() {
+		return "estimate/estStep3";
+	}
+	@RequestMapping("/estFinal")
+	public String estFinal() {
+		return "estimate/estFinal";
+	}
+
+
 }
