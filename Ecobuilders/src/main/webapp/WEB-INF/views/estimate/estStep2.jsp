@@ -32,7 +32,7 @@ margin-left: 20px;
 	<input type="text" id="sample4_extraAddress" placeholder="참고항목" />
 	<hr>
 
-	<input type="text" id="sample4_extraAddress" placeholder="참고항목" />
+	<input type="text" id="itemInfo" placeholder="보유자재입력" />
 	<input type="button" onclick="goStep2()" value="Next" />
 	</div>
 
