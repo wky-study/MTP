@@ -45,10 +45,22 @@
 		</div>
 		<div class="prod-dt-des">
 			<h2>${prodList.itemName}</h2>
-			<h3>${prodList.itemType}</h3>
-			<h4>${prodList.entName}</h4>
-			<h4><fmt:formatNumber value="${prodList.itemPrice}" type="number" pattern="#,###"/>원</h4>
+			<div class= "prod-dt-in">
+				<div class= "prod-dt-left">
+					<h3>${prodList.itemType3}</h3>
+					<h3>${prodList.entName}</h3>
+					<h3><fmt:formatNumber value="${prodList.itemPrice}" type="number" pattern="#,###"/>원</h3>
+				</div>
+				
+				<div class= "prod-dt-right">
+					<h3>에너지효율 등급: ${prodList.itemLv}</h3>
+					<h3>에너지효율 수치: ${prodList.itemEfi}</h3>
+					<h3>단위: ${prodList.itemUnit} </h3>
+				</div>
+			</div>
 		</div>
+	</div>
+	<div style="height: 50px;">
 	</div>
 	
 	
