@@ -47,7 +47,8 @@ public class EstimateController {
 
     // 견적서 수정 페이지 - 견적서분류번호로 수정 페이지 연결
      @RequestMapping("/estimateMod/{estId}")
-    public String estimateMod(String estId, Model model) {
+    public String estimateMod(@PathVariable String estId, Model model) {
+    	System.out.println(estId);
         EstimateDTO estimate = estimateService.getEstimateById(estId); // 견적서 ID로 조회
         String estItemsJson = estimate.getEstItems();
         

@@ -16,7 +16,7 @@
         FROM est
     </select>
     
-    <select id="getValueByMemName" resultType="String" parameterType="String" >
+    <select id="getValueByMemName" parameterType="String" resultType="String">
     SELECT
     	mem_phone
     FROM members

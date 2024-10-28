@@ -121,7 +121,7 @@ public class QuoController {
         quoService.insertQuo(quoDTO);
 
         // 저장 후 리다이렉트
-        return "redirect:/"; // 적절한 URL로 리다이렉트
+        return "redirect:tradePost"; // 적절한 URL로 리다이렉트
     }
 }
 
