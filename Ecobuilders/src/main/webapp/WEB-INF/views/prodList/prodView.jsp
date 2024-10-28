@@ -54,7 +54,7 @@
 					</div>
 					<div class="product-title">
 						<a href="<c:url value="/prodDetails?itemId=${prod.itemId}"/>"
-							style="font-size: 18px;">${prod.itemName}</a> <span>후기 30건</span>
+							style="font-size: 18px;">${prod.itemName}</a> 
 					</div>
 					<div class="price-section">
 						<span class="price"><fmt:formatNumber

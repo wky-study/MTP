@@ -1465,9 +1465,17 @@ body.landing #header nav a {
 	align-items: center;
     text-align: center;
     margin: 0 auto;
+    padding: 50px;
 	flex-direction: row; 
-	height: 800px;
+	height: 650px;
 	width: 1000px;
+	border-radius: 10px;
+	border: solid 2px #2c2f35;
+	box-shadow: 12px 12px 2px 1px #0b063a59;
+}
+.prod-dt-img > img{
+	width: 300px;
+	height: 300px;
 }
 .prod-dt-box > .prod-dt-img{
 	width: 50%;
@@ -1475,6 +1483,30 @@ body.landing #header nav a {
 
 .prod-dt-box > .prod-dt-des{
 	width: 50%;
+}
+
+.prod-dt-des > .prod-dt-in{
+	width: 100%;
+}
+
+.prod-dt-des{
+	text-align: left;
+	padding: 15px;
+
+}
+
+.prod-dt-in{
+	display: flex;
+}
+
+.prod-dt-left{
+	width: 250px;
+	text-align: left;
+}
+
+.prod-dt-right{
+	width: 250px;
+	text-align: left;	
 }
 
 /* Login Section */
@@ -1509,3 +1541,4 @@ body.landing #header nav a {
 .input-form{
 	background-color: #4447512f !important;
 }
+
