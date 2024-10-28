@@ -45,7 +45,7 @@
 		<c:forEach items="${prodList}" var="prod">
 			<div class="pd-list">
 				<div class="pd-list-top">
-					<img class="pd-img" src="images/pepe.jpg" alt="">
+					<img class="pd-img" src="images/window_icon.jpg" alt="">
 				</div>
 				<div class="pd-list-bottom">
 					<div class="labels">
