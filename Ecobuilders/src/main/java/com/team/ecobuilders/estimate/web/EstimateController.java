@@ -27,7 +27,7 @@ public class EstimateController {
         return "cjs/tradePost"; // 견적서 목록 페이지
     }
 
-    // 견적서 상세 조회  
+    // 견적서 상세 조회
      @RequestMapping("/estimateDetailView/{estId}")
     public String estimateDetailView(@PathVariable String estId, Model model) {
         EstimateDTO estimate = estimateService.getEstimateById(estId); // 견적서 ID로 조회
